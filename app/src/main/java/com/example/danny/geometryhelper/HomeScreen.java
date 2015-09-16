@@ -10,19 +10,30 @@ import android.support.v7.widget.CardView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.ImageView;
 public class HomeScreen extends Activity {
 
     CardView tri;
     CardView circ;
 
+    private String[] mCardTexts ={
+            "Area of a Triangle",
+            "Area of a Circle",
+            "Quadratic Formula"
+    };
 
     ImageView triImage;
     ImageView circImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_screen);
+        setContentView(R.layout.activity_home_screen1);
+
+        GridView gridview = (GridView)findViewById(R.id.home_screen_grid);
+        gridview.setAdapter(new CardAdapter(this,mCardTexts));
+
+
 
         tri = (CardView) findViewById(R.id.card_tri);
         circ = (CardView) findViewById(R.id.card_circle);
@@ -30,7 +41,7 @@ public class HomeScreen extends Activity {
         triImage = (ImageView)findViewById(R.id.tri_img);
         circImage = (ImageView)findViewById(R.id.tri_circ);
 
-        tri.setOnClickListener(
+      /*  tri.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -68,6 +79,7 @@ public class HomeScreen extends Activity {
                     }
                 }
         );
+        */
 
 
 

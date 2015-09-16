@@ -1,0 +1,40 @@
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_tri"
+    android:layout_width="180dp"
+    android:layout_height="200dp"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="2dp"
+    android:layout_margin="5dp"
+    android:background="@drawable/ripple">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+        <ImageView
+            android:id="@+id/card_img"
+            android:layout_width="match_parent"
+            android:layout_height="145dp"
+            android:src="@drawable/tri_img"
+            android:transitionName="@string/tirangle_transition_name">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/card_info"
+            android:text="@string/area_tri"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            >
+
+        </TextView>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
