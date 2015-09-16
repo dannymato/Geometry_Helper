@@ -19,8 +19,7 @@
             android:id="@+id/card_img"
             android:layout_width="match_parent"
             android:layout_height="145dp"
-            android:src="@drawable/tri_img"
-            android:transitionName="@string/tirangle_transition_name">
+            android:src="@drawable/tri_img">
 
         </ImageView>
 

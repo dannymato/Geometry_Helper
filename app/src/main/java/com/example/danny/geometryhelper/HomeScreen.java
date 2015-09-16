@@ -7,15 +7,16 @@ import android.hardware.Camera;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
-public class HomeScreen extends Activity {
+import android.widget.TextView;
 
-    CardView tri;
-    CardView circ;
+public class HomeScreen extends Activity {
 
     private String[] mCardTexts ={
             "Area of a Triangle",
@@ -23,8 +24,10 @@ public class HomeScreen extends Activity {
             "Quadratic Formula"
     };
 
-    ImageView triImage;
-    ImageView circImage;
+    private Class[] mActivities = {
+            AreaTriangle.class,
+            AreaCircle.class
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,13 +36,30 @@ public class HomeScreen extends Activity {
         GridView gridview = (GridView)findViewById(R.id.home_screen_grid);
         gridview.setAdapter(new CardAdapter(this,mCardTexts));
 
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
+                View i = (ImageView)v.findViewById(R.id.card_img);
 
-        tri = (CardView) findViewById(R.id.card_tri);
-        circ = (CardView) findViewById(R.id.card_circle);
+                String transition;
 
-        triImage = (ImageView)findViewById(R.id.tri_img);
-        circImage = (ImageView)findViewById(R.id.tri_circ);
+                Intent intent = new Intent(HomeScreen.this,mActivities[position]);
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+                    transition = i.getTransitionName();
+
+                    Pair<View, String> pair = Pair.create(i,transition);
+                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(HomeScreen.this, pair);
+                    startActivity(intent,options.toBundle());
+
+                }
+
+                else {
+                    startActivity(intent);
+                }
+            }
+        });
+
 
       /*  tri.setOnClickListener(
                 new View.OnClickListener() {

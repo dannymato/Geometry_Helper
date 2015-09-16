@@ -8,9 +8,9 @@
     <string name="base_title">Base =</string>
     <string name="height_title">Height =</string>
     <string name="area_title">Area =</string>
-    <string name="tirangle_transition_name">triangle transition</string>
+    <string name="tri_transition_name">imgTransition0</string>
     <string name="title_activity_area_circle">Area of a Circle</string>
     <string name="radius">Radius =</string>
-    <string name="circle_transition_name">circle transition</string>
+    <string name="circle_transition_name">imgTransition1</string>
     <string name="quad_form_info">Quadratic Formula</string>
 </resources>

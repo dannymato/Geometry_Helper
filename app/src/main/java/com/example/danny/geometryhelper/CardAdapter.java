@@ -2,6 +2,7 @@ package com.example.danny.geometryhelper;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by Danny on 9/16/2015.
@@ -71,6 +74,10 @@ public class CardAdapter extends BaseAdapter {
             ImageView imageView = (ImageView) gridView
                     .findViewById(R.id.card_img);
             imageView.setImageResource(mCardImgs[position]);
+
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+                imageView.setTransitionName("imgTransition" + position);
+            }
         }
 
         else{
