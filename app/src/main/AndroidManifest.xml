@@ -32,6 +32,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.danny.geometryhelper.HomeScreen" />
         </activity>
+        <activity
+            android:name=".QuadForm"
+            android:label="@string/title_activity_quad_form" >
+        </activity>
     </application>
 
 </manifest>

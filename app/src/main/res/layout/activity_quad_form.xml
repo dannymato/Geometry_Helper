@@ -1,0 +1,125 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.macdows.mathhelper.QuadForm" >
+
+    <LinearLayout
+        android:id="@+id/quadDescLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/quadDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quadDesc"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/quadDescLayout"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp" >
+
+        <TableRow
+            android:id="@+id/quadTableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/quadATxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/quadA"
+                android:textSize="15sp"
+                android:layout_marginRight="10dp"
+                />
+
+            <TextView
+                android:id="@+id/quadBTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/quadB"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/quadCTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/quadC"
+                android:textSize="15sp"
+                android:layout_marginLeft="10dp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/quadTableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <EditText
+                android:id="@+id/quadANum"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal|numberSigned"
+                android:layout_marginRight="10dp"
+                android:imeOptions="actionNext" >
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/quadBNum"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal|numberSigned"
+                android:imeOptions="actionNext"
+                />
+
+            <EditText
+                android:id="@+id/quadCNum"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal|numberSigned"
+                android:layout_marginLeft="10dp"
+                android:imeOptions="actionDone"/>
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/quadAns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/quadCalc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/quadCalc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tableLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="98dp"
+        android:text="@string/Calc" />
+
+</RelativeLayout>
