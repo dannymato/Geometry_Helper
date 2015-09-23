@@ -24,7 +24,7 @@ public class CardAdapter extends BaseAdapter {
     private int[] mCardImgs ={
             R.drawable.tri_img,
             R.drawable.circle_img,
-            R.drawable.circle_img
+            R.drawable.quad_img
     };
 
     public CardAdapter(Context c,String[] s){

@@ -12,7 +12,7 @@
         android:id="@+id/quadDescLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:gravity="center"
         android:orientation="horizontal" >
 
@@ -20,15 +20,24 @@
             android:id="@+id/quadDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceLarge"
             android:text="@string/quadDesc"
             android:textSize="20sp" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/quad_img"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/quadDescLayout"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/quad_img"/>
 
     <TableLayout
         android:id="@+id/tableLayout1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/quadDescLayout"
+        android:layout_below="@+id/quad_img"
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_marginTop="30dp" >
@@ -47,6 +56,7 @@
                 android:text="@string/quadA"
                 android:textSize="15sp"
                 android:layout_marginRight="10dp"
+                android:textAppearance="?android:textAppearanceMedium"
                 />
 
             <TextView
@@ -54,7 +64,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/quadB"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:textAppearance="?android:textAppearanceMedium"/>
 
             <TextView
                 android:id="@+id/quadCTxt"
@@ -62,7 +73,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/quadC"
                 android:textSize="15sp"
-                android:layout_marginLeft="10dp" />
+                android:layout_marginLeft="10dp"
+                android:textAppearance="?android:textAppearanceMedium"/>
         </TableRow>
 
         <TableRow
@@ -108,18 +120,14 @@
         android:id="@+id/quadAns"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/quadCalc"
+        android:layout_below="@+id/tableLayout1"
         android:layout_centerHorizontal="true"
+        android:textAppearance="?android:textAppearanceLarge"
         android:layout_marginTop="40dp"
         android:textSize="15sp" />
 
-    <Button
-        android:id="@+id/quadCalc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tableLayout1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="98dp"
-        android:text="@string/Calc" />
+
+
+
 
 </RelativeLayout>

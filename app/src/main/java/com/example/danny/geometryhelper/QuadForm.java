@@ -42,8 +42,6 @@ public class QuadForm extends Activity {
 
         txtAns = (TextView)findViewById(R.id.quadAns);
 
-        calc = (Button) findViewById(R.id.quadCalc);
-
         txtA.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -63,13 +61,6 @@ public class QuadForm extends Activity {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 calculate();
                 return false;
-            }
-        });
-
-        calc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calculate();
             }
         });
     }
