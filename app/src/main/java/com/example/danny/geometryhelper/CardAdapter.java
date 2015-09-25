@@ -20,24 +20,23 @@ public class CardAdapter extends BaseAdapter {
 
     Context mContext;
     private String[] mCardTexts;
-
     private int[] mCardImgs ={
             R.drawable.tri_img,
             R.drawable.circle_img,
-            R.drawable.quad_img
+            R.drawable.quad_img,
+            R.drawable.circle_img
     };
 
-    public CardAdapter(Context c,String[] s){
-            mCardTexts = s;
-            mContext = c;
-
+    public CardAdapter(Context c, String[] s){
+        mContext = c;
+        mCardTexts = s;
     }
 
 
 
     @Override
     public int getCount() {
-        return mCardImgs.length;
+        return 4;
     }
 
     @Override
@@ -65,7 +64,7 @@ public class CardAdapter extends BaseAdapter {
 
             gridView = new View(mContext);
 
-            gridView = inflater.inflate(R.layout.card_template,null);
+            gridView = inflater.inflate(R.layout.card_template, null);
 
             TextView textView = (TextView) gridView
                     .findViewById(R.id.card_info);

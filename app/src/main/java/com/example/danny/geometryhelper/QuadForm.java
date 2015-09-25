@@ -88,14 +88,15 @@ public class QuadForm extends Activity {
     }
 
     protected void calculate(){
-        if(txtB.getText().toString().equals("") || txtA.getText().toString().equals("") || txtC.getText().toString().equals("")){}
+        if(txtB.getText().toString().equals("") || txtA.getText().toString().equals("") || txtC.getText().toString().equals("")
+           || txtB.getText().toString().equals("-") || txtA.getText().toString().equals("-") || txtC.getText().toString().equals("-")     ){}
 
         else{
 
             numA = Double.parseDouble(txtA.getText().toString());
             numB = Double.parseDouble(txtB.getText().toString());
             numC = Double.parseDouble(txtC.getText().toString());
-            dis = (Math.pow(numB, 2)) + (- 4*numA*numB);
+            dis = (Math.pow(numB, 2)) + (- 4*numA*numC);
 
             if(dis < 0){
                 //txtAns.setText("Not a Real Number");

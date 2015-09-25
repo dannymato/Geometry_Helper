@@ -23,21 +23,21 @@
             android:textAppearance="?android:textAppearanceLarge"
             android:text="@string/quadDesc"
             android:textSize="20sp" />
+        <ImageView
+            android:id="@+id/quad_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/quad_img"
+            android:transitionName="@string/quad_transition_name"/>
+
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/quad_img"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_below="@+id/quadDescLayout"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/quad_img"/>
 
     <TableLayout
         android:id="@+id/tableLayout1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/quad_img"
+        android:layout_below="@+id/quadDescLayout"
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_marginTop="30dp" >

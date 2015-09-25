@@ -1,38 +1,44 @@
 package com.example.danny.geometryhelper;
 
-import android.app.Activity;
-import android.app.ActivityOptions;
-import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
-import android.util.Pair;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import android.widget.ImageView;
+    import android.app.Activity;
+    import android.app.ActivityOptions;
+    import android.content.Intent;
+    import android.os.Build;
+    import android.os.Bundle;
+    import android.util.Pair;
+    import android.view.Menu;
+    import android.view.MenuItem;
+    import android.view.View;
+    import android.widget.AdapterView;
+    import android.widget.GridView;
+    import android.widget.ImageView;
 
-public class HomeScreen extends Activity {
+    public class HomeScreen extends Activity {
 
-    private String[] mCardTexts ={
-            "Area of a Triangle",
-            "Area of a Circle",
-            "Quadratic Formula"
+        private String[] mCardTexts ={
+                "Area of a Triangle",
+                "Area of a Circle",
+                "Quadratic Formula",
+                "Volume of a Sphere"
     };
 
     private Class[] mActivities = {
             AreaTriangle.class,
             AreaCircle.class,
-            QuadForm.class
+            QuadForm.class,
+            VolSph.class
     };
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen1);
 
+
         GridView gridview = (GridView)findViewById(R.id.home_screen_grid);
-        gridview.setAdapter(new CardAdapter(this,mCardTexts));
+        gridview.setAdapter(new CardAdapter(this, mCardTexts));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -57,12 +63,6 @@ public class HomeScreen extends Activity {
                 }
             }
         });
-
-
-
-
-
-
 
     }
 

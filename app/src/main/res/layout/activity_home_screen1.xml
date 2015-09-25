@@ -1,6 +1,6 @@
 <GridView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/home_screen_grid"
-    android:numColumns="1"
+    android:numColumns="2"
     android:gravity="center"
     android:columnWidth="180dp"
     android:stretchMode="columnWidth"

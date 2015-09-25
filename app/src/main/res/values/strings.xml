@@ -19,5 +19,7 @@
     <string name="quadB">B =</string>
     <string name="quadC">C =</string>
     <string name="Calc">Calculate</string>
+    <string name="title_activity_vol_sph">Volume of a Sphere</string>
+    <string name="quad_transition_name">imgTransition2</string>
 
 </resources>

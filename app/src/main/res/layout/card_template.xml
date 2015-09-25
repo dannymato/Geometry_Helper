@@ -25,7 +25,7 @@
 
         <TextView
             android:id="@+id/card_info"
-            android:text="@string/area_tri"
+            android:text="@string/title_activity_vol_sph"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:textSize="20sp"

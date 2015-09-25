@@ -35,6 +35,17 @@
         <activity
             android:name=".QuadForm"
             android:label="@string/title_activity_quad_form" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.danny.geometryhelper.HomeScreen"/>
+        </activity>
+        <activity
+            android:name=".VolSph"
+            android:label="@string/title_activity_vol_sph"
+            android:parentActivityName=".HomeScreen" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.danny.geometryhelper.HomeScreen" />
         </activity>
     </application>
 
