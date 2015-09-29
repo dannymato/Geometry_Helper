@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Area ="
-        android:id="@+id/circ_area_title"
+        android:id="@+id/sph_vol"
         android:layout_below="@+id/radius_title_sph"
         android:layout_alignLeft="@+id/radius_title_sph"
         android:layout_alignStart="@+id/radius_title_sph"
@@ -47,10 +47,10 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="0"
-        android:id="@+id/circ_area_num"
-        android:layout_alignBottom="@+id/circ_area_title"
-        android:layout_toRightOf="@+id/circ_area_title"
-        android:layout_toEndOf="@+id/circ_area_title"
+        android:id="@+id/sph_vol_num"
+        android:layout_alignBottom="@+id/sph_vol"
+        android:layout_toRightOf="@+id/sph_vol"
+        android:layout_toEndOf="@+id/sph_vol"
         android:layout_marginLeft="5dp"
         android:maxLength="17" />
 

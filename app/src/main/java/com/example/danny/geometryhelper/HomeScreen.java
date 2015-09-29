@@ -19,14 +19,16 @@ package com.example.danny.geometryhelper;
                 "Area of a Triangle",
                 "Area of a Circle",
                 "Quadratic Formula",
-                "Volume of a Sphere"
+                "Volume of a Sphere",
+                "Volume of a Cylinder"
     };
 
     private Class[] mActivities = {
             AreaTriangle.class,
             AreaCircle.class,
             QuadForm.class,
-            VolSph.class
+            VolSph.class,
+            VolCyln.class
     };
 
 

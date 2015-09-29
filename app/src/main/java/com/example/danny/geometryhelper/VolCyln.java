@@ -9,26 +9,31 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class VolSph extends Activity {
+public class VolCyln extends Activity {
 
-    private double rad;
-    private double vol;
+    private double h;
+    private double r;
+    private double v;
 
-    private TextView vTxt;
-    private EditText rTxt;
+    private String sH;
+    private String sR;
+    private String sV;
 
-    private String sRad;
-    private String sVol;
+    private EditText editH;
+    private EditText editR;
+    private TextView textV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vol_sph);
+        setContentView(R.layout.activity_vol_cyln);
 
-        vTxt = (TextView)findViewById(R.id.sph_vol_num);
-        rTxt = (EditText)findViewById(R.id.vol_editText);
+        editH = (EditText)findViewById(R.id.cyl_height);
+        editR = (EditText)findViewById(R.id.cyl_rad);
 
-        rTxt.setOnKeyListener(new View.OnKeyListener() {
+        textV = (TextView)findViewById(R.id.cyl_vol_num);
+
+        editH.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 calculate();
@@ -36,12 +41,19 @@ public class VolSph extends Activity {
             }
         });
 
+        editR.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                calculate();
+                return false;
+            }
+        });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_vol_sph, menu);
+        getMenuInflater().inflate(R.menu.menu_vol_cyln, menu);
         return true;
     }
 
@@ -62,15 +74,19 @@ public class VolSph extends Activity {
 
     private void calculate(){
 
-        sRad = rTxt.getText().toString();
+        sH = editH.getText().toString();
+        sR = editR.getText().toString();
 
-        if(!sRad.equals("")){
+        if(sH.equals("") || sR.equals("")){}
 
-            rad = Double.valueOf(sRad);
+        else {
 
-            vol = (4/3)*Math.PI*Math.pow(rad,3);
+            r = Double.valueOf(sR);
+            h = Double.valueOf(sH);
 
-            vTxt.setText(String.format("%.5f",vol));
+            v = Math.pow(r,2)*Math.PI*h;
+
+            textV.setText(String.format("%.5f",v));
 
         }
 

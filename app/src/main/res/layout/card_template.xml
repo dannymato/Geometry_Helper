@@ -2,9 +2,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_tri"
-    android:layout_width="180dp"
+    android:layout_width="50dp"
     android:layout_height="200dp"
-    card_view:cardCornerRadius="4dp"
+    card_view:cardCornerRadius="2dp"
     card_view:cardElevation="2dp"
     android:layout_margin="5dp"
     android:background="@drawable/ripple">

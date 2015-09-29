@@ -74,7 +74,7 @@ public class AreaCircle extends Activity {
                 area.setText(String.valueOf(check));
             }
             else{
-                area.setText(String.valueOf(a));
+                area.setText(String.format("%.5f",a));
             }
 
 

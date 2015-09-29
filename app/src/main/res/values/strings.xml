@@ -21,5 +21,6 @@
     <string name="Calc">Calculate</string>
     <string name="title_activity_vol_sph">Volume of a Sphere</string>
     <string name="quad_transition_name">imgTransition2</string>
+    <string name="title_activity_vol_cyln">Volume of a Cylinder</string>
 
 </resources>
