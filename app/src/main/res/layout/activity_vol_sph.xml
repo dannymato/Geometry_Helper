@@ -58,8 +58,8 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:id="@+id/imageView"
-        android:src="@drawable/circle_img"
-        android:transitionName="@string/circle_transition_name"
+        android:src="@drawable/sphere_img"
+        android:transitionName="@string/sphere_transition_name"
         android:layout_above="@+id/circ_area_num"
         android:layout_toRightOf="@+id/vol_editText"
         android:layout_toEndOf="@+id/vol_editText" />
