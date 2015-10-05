@@ -39,6 +39,7 @@ package com.example.danny.geometryhelper;
         setContentView(R.layout.activity_home_screen1);
 
 
+
         GridView gridview = (GridView)findViewById(R.id.home_screen_grid);
         gridview.setAdapter(new CardAdapter(this, mCardTexts));
 
@@ -84,6 +85,9 @@ package com.example.danny.geometryhelper;
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+            Intent intent = new Intent(this,SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
 

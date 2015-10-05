@@ -6,12 +6,11 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        >
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".HomeScreen"
             android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +21,7 @@
             android:name=".AreaTriangle"
             android:label="@string/title_activity_area_triangle"
             android:parentActivityName=".HomeScreen"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.danny.geometryhelper.HomeScreen" />
@@ -31,7 +30,7 @@
             android:name=".AreaCircle"
             android:label="@string/title_activity_area_circle"
             android:parentActivityName=".HomeScreen"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.danny.geometryhelper.HomeScreen" />
@@ -40,7 +39,7 @@
             android:name=".QuadForm"
             android:label="@string/title_activity_quad_form"
             android:parentActivityName=".HomeScreen"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.danny.geometryhelper.HomeScreen" />
@@ -49,7 +48,7 @@
             android:name=".VolSph"
             android:label="@string/title_activity_vol_sph"
             android:parentActivityName=".HomeScreen"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.danny.geometryhelper.HomeScreen" />
@@ -58,10 +57,14 @@
             android:name=".VolCyln"
             android:label="@string/title_activity_vol_cyln"
             android:parentActivityName=".HomeScreen"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.danny.geometryhelper.HomeScreen" />
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings" >
         </activity>
     </application>
 

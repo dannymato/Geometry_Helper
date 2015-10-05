@@ -1,7 +1,9 @@
 package com.example.danny.geometryhelper;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,6 +41,8 @@ public class AreaCircle extends Activity {
                 }
         );
 
+
+
     }
 
     @Override
@@ -74,7 +78,12 @@ public class AreaCircle extends Activity {
                 area.setText(String.valueOf(check));
             }
             else{
-                area.setText(String.format("%.5f",a));
+
+                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+                String numDec = sharedPreferences.getString("example_list","");
+                System.out.println(numDec);
+
+                area.setText(String.format("%."+numDec+"f",a));
             }
 
 

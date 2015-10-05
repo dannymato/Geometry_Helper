@@ -1,7 +1,9 @@
 package com.example.danny.geometryhelper;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -86,7 +88,11 @@ public class VolCyln extends Activity {
 
             v = Math.pow(r,2)*Math.PI*h;
 
-            textV.setText(String.format("%.5f",v));
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            String numDec = sharedPreferences.getString("example_list","");
+            System.out.println(numDec);
+
+            textV.setText(String.format("%."+numDec+"f",v));
 
         }
 

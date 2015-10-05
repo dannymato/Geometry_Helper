@@ -1,7 +1,9 @@
 package com.example.danny.geometryhelper;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -108,7 +110,11 @@ public class QuadForm extends Activity {
                 numAns = ((-numB) + Math.sqrt(dis))/(2*numA);
                 numAns1 = ((-numB) - Math.sqrt(dis))/(2*numA);
 
-                txtAns.setText("X = " + String.format("%.5f",numAns) + ", " + String.format("%.5f",numAns1));
+                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+                String numDec = sharedPreferences.getString("example_list","");
+                System.out.println(numDec);
+
+                txtAns.setText("X = " + String.format("%."+numDec+"f",numAns) + ", " + String.format("%."+numDec+"f",numAns1));
             }
         }
     }

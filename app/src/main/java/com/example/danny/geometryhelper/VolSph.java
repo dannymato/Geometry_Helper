@@ -1,7 +1,9 @@
 package com.example.danny.geometryhelper;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -70,7 +72,11 @@ public class VolSph extends Activity {
 
             vol = (4/3)*Math.PI*Math.pow(rad,3);
 
-            vTxt.setText(String.format("%.5f",vol));
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            String numDec = sharedPreferences.getString("example_list","");
+            System.out.println(numDec);
+
+            vTxt.setText(String.format("%."+numDec+"f",vol));
 
         }
 
