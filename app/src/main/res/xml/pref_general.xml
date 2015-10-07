@@ -3,7 +3,7 @@
     <ListPreference
         android:key="example_list"
         android:title="@string/pref_title_add_friends_to_messages"
-        android:defaultValue="4"
+        android:defaultValue="3"
         android:entries="@array/pref_example_list_titles"
         android:entryValues="@array/pref_example_list_values"
         android:negativeButtonText="@null"

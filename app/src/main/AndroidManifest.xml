@@ -45,15 +45,6 @@
                 android:value="com.example.danny.geometryhelper.HomeScreen" />
         </activity>
         <activity
-            android:name=".VolSph"
-            android:label="@string/title_activity_vol_sph"
-            android:parentActivityName=".HomeScreen"
-            android:screenOrientation="portrait" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.danny.geometryhelper.HomeScreen" />
-        </activity>
-        <activity
             android:name=".VolCyln"
             android:label="@string/title_activity_vol_cyln"
             android:parentActivityName=".HomeScreen"
@@ -68,11 +59,19 @@
         </activity>
         <activity
             android:name=".Sph"
-            android:label="@string/title_activity_sph" >
+            android:label="@string/title_activity_sph"
+            android:parentActivityName=".HomeScreen">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.danny.geometryhelper.HomeScreen"/>
+        </activity>
+        <activity
+            android:name=".Cyl"
+            android:label="@string/title_activity_cylinder"
+            android:parentActivityName=".HomeScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.danny.geometryhelper.HomeScreen"/>
         </activity>
     </application>
-
 </manifest>

@@ -16,11 +16,11 @@ package com.example.danny.geometryhelper;
     public class HomeScreen extends Activity {
 
         private String[] mCardTexts ={
-                "Area of a Triangle",
-                "Area of a Circle",
+                "Triangles",
+                "Circles",
                 "Quadratic Formula",
-                "Sphere",
-                "Volume of a Cylinder"
+                "Spheres",
+                "Cylinders"
     };
 
     private Class[] mActivities = {
@@ -28,7 +28,7 @@ package com.example.danny.geometryhelper;
             AreaCircle.class,
             QuadForm.class,
             Sph.class,
-            VolCyln.class
+            Cyl.class
     };
 
 
