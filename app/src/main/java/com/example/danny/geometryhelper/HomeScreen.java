@@ -19,7 +19,7 @@ package com.example.danny.geometryhelper;
                 "Area of a Triangle",
                 "Area of a Circle",
                 "Quadratic Formula",
-                "Volume of a Sphere",
+                "Sphere",
                 "Volume of a Cylinder"
     };
 
@@ -27,7 +27,7 @@ package com.example.danny.geometryhelper;
             AreaTriangle.class,
             AreaCircle.class,
             QuadForm.class,
-            VolSph.class,
+            Sph.class,
             VolCyln.class
     };
 
