@@ -1,19 +1,20 @@
 package com.example.danny.geometryhelper;
-
-    import android.app.Activity;
     import android.app.ActivityOptions;
     import android.content.Intent;
     import android.os.Build;
     import android.os.Bundle;
+    import android.support.v7.app.AppCompatActivity;
     import android.util.Pair;
     import android.view.Menu;
     import android.view.MenuItem;
     import android.view.View;
     import android.widget.AdapterView;
     import android.widget.GridView;
-    import android.widget.ImageView;
 
-    public class HomeScreen extends Activity {
+    import com.google.android.gms.ads.AdRequest;
+    import com.google.android.gms.ads.AdView;
+
+public class HomeScreen extends AppCompatActivity {
 
         private String[] mCardTexts ={
                 "Triangles",
@@ -40,6 +41,7 @@ package com.example.danny.geometryhelper;
 
 
 
+
         GridView gridview = (GridView)findViewById(R.id.home_screen_grid);
         gridview.setAdapter(new CardAdapter(this, mCardTexts));
 
@@ -47,25 +49,27 @@ package com.example.danny.geometryhelper;
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
-                View i = (ImageView)v.findViewById(R.id.card_img);
+                View i = v.findViewById(R.id.card_img);
 
                 String transition;
 
                 Intent intent = new Intent(HomeScreen.this, mActivities[position]);
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     transition = i.getTransitionName();
 
-                    Pair<View, String> pair = Pair.create(i,transition);
+                    Pair<View, String> pair = Pair.create(i, transition);
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(HomeScreen.this, pair);
-                    startActivity(intent,options.toBundle());
+                    startActivity(intent, options.toBundle());
 
-                }
-
-                else {
+                } else {
                     startActivity(intent);
                 }
             }
         });
+
+        AdView mAdView = (AdView)findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
     }
 
@@ -75,6 +79,8 @@ package com.example.danny.geometryhelper;
         getMenuInflater().inflate(R.menu.menu_home_screen, menu);
         return true;
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

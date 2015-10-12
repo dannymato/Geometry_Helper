@@ -56,7 +56,7 @@ public class CardAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View gridView = new View(mContext);
+        View gridView;
 
             gridView = inflater.inflate(R.layout.card_template, null);
 

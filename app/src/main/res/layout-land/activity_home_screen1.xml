@@ -10,6 +10,7 @@
     android:verticalSpacing="5dp"
     android:paddingLeft="2dp"
     android:paddingRight="2dp"
-    android:paddingBottom="2dp">
+    android:paddingBottom="2dp"
+    android:drawSelectorOnTop="true">
 
 </GridView>

@@ -1,15 +1,33 @@
-<GridView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/home_screen_grid"
-    android:numColumns="2"
-    android:gravity="center"
-    android:columnWidth="180dp"
-    android:stretchMode="columnWidth"
-    android:layout_width="match_parent"
+<RelativeLayout
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    android:horizontalSpacing="5dp"
-    android:verticalSpacing="5dp"
-    android:paddingLeft="2dp"
-    android:paddingRight="3dp"
-    android:paddingBottom="2dp">
+    android:layout_width="match_parent">
+    <GridView
+        android:id="@+id/home_screen_grid"
+        android:numColumns="2"
+        android:gravity="center"
+        android:columnWidth="180dp"
+        android:stretchMode="columnWidth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:horizontalSpacing="5dp"
+        android:verticalSpacing="5dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="3dp"
+        android:paddingBottom="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/adView"
+        android:drawSelectorOnTop="true">
+    </GridView>
 
-</GridView>
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id">
+    </com.google.android.gms.ads.AdView>
+</RelativeLayout>
