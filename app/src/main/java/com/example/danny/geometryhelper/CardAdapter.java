@@ -10,9 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-/**
- * Created by Danny on 9/16/2015.
- */
+
 public class CardAdapter extends BaseAdapter {
 
     Context mContext;
@@ -22,7 +20,8 @@ public class CardAdapter extends BaseAdapter {
             R.drawable.circle_img,
             R.drawable.quad_img,
             R.drawable.sphere_img,
-            R.drawable.circle_img
+            R.drawable.circle_img,
+            R.drawable.tri_img
     };
 
     public CardAdapter(Context c, String[] s){

@@ -51,18 +51,27 @@
         <activity
             android:name=".Sph"
             android:label="@string/title_activity_sph"
-            android:parentActivityName=".HomeScreen">
+            android:parentActivityName=".HomeScreen" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.danny.geometryhelper.HomeScreen"/>
+                android:value="com.example.danny.geometryhelper.HomeScreen" />
         </activity>
         <activity
             android:name=".Cyl"
             android:label="@string/title_activity_cylinder"
+            android:parentActivityName=".HomeScreen" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.danny.geometryhelper.HomeScreen" />
+        </activity>
+        <activity
+            android:name=".Trapezoid"
+            android:label="Trapezoid"
             android:parentActivityName=".HomeScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.danny.geometryhelper.HomeScreen"/>
+                android:value="com.example.danny.geometryhelper.HomeScreen" />
         </activity>
     </application>
+
 </manifest>

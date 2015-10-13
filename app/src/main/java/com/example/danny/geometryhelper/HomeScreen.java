@@ -21,7 +21,8 @@ public class HomeScreen extends AppCompatActivity {
                 "Circles",
                 "Quadratic Formula",
                 "Spheres",
-                "Cylinders"
+                "Cylinders",
+                "Trapezoid"
     };
 
     private Class[] mActivities = {
@@ -29,7 +30,8 @@ public class HomeScreen extends AppCompatActivity {
             AreaCircle.class,
             QuadForm.class,
             Sph.class,
-            Cyl.class
+            Cyl.class,
+            Trapezoid.class
     };
 
 
