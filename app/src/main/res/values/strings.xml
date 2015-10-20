@@ -79,6 +79,9 @@
         <item>Algebra II</item>
         <item>Pre-Calculus</item>
         <item>Physics</item>
+        <item>Settings</item>
     </string-array>
+
+    <string name="hello_blank_fragment">Welcome \'n\' Sqtuff</string>
 
 </resources>

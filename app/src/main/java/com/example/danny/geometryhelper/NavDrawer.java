@@ -1,26 +1,23 @@
 package com.example.danny.geometryhelper;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.view.Menu;
 
 /**
  * Created by danny on 10/19/15.
@@ -32,14 +29,16 @@ public class NavDrawer extends AppCompatActivity {
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
     private Toolbar toolbar;
+    private Context mContext;
 
     private CharSequence mDrawerTitle;
 
     private Fragment[] mFragments = {
-      new HomeScreen(),
             new HomeScreen(),
             new HomeScreen(),
-            new HomeScreen()
+            new HomeScreen(),
+            new HomeScreen(),
+
     };
 
     private CharSequence mTitle;
@@ -52,6 +51,9 @@ public class NavDrawer extends AppCompatActivity {
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
 
         super.onCreate(savedInstanceState);
+
+        mContext = this;
+
         setContentView(R.layout.activity_nav_drawer);
         mTitle = mDrawerTitle = getTitle();
 
@@ -88,17 +90,28 @@ public class NavDrawer extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction()
-                        .replace(R.id.content_frame, mFragments[position])
-                        .commit();
 
-                mDrawerList.setItemChecked(position, true);
-                setTitle(mMathTypes[position]);
-                mDrawerLayout.closeDrawer(mDrawerList);
+                if(position == 4){
+                    Intent intent = new Intent(mContext, SettingsActivity.class);
+                    mContext.startActivity(intent);
+                }
+                else {
+                    FragmentManager manager = getSupportFragmentManager();
+                    manager.beginTransaction()
+                            .replace(R.id.content_frame, mFragments[position])
+                            .commit();
 
+                    mDrawerList.setItemChecked(position, true);
+                    setTitle(mMathTypes[position]);
+                    mDrawerLayout.closeDrawer(mDrawerList);
+                }
             }
         });
+
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction()
+                .add(R.id.content_frame, new BlankFragment())
+                .commit();
 
         AlgebraParser alg = new AlgebraParser("190x^3 + 0x^2- 10x - 5");
 
