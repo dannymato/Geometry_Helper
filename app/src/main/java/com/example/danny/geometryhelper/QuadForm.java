@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -104,9 +105,12 @@ public class QuadForm extends AppCompatActivity {
 
             if(dis < 0){
                 //txtAns.setText("Not a Real Number");
-                Toast toast = Toast.makeText(this, "The Answer is not a Real Number", Toast.LENGTH_SHORT);
-                toast.show();
+              /*  Toast toast = Toast.makeText(this, "The Answer is not a Real Number", Toast.LENGTH_SHORT);
+                toast.show();*/
 
+
+                Snackbar.make(this.getCurrentFocus(),"Not a Real Number", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
             else{
                 numAns = ((-numB) + Math.sqrt(dis))/(2*numA);

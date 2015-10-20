@@ -15,18 +15,15 @@ public class CardAdapter extends BaseAdapter {
 
     Context mContext;
     private String[] mCardTexts;
-    private int[] mCardImgs ={
-            R.drawable.tri_img,
-            R.drawable.circle_img,
-            R.drawable.quad_img,
-            R.drawable.sphere_img,
-            R.drawable.circle_img,
-            R.drawable.tri_img
-    };
+    private int[] mCardImgs;
 
-    public CardAdapter(Context c, String[] s){
+    public CardAdapter(Context c, String[] s,int[] i){
+        System.out.println("Passed CardAdapter");
         mContext = c;
         mCardTexts = s;
+        mCardImgs = i;
+        System.out.println("Passed Through CardAdapter");
+        System.out.println(c.getPackageName());
     }
 
 
@@ -51,6 +48,8 @@ public class CardAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
+        System.out.println("Got to getView");
 
         LayoutInflater inflater = (LayoutInflater) mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);

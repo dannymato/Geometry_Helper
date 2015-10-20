@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -70,7 +71,7 @@ public class Trapezoid extends AppCompatActivity {
         sb2 = tb2.getText().toString();
         sh = th.getText().toString();
 
-        if(sb1.equals("") || sb2.equals("") || sh.equals("") || sb1.equals(".") || sb2.equals(".") || sh.equals(".")){
+        if(!(sb1.equals("") || sb2.equals("") || sh.equals("") || sb1.equals(".") || sb2.equals(".") || sh.equals("."))){
 
             b1 = Double.parseDouble(sb1);
             b2 = Double.parseDouble(sb2);
@@ -87,6 +88,8 @@ public class Trapezoid extends AppCompatActivity {
             else{
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
                 String numDec = preferences.getString("example_list","");
+
+                Log.d("TrapArea", "Trap: " + a);
 
                 ta.setText(String.format("%." + numDec + "f",a));
             }

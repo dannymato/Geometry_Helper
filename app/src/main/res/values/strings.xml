@@ -69,5 +69,16 @@
     <string name="trap_b1_txt">Base\u2081 =</string>
     <string name="trap_b2_txt">Base\u2082 =</string>
     <string name="trap_height_txt">Height =</string>
+    <string name="title_activity_nav_draw">NavDrawActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string-array name="math_types">
+        <item>Geometry</item>
+        <item>Algebra II</item>
+        <item>Pre-Calculus</item>
+        <item>Physics</item>
+    </string-array>
 
 </resources>
