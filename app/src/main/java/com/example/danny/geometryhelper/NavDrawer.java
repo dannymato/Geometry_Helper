@@ -53,8 +53,6 @@ public class NavDrawer extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav_drawer);
-
-        Log.d("ActionBarCheck", "ActionBar: " + getSupportActionBar());
         mTitle = mDrawerTitle = getTitle();
 
         mMathTypes = getResources().getStringArray(R.array.math_types);
@@ -84,7 +82,7 @@ public class NavDrawer extends AppCompatActivity {
 
 
 
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this,R.layout.listview_layout, mMathTypes));
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.listview_layout, mMathTypes));
 
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -92,7 +90,7 @@ public class NavDrawer extends AppCompatActivity {
 
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction()
-                        .replace(R.id.content_frame,mFragments[position])
+                        .replace(R.id.content_frame, mFragments[position])
                         .commit();
 
                 mDrawerList.setItemChecked(position, true);
@@ -102,35 +100,15 @@ public class NavDrawer extends AppCompatActivity {
             }
         });
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M);
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.INTERNET)
-                != PackageManager.PERMISSION_GRANTED) {
+        AlgebraParser alg = new AlgebraParser("190x^3 + 0x^2- 10x - 5");
 
-            // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.INTERNET)) {
+        Log.d("Algebra Parse", "No Whitespace: " + alg.removeWhitespace("s w a g . e x e"));
 
-                // Show an expanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
+        int[] x = alg.getCoEfficients();
 
-            } else {
-
-                // No explanation needed, we can request the permission.
-
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.INTERNET},
-                        MY_PERMISSIONS_REQUEST_INTERNET);
-
-                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-                // app-defined int constant. The callback method gets the
-                // result of the request.
-            }
+        for(int i = 0; i < x.length; i++){
+            Log.d("Algebra Parse", "Parse: " + x[i]);
         }
-
-
-
     }
 
 
