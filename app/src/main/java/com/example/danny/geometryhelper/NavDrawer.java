@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -33,17 +32,46 @@ public class NavDrawer extends AppCompatActivity {
 
     private CharSequence mDrawerTitle;
 
-    private Fragment[] mFragments = {
-            new HomeScreen(),
-            new HomeScreen(),
-            new HomeScreen(),
-            new HomeScreen(),
+    private Class[] mGeoActivities = {
+            AreaTriangle.class,
+            AreaCircle.class,
+            QuadForm.class,
+            Sph.class,
+            Cyl.class,
+            Trapezoid.class
 
     };
 
-    private CharSequence mTitle;
+    private int[] mGeoCardImgs ={
+            R.drawable.tri_img,
+            R.drawable.circle_img,
+            R.drawable.quad_img,
+            R.drawable.sphere_img,
+            R.drawable.circle_img,//TODO: Draw cylinder
+            R.drawable.tri_img //TODO: Draw Trapezoid
+    };
 
-    private final int MY_PERMISSIONS_REQUEST_INTERNET = 55168;
+    private int[][] mCardImgs = {
+            mGeoCardImgs
+    };
+
+    private String[] mGeoCardTexts ={
+            "Triangles",
+            "Circles",
+            "Quadratic Formula",
+            "Spheres",
+            "Cylinders",
+            "Trapezoid"
+    };
+
+    private String[][] mCardTexts = {
+            mGeoCardTexts
+    };
+
+
+
+
+    private CharSequence mTitle;
 
 
     @Override
@@ -96,9 +124,16 @@ public class NavDrawer extends AppCompatActivity {
                     mContext.startActivity(intent);
                 }
                 else {
+                    HomeScreen homeScreen = new HomeScreen();
                     FragmentManager manager = getSupportFragmentManager();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("tabSelected",position);
+                    bundle.putIntArray("imageArray", mCardImgs[position]);
+                    bundle.putStringArray("textArray", mCardTexts[position]);
+                    homeScreen.setArguments(bundle);
                     manager.beginTransaction()
-                            .replace(R.id.content_frame, mFragments[position])
+                            .replace(R.id.content_frame, homeScreen).addToBackStack(null)
                             .commit();
 
                     mDrawerList.setItemChecked(position, true);
