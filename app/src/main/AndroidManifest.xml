@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".ui.NavDrawer"
+            android:name=".UI.NavDrawer"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -20,67 +20,67 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".geometry.AreaTriangle"
+            android:name=".Geometry.AreaTriangle"
             android:label="@string/title_activity_area_triangle"
-            android:parentActivityName=".ui.NavDrawer"
+            android:parentActivityName=".UI.NavDrawer"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.NavDrawer" />
+                android:value=".UI.NavDrawer" />
         </activity>
         <activity
-            android:name=".geometry.AreaCircle"
+            android:name=".Geometry.AreaCircle"
             android:label="@string/title_activity_area_circle"
-            android:parentActivityName=".ui.NavDrawer"
+            android:parentActivityName=".UI.NavDrawer"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.NavDrawer" />
+                android:value=".UI.NavDrawer" />
         </activity>
         <activity
-            android:name=".geometry.QuadForm"
+            android:name=".Geometry.QuadForm"
             android:label="@string/title_activity_quad_form"
-            android:parentActivityName=".ui.NavDrawer"
+            android:parentActivityName=".UI.NavDrawer"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.NavDrawer" />
+                android:value=".UI.NavDrawer" />
         </activity>
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
         <activity
-            android:name=".geometry.Sph"
+            android:name=".Geometry.Sph"
             android:label="@string/title_activity_sph"
-            android:parentActivityName=".ui.NavDrawer" >
+            android:parentActivityName=".UI.NavDrawer" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.NavDrawer" />
+                android:value=".UI.NavDrawer" />
         </activity>
         <activity
-            android:name=".geometry.Cyl"
+            android:name=".Geometry.Cyl"
             android:label="@string/title_activity_cylinder"
-            android:parentActivityName=".ui.NavDrawer" >
+            android:parentActivityName=".UI.NavDrawer" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.NavDrawer" />
+                android:value=".UI.NavDrawer" />
         </activity>
         <activity
-            android:name=".geometry.Trapezoid"
+            android:name=".Geometry.Trapezoid"
             android:label="Trapezoid"
-            android:parentActivityName=".ui.NavDrawer" >
+            android:parentActivityName=".UI.NavDrawer" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.NavDrawer" />
+                android:value=".UI.NavDrawer" />
         </activity>
         <activity
             android:name=".algebra2.Decartes"
             android:label="Decartes"
-            android:parentActivityName=".ui.NavDrawer">
+            android:parentActivityName=".UI.NavDrawer">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.NavDrawer"/>
+                android:value=".UI.NavDrawer"/>
 
         </activity>
     </application>
