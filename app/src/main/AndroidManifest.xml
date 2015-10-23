@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.danny.geometryhelper" >
-    <uses-permission-sdk-23 android:name="android.permission.INTERNET"/>
+
+    <uses-permission-sdk-23 android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -9,68 +10,78 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".NavDrawer"
+            android:name=".ui.NavDrawer"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".AreaTriangle"
+            android:name=".geometry.AreaTriangle"
             android:label="@string/title_activity_area_triangle"
-            android:parentActivityName=".NavDrawer"
+            android:parentActivityName=".ui.NavDrawer"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.danny.geometryhelper.NavDrawer" />
+                android:value=".ui.NavDrawer" />
         </activity>
         <activity
-            android:name=".AreaCircle"
+            android:name=".geometry.AreaCircle"
             android:label="@string/title_activity_area_circle"
-            android:parentActivityName=".NavDrawer"
+            android:parentActivityName=".ui.NavDrawer"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.danny.geometryhelper.NavDrawer" />
+                android:value=".ui.NavDrawer" />
         </activity>
         <activity
-            android:name=".QuadForm"
+            android:name=".geometry.QuadForm"
             android:label="@string/title_activity_quad_form"
-            android:parentActivityName=".NavDrawer"
+            android:parentActivityName=".ui.NavDrawer"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.danny.geometryhelper.NavDrawer" />
+                android:value=".ui.NavDrawer" />
         </activity>
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
         <activity
-            android:name=".Sph"
+            android:name=".geometry.Sph"
             android:label="@string/title_activity_sph"
-            android:parentActivityName=".NavDrawer" >
+            android:parentActivityName=".ui.NavDrawer" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.danny.geometryhelper.NavDrawer" />
+                android:value=".ui.NavDrawer" />
         </activity>
         <activity
-            android:name=".Cyl"
+            android:name=".geometry.Cyl"
             android:label="@string/title_activity_cylinder"
-            android:parentActivityName=".NavDrawer" >
+            android:parentActivityName=".ui.NavDrawer" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.danny.geometryhelper.NavDrawer" />
+                android:value=".ui.NavDrawer" />
         </activity>
         <activity
-            android:name=".Trapezoid"
+            android:name=".geometry.Trapezoid"
             android:label="Trapezoid"
-            android:parentActivityName=".NavDrawer" >
+            android:parentActivityName=".ui.NavDrawer" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.danny.geometryhelper.NavDrawer" />
+                android:value=".ui.NavDrawer" />
+        </activity>
+        <activity
+            android:name=".algebra2.Decartes"
+            android:label="Decartes"
+            android:parentActivityName=".ui.NavDrawer">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.NavDrawer"/>
+
         </activity>
     </application>
 

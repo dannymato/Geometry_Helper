@@ -13,51 +13,64 @@ public class AlgebraParser {
         expression = s;
     }
 
-    protected int[] getCoEfficients(){
+    public int[] getCoEfficients(){
         String mod = expression;
 
+        int[] coefficients;
         mod = removeWhitespace(mod);
 
-        String highest = mod.substring(mod.indexOf("^")+1,mod.indexOf("^")+2);
-        int[] coefficients = new int[Integer.parseInt(highest)+1];
+        if(mod.contains("^")) {
+            String highest = mod.substring(mod.indexOf("^") + 1, mod.indexOf("^") + 2);
+            coefficients = new int[Integer.parseInt(highest) + 1];
 
-        coefficients[0] = Integer.parseInt(mod.substring(0, mod.indexOf("x")));
+            coefficients[0] = Integer.parseInt(mod.substring(0, mod.indexOf("x")));
 
-        mod = mod.substring(mod.indexOf("^") + 2);
-
-        Log.d("Algebra Parse", "String: " + mod);
-
-        for(int i = 1; i < coefficients.length; i++){
-
-            int x = 0;
-
-            if(!mod.contains("x"))
-                coefficients[i] = Integer.parseInt(mod);
-
-
-            else {
-                x = Integer.parseInt(mod.substring(0, mod.indexOf("x")));
-
-
-                coefficients[i] = x;
-
-                if(mod.contains("^"))
-                    mod = mod.substring(mod.indexOf("x")+3);
-
-
-                else
-                    mod = mod.substring(mod.indexOf("x") + 1);
-
-
-            }
+            mod = mod.substring(mod.indexOf("^") + 2);
 
             Log.d("Algebra Parse", "String: " + mod);
+
+            for (int i = 1; i < coefficients.length; i++) {
+
+                int x = 0;
+
+                if (!mod.contains("x"))
+                    coefficients[i] = Integer.parseInt(mod);
+
+
+                else {
+
+                    if (mod.startsWith("+"))
+                        x = Integer.parseInt(mod.substring(1, mod.indexOf("x")));
+                    else
+                        x = Integer.parseInt(mod.substring(0, mod.indexOf("x")));
+
+
+                    coefficients[i] = x;
+
+                    Log.d("Algebra Parse", "Coeffiecients: " + x);
+
+                    if (mod.contains("^"))
+                        mod = mod.substring(mod.indexOf("x") + 3);
+
+
+                    else
+                        mod = mod.substring(mod.indexOf("x") + 1);
+
+
+                }
+
+                Log.d("Algebra Parse", "String: " + mod);
+            }
         }
+        else{
+            coefficients = null;
+        }
+
 
         return coefficients;
     }
 
-    protected String removeWhitespace(String s){
+    public String removeWhitespace(String s){
         String tmp = s;
 
         if(!(tmp.contains(" "))){
@@ -69,6 +82,10 @@ public class AlgebraParser {
             return removeWhitespace(tmp);
         }
 
+    }
+
+    public void setExpression(String s){
+        expression = s;
     }
 
 }
