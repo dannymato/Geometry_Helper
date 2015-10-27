@@ -7,10 +7,10 @@ import android.view.KeyEvent;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.danny.geometryhelper.DecartesSigns;
+import com.example.danny.geometryhelper.DescartesSigns;
 import com.example.danny.geometryhelper.R;
 
-public class Decartes extends AppCompatActivity {
+public class Descartes extends AppCompatActivity {
 
     private EditText editText;
     private TextView textView;
@@ -44,12 +44,12 @@ public class Decartes extends AppCompatActivity {
 
 
     private String findRoots(){
-        DecartesSigns decartesSigns = new DecartesSigns(editText.getText().toString());
+        DescartesSigns descartesSigns = new DescartesSigns(editText.getText().toString());
 
         String temp = "";
 
-        negRoot = decartesSigns.getRealNegFactors();
-        posRoot = decartesSigns.getPosRealFactors();
+        negRoot = descartesSigns.getRealNegFactors();
+        posRoot = descartesSigns.getPosRealFactors();
 
         for(int i = negRoot; i >=0; i-=2){
             if(i == 0 || i == 1)
@@ -65,7 +65,7 @@ public class Decartes extends AppCompatActivity {
                 posRoots += i + " or ";
         }
 
-        Log.d("Decartes", "Positive Roots: " + posRoots);
+        Log.d("Descartes", "Positive Roots: " + posRoots);
 
         temp = "Positive Roots: " + posRoots + "\nNegative Roots: " + negRoots;
 

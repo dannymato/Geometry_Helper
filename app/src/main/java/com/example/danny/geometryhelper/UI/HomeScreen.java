@@ -20,7 +20,8 @@ import com.example.danny.geometryhelper.Geometry.QuadForm;
 import com.example.danny.geometryhelper.Geometry.Sph;
 import com.example.danny.geometryhelper.Geometry.Trapezoid;
 import com.example.danny.geometryhelper.R;
-import com.example.danny.geometryhelper.algebra2.Decartes;
+import com.example.danny.geometryhelper.algebra2.Descartes;
+import com.example.danny.geometryhelper.algebra2.DistanceForm;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -57,8 +58,10 @@ public class HomeScreen extends Fragment {
    private String[] mCardTexts;
    private Class[][] mActivities = {
            {AreaTriangle.class, AreaCircle.class, QuadForm.class, Sph.class, Cyl.class, Trapezoid.class},
-           {Decartes.class}
+           {Descartes.class, DistanceForm.class}
     };
+
+    private GridView gridView;
 
     private int getTabIndex(){
        return getArguments().getInt("tabSelected");
@@ -70,6 +73,7 @@ public class HomeScreen extends Fragment {
     }
 
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -79,10 +83,11 @@ public class HomeScreen extends Fragment {
 
        View rootView = inflater.inflate(R.layout.activity_home_screen1, container, false);
 
-        GridView gridview = (GridView) rootView.findViewById(R.id.home_screen_grid);
-        gridview.setAdapter(new CardAdapter(getActivity(), mCardTexts, mCardImgs));
 
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gridView = (GridView) rootView.findViewById(R.id.home_screen_grid);
+        gridView.setAdapter(new CardAdapter(getActivity(), mCardTexts, mCardImgs));
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
@@ -105,8 +110,7 @@ public class HomeScreen extends Fragment {
         });
 
         AdView mAdView = (AdView)rootView.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        mAdView.loadAd(new AdRequest.Builder().build());
 
 
         return rootView;

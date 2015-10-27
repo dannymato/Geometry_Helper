@@ -75,8 +75,17 @@
                 android:value=".UI.NavDrawer" />
         </activity>
         <activity
-            android:name=".algebra2.Decartes"
+            android:name=".algebra2.Descartes"
             android:label="Decartes"
+            android:parentActivityName=".UI.NavDrawer">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.NavDrawer"/>
+
+        </activity>
+        <activity
+            android:name=".algebra2.DistanceForm"
+            android:label="Distance Formula"
             android:parentActivityName=".UI.NavDrawer">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

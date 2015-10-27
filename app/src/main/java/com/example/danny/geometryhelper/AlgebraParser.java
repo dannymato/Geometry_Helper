@@ -2,9 +2,6 @@ package com.example.danny.geometryhelper;
 
 import android.util.Log;
 
-/**
- * Created by danny on 10/19/15.
- */
 public class AlgebraParser {
 
     private String expression;
@@ -47,7 +44,7 @@ public class AlgebraParser {
 
                     coefficients[i] = x;
 
-                    Log.d("Algebra Parse", "Coeffiecients: " + x);
+                    Log.d("Algebra Parse", "Coefficients: " + x);
 
                     if (mod.contains("^"))
                         mod = mod.substring(mod.indexOf("x") + 3);

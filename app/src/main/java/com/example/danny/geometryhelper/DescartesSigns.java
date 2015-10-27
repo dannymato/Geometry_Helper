@@ -2,10 +2,8 @@ package com.example.danny.geometryhelper;
 
 import android.util.Log;
 
-/**
- * Created by Danny on 10/22/2015.
- */
-public class DecartesSigns {
+
+public class DescartesSigns {
 
     public AlgebraParser parser;
 
@@ -17,7 +15,7 @@ public class DecartesSigns {
 
     private int[] simpleNegCoeffs;
 
-    public DecartesSigns(String s){
+    public DescartesSigns(String s){
 
         expression = s;
         parser = new AlgebraParser(expression);
@@ -43,7 +41,7 @@ public class DecartesSigns {
 
         }
 
-        Log.d("Decartes: ","Postitive Factors: " + numFactors);
+        Log.d("Descartes: ","Positive Factors: " + numFactors);
 
         return numFactors;
 
@@ -67,7 +65,7 @@ public class DecartesSigns {
 
         }
 
-        Log.d("Decartes: ","Negtive Factors: " + numFactors);
+        Log.d("Descartes: ","Negative Factors: " + numFactors);
 
         return numFactors;
 

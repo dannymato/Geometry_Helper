@@ -9,7 +9,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,7 +17,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.danny.geometryhelper.AlgebraParser;
 import com.example.danny.geometryhelper.R;
 import com.example.danny.geometryhelper.SettingsActivity;
 
@@ -45,7 +43,8 @@ public class NavDrawer extends AppCompatActivity {
     };
 
     private int[] mAlgCardImgs = {
-            R.drawable.tri_img //TODO: Draw a symbol for Decartes
+            R.drawable.tri_img,//TODO: Draw a symbol for Descartes
+            R.drawable.circle_img //TODO: Draw a symbol for distance formula
     };
 
     private int[][] mCardImgs = {
@@ -62,7 +61,8 @@ public class NavDrawer extends AppCompatActivity {
             "Trapezoid"
     };
     private String[] mAlgCardTexts = {
-            "Decartes"
+            "Descartes",
+            "Distance Formula"
     };
 
     private String[][] mCardTexts = {
@@ -123,16 +123,15 @@ public class NavDrawer extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
-                if(position == 4){
+                if (position == 4) {
                     Intent intent = new Intent(mContext, SettingsActivity.class);
                     mContext.startActivity(intent);
-                }
-                else {
+                } else {
                     HomeScreen homeScreen = new HomeScreen();
                     FragmentManager manager = getSupportFragmentManager();
 
                     Bundle bundle = new Bundle();
-                    bundle.putInt("tabSelected",position);
+                    bundle.putInt("tabSelected", position);
                     bundle.putIntArray("imageArray", mCardImgs[position]);
                     bundle.putStringArray("textArray", mCardTexts[position]);
                     homeScreen.setArguments(bundle);
@@ -152,15 +151,8 @@ public class NavDrawer extends AppCompatActivity {
                 .add(R.id.content_frame, new BlankFragment())
                 .commit();
 
-        AlgebraParser alg = new AlgebraParser("190x^3 + 0x^2- 10x - 5");
 
-        Log.d("Algebra Parse", "No Whitespace: " + alg.removeWhitespace("s w a g . e x e"));
 
-/*        int[] x = alg.getCoEfficients();
-
-        for(int i = 0; i < x.length; i++){
-            Log.d("Algebra Parse", "Parse: " + x[i]);
-        }*/
     }
 
 
