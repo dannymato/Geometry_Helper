@@ -21,7 +21,7 @@ import android.widget.TextView;
 
 import com.example.danny.geometryhelper.R;
 
-public class Cyl extends AppCompatActivity implements ActionBar.TabListener {
+public class Cone extends AppCompatActivity implements ActionBar.TabListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -241,7 +241,7 @@ public class Cyl extends AppCompatActivity implements ActionBar.TabListener {
                     rad = Double.valueOf(sRad);
                     height = Double.valueOf(sHeight);
 
-                    vol = Math.pow(rad,2)*height* Math.PI;
+                    vol = Math.pow(rad,2)*height* Math.PI * (1.0/3.0);
 
                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     String numDec = sharedPreferences.getString("example_list", "4");

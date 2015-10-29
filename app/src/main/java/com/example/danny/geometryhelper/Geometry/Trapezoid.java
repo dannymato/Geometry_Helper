@@ -89,7 +89,7 @@ public class Trapezoid extends AppCompatActivity {
 
             else{
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-                String numDec = preferences.getString("example_list","");
+                String numDec = preferences.getString("example_list","4");
 
                 Log.d("TrapArea", "Trap: " + a);
 

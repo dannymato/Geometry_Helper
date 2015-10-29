@@ -115,7 +115,7 @@ public class QuadForm extends AppCompatActivity {
                 numAns1 = ((-numB) - Math.sqrt(dis))/(2*numA);
 
                 SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-                String numDec = sharedPreferences.getString("example_list","");
+                String numDec = sharedPreferences.getString("example_list","4");
                 System.out.println(numDec);
 
                 txtAns.setText("X = " + String.format("%."+numDec+"f",numAns) + ", " + String.format("%."+numDec+"f",numAns1));

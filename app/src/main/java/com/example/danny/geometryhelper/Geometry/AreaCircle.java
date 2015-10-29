@@ -82,7 +82,7 @@ public class AreaCircle extends AppCompatActivity {
             else{
 
                 SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-                String numDec = sharedPreferences.getString("example_list","");
+                String numDec = sharedPreferences.getString("example_list","4");
                 System.out.println(numDec);
 
                 area.setText(String.format("%."+numDec+"f",a));

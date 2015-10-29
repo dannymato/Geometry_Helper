@@ -233,7 +233,7 @@ public class Sph extends AppCompatActivity implements ActionBar.TabListener {
                     vol = (4* Math.PI * Math.pow(rad, 3))/3;
 
                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                    String numDec = sharedPreferences.getString("example_list", "");
+                    String numDec = sharedPreferences.getString("example_list", "4");
                     System.out.println(numDec);
 
                     vTxt.setText(String.format("%." + numDec + "f", vol));
@@ -255,7 +255,7 @@ public class Sph extends AppCompatActivity implements ActionBar.TabListener {
                     area = 4*Math.PI*Math.pow(rad,2);
 
                     SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                    String numDec = pref.getString("example_list","");
+                    String numDec = pref.getString("example_list","4");
 
                     vTxt.setText(String.format("%."+ numDec+"f", area));
 

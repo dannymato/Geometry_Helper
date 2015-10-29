@@ -22,8 +22,6 @@ import com.example.danny.geometryhelper.Geometry.Trapezoid;
 import com.example.danny.geometryhelper.R;
 import com.example.danny.geometryhelper.algebra2.Descartes;
 import com.example.danny.geometryhelper.algebra2.DistanceForm;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 public class HomeScreen extends Fragment {
 
@@ -109,8 +107,7 @@ public class HomeScreen extends Fragment {
             }
         });
 
-        AdView mAdView = (AdView)rootView.findViewById(R.id.adView);
-        mAdView.loadAd(new AdRequest.Builder().build());
+
 
 
         return rootView;

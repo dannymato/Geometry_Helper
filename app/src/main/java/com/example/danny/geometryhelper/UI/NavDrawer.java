@@ -19,6 +19,8 @@ import android.widget.ListView;
 
 import com.example.danny.geometryhelper.R;
 import com.example.danny.geometryhelper.SettingsActivity;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 
 public class NavDrawer extends AppCompatActivity {
@@ -151,6 +153,9 @@ public class NavDrawer extends AppCompatActivity {
                 .add(R.id.content_frame, new BlankFragment())
                 .commit();
 
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        mAdView.loadAd(new AdRequest.Builder().build());
 
 
     }

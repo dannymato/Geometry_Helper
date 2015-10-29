@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -92,20 +93,23 @@ public class DistanceForm extends AppCompatActivity {
             y1 = Double.parseDouble(sy1);
             y2 = Double.parseDouble(sy2);
 
+            Log.d("Distance Form", String.valueOf(x1));
+            Log.d("Distance Form", String.valueOf(y1));
+            Log.d("Distance Form", String.valueOf(x2));
+            Log.d("Distance Form", String.valueOf(y2));
+
             double x = x2 - x1;
             double y = y2 - y1;
 
             discrim = Math.pow(x,2) + Math.pow(y,2);
 
-            if(discrim >= 0){
+            distance = Math.sqrt(discrim);
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            String numDec = sharedPreferences.getString("example_list","4");
+            Log.d("Dec Preference", numDec);
+            textView.setText(String.format("%." + numDec + "f", distance));
+            //textView.setText(String.valueOf(distance));
 
-            }
-            else{
-                distance = Math.sqrt(discrim);
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-                String numDec = sharedPreferences.getString("example_list","");
-                textView.setText(String.format("%."+numDec+"f",distance));
-            }
 
 
         }
