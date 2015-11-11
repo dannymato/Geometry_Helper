@@ -46,7 +46,8 @@ public class NavDrawer extends AppCompatActivity {
 
     private int[] mAlgCardImgs = {
             R.drawable.tri_img,//TODO: Draw a symbol for Descartes
-            R.drawable.circle_img //TODO: Draw a symbol for distance formula
+            R.drawable.circle_img, //TODO: Draw a symbol for distance formula
+            R.drawable.quad_img
     };
 
     private int[][] mCardImgs = {
@@ -64,7 +65,8 @@ public class NavDrawer extends AppCompatActivity {
     };
     private String[] mAlgCardTexts = {
             "Descartes",
-            "Distance Formula"
+            "Distance Formula",
+            "Pythagorean Tmᵐ"
     };
 
     private String[][] mCardTexts = {

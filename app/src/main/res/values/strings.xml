@@ -14,7 +14,7 @@
     <string name="circle_transition_name" translatable="false">imgTransition1</string>
     <string name="quad_form_info">Quadratic Formula</string>
     <string name="title_activity_quad_form">Quadratic Formula</string>
-    <string name="quadDesc" translatable="false">Ax&#178; + Bx + C = 0</string>
+    <string name="quadDesc" translatable="false">A&#178; + B&#178; = C&#178;</string>
     <string name="quadA" translatable="false">A =</string>
     <string name="quadB" translatable="false">B =</string>
     <string name="quadC" translatable="false">C =</string>

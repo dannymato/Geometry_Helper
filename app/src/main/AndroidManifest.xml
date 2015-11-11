@@ -92,6 +92,15 @@
                 android:value=".UI.NavDrawer"/>
 
         </activity>
+        <activity
+            android:name=".algebra2.Pythagorean"
+            android:label="Pythagorean Thᵐ"
+            android:parentActivityName=".UI.NavDrawer">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.NavDrawer"/>
+
+        </activity>
     </application>
 
 </manifest>
