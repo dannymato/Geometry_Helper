@@ -77,8 +77,6 @@
     <string-array name="math_types">
         <item>Geometry</item>
         <item>Algebra II</item>
-        <item>Pre-Calculus</item>
-        <item>Physics</item>
         <item>Settings</item>
     </string-array>
 

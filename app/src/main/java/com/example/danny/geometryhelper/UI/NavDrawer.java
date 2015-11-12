@@ -66,7 +66,7 @@ public class NavDrawer extends AppCompatActivity {
     private String[] mAlgCardTexts = {
             "Descartes",
             "Distance Formula",
-            "Pythagorean Tmᵐ"
+            "Pythagorean Thᵐ"
     };
 
     private String[][] mCardTexts = {
@@ -127,7 +127,7 @@ public class NavDrawer extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
-                if (position == 4) {
+                if (position == 2) {
                     Intent intent = new Intent(mContext, SettingsActivity.class);
                     mContext.startActivity(intent);
                 } else {
