@@ -8,21 +8,18 @@
     <string name="base_title">Base =</string>
     <string name="height_title">Height =</string>
     <string name="area_title">Area =</string>
-    <string name="tri_transition_name" translatable="false">imgTransition0</string>
     <string name="title_activity_area_circle">Area of a Circle</string>
     <string name="radius">Radius =</string>
-    <string name="circle_transition_name" translatable="false">imgTransition1</string>
     <string name="quad_form_info">Quadratic Formula</string>
     <string name="title_activity_quad_form">Quadratic Formula</string>
-    <string name="quadDesc" translatable="false">A&#178; + B&#178; = C&#178;</string>
+    <string name="pythDesc" translatable="false">A&#178; + B&#178; = C&#178;</string>
+    <string name="quadDesc" translatable="false">Ax&#178; + Bx + C = 0</string>
     <string name="quadA" translatable="false">A =</string>
     <string name="quadB" translatable="false">B =</string>
     <string name="quadC" translatable="false">C =</string>
     <string name="Calc">Calculate</string>
     <string name="title_activity_vol_sph">Volume of a Sphere</string>
-    <string name="quad_transition_name" translatable="false">imgTransition2</string>
     <string name="title_activity_vol_cyln">Volume of a Cylinder</string>
-    <string name="sphere_transition_name" translatable="false">imgTransition3</string>
     <string name="title_activity_settings">Settings</string>
     <string name="title_activity_cylinder">Cylinder</string>
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
@@ -90,5 +87,11 @@
         <item>Right Cylinders</item>
         <item>Trapezoid</item>
     </string-array>
+
+
+    <string name="tri_transition_name" translatable="false">geoTransition0</string>
+    <string name="circle_transition_name" translatable="false">geoTransition1</string>
+    <string name="quad_transition_name" translatable="false">geoTransition2</string>
+    <string name="sphere_transition_name" translatable="false">geoTransition3</string>
 
 </resources>

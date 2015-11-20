@@ -53,20 +53,36 @@ public class CardAdapter extends BaseAdapter {
 
         View gridView;
 
-            gridView = inflater.inflate(R.layout.card_template, null);
+            if(convertView != null){
+                gridView = convertView;
+            }
 
-            TextView textView = (TextView) gridView
-                    .findViewById(R.id.card_info);
-            textView.setText(mCardTexts[position]);
+            else {
 
-            ImageView imageView = (ImageView) gridView
-                    .findViewById(R.id.card_img);
-            imageView.setImageResource(mCardImgs[position]);
+                gridView = inflater.inflate(R.layout.card_template, null);
 
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
-                imageView.setTransitionName("imgTransition" + position);
+                TextView textView = (TextView) gridView
+                        .findViewById(R.id.card_info);
+                textView.setText(mCardTexts[position]);
+
+                ImageView imageView = (ImageView) gridView
+                        .findViewById(R.id.card_img);
+
+                new LoadImagesTask(imageView, mContext).execute(mCardImgs[position]);
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+                    if (mCardTexts[0].equals("Triangles"))
+                        imageView.setTransitionName("geoTransition" + position);
+                    else if (mCardTexts[0].equals("Descartes"))
+                        imageView.setTransitionName("algTransition" + position);
+                }
             }
 
         return gridView;
     }
+
+
+
 }
+
