@@ -35,7 +35,7 @@ public class NavDrawer extends AppCompatActivity {
     private CharSequence mDrawerTitle;
 
 
-    private int[] mGeoCardImgs ={
+    private final int[] mGeoCardImgs ={
             R.drawable.tri_img,
             R.drawable.circle_img,
             R.drawable.quad_img,
@@ -44,18 +44,18 @@ public class NavDrawer extends AppCompatActivity {
             R.drawable.tri_img //TODO: Draw Trapezoid
     };
 
-    private int[] mAlgCardImgs = {
+    private final int[] mAlgCardImgs = {
             R.drawable.tri_img,//TODO: Draw a symbol for Descartes
             R.drawable.circle_img, //TODO: Draw a symbol for distance formula
             R.drawable.quad_img
     };
 
-    private int[][] mCardImgs = {
+    private final int[][] mCardImgs = {
             mGeoCardImgs,
             mAlgCardImgs
     };
 
-    private String[] mGeoCardTexts ={
+    private final String[] mGeoCardTexts ={
             "Triangles",
             "Circles",
             "Quadratic Formula",
@@ -63,13 +63,13 @@ public class NavDrawer extends AppCompatActivity {
             "Cylinders",
             "Trapezoid"
     };
-    private String[] mAlgCardTexts = {
+    private final String[] mAlgCardTexts = {
             "Descartes",
             "Distance Formula",
             "Pythagorean Thᵐ"
     };
 
-    private String[][] mCardTexts = {
+    private final String[][] mCardTexts = {
             mGeoCardTexts,
             mAlgCardTexts
     };
@@ -120,7 +120,7 @@ public class NavDrawer extends AppCompatActivity {
 
 
 
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.listview_layout, mMathTypes));
+        mDrawerList.setAdapter(new ArrayAdapter<>(this, R.layout.listview_layout, mMathTypes));
 
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -183,9 +183,7 @@ public class NavDrawer extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(mDrawerToggle.onOptionsItemSelected(item))
-            return true;
-        return super.onOptionsItemSelected(item);
+        return mDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
     public void onConfigurationChanged(Configuration newConfig){

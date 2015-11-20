@@ -22,7 +22,7 @@
             android:text="@string/pythDesc"
             android:textSize="20sp" />
         <ImageView
-            android:id="@+id/quad_img"
+            android:id="@+id/pyth_img"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/quad_img"
@@ -76,7 +76,7 @@
         </TableRow>
 
         <TableRow
-            android:id="@+id/quadTableRow2"
+            android:id="@+id/pythTableRow2"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -113,19 +113,5 @@
                 android:imeOptions="actionDone"/>
         </TableRow>
     </TableLayout>
-
-    <TextView
-        android:id="@+id/quadAns"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tableLayout1"
-        android:layout_centerHorizontal="true"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:layout_marginTop="40dp"
-        android:textSize="20sp"/>
-
-
-
-
 
 </RelativeLayout>

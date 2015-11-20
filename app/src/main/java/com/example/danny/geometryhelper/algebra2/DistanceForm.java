@@ -20,18 +20,6 @@ public class DistanceForm extends AppCompatActivity {
     private EditText edity2;
     private TextView textView;
 
-    private double x1;
-    private double y1;
-    private double x2;
-    private double y2;
-    private double distance;
-    private double discrim;
-
-    private String sy1 = "";
-    private String sx1 = "";
-    private String sy2 = "";
-    private String sx2 = "";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,19 +67,17 @@ public class DistanceForm extends AppCompatActivity {
 
     private void calculate(){
 
-        sy1 = edity1.getText().toString();
-        sy2 = edity2.getText().toString();
-        sx1 = editx1.getText().toString();
-        sx2 = editx2.getText().toString();
+        String sy1 = edity1.getText().toString();
+        String sy2 = edity2.getText().toString();
+        String sx1 = editx1.getText().toString();
+        String sx2 = editx2.getText().toString();
 
-        if(sy1.equals("") || sx2.equals("") || sx1.equals("") || sy2.equals("")){}
+        if(!(sy1.equals("") || sx2.equals("") || sx1.equals("") || sy2.equals(""))){
 
-        else{
-
-            x1 = Double.parseDouble(sx1);
-            x2 = Double.parseDouble(sx2);
-            y1 = Double.parseDouble(sy1);
-            y2 = Double.parseDouble(sy2);
+            double x1 = Double.parseDouble(sx1);
+            double x2 = Double.parseDouble(sx2);
+            double y1 = Double.parseDouble(sy1);
+            double y2 = Double.parseDouble(sy2);
 
             Log.d("Distance Form", String.valueOf(x1));
             Log.d("Distance Form", String.valueOf(y1));
@@ -101,14 +87,13 @@ public class DistanceForm extends AppCompatActivity {
             double x = x2 - x1;
             double y = y2 - y1;
 
-            discrim = Math.pow(x,2) + Math.pow(y,2);
+            double discrim = Math.pow(x, 2) + Math.pow(y, 2);
 
-            distance = Math.sqrt(discrim);
+            double distance = Math.sqrt(discrim);
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
             String numDec = sharedPreferences.getString("example_list","4");
             Log.d("Dec Preference", numDec);
             textView.setText(String.format("%." + numDec + "f", distance));
-            //textView.setText(String.valueOf(distance));
 
 
 

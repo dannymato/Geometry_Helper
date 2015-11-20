@@ -17,19 +17,19 @@ import com.example.danny.geometryhelper.R;
 
 public class QuadForm extends AppCompatActivity {
 
-    EditText txtA;
-    EditText txtB;
-    EditText txtC;
+    private EditText txtA;
+    private EditText txtB;
+    private EditText txtC;
 
-    double numA;
-    double numB;
-    double numC;
-    double numAns;
-    double numAns1;
+    private double numA;
+    private double numB;
+    private double numC;
+    private double numAns;
+    private double numAns1;
 
-    double dis;
+    private double dis;
 
-    TextView txtAns;
+    private TextView txtAns;
 
     Button calc;
 
@@ -89,12 +89,11 @@ public class QuadForm extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    protected void calculate(){
+    private void calculate(){
 
-        if(txtB.getText().toString().equals("") || txtA.getText().toString().equals("") || txtC.getText().toString().equals("")
-           || txtB.getText().toString().equals("-") || txtA.getText().toString().equals("-") || txtC.getText().toString().equals("-")     ){}
+        if(!(txtB.getText().toString().equals("") || txtA.getText().toString().equals("") || txtC.getText().toString().equals("")
+           || txtB.getText().toString().equals("-") || txtA.getText().toString().equals("-") || txtC.getText().toString().equals("-"))){
 
-        else{
 
             numA = Double.parseDouble(txtA.getText().toString());
             numB = Double.parseDouble(txtB.getText().toString());

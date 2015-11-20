@@ -15,14 +15,14 @@ import com.example.danny.geometryhelper.R;
 
 public class AreaCircle extends AppCompatActivity {
 
-    EditText rad;
+    private EditText rad;
 
-    TextView area;
+    private TextView area;
 
-    double r;
-    double a;
+    private double r;
+    private double a;
 
-    int check;
+    private int check;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

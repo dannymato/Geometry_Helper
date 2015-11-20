@@ -12,8 +12,7 @@ public class BlankFragment extends android.support.v4.app.Fragment {
 
 
     public static BlankFragment newInstance() {
-        BlankFragment fragment = new BlankFragment();
-        return fragment;
+        return new BlankFragment();
     }
 
     public BlankFragment() {

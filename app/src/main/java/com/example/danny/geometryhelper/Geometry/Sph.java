@@ -24,16 +24,6 @@ import com.example.danny.geometryhelper.R;
 public class Sph extends AppCompatActivity implements ActionBar.TabListener {
 
     /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v13.app.FragmentStatePagerAdapter}.
-     */
-    private SectionsPagerAdapter mSectionsPagerAdapter;
-
-    /**
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
@@ -44,7 +34,15 @@ public class Sph extends AppCompatActivity implements ActionBar.TabListener {
         setContentView(R.layout.activity_sph);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
+        /*
+      The {@link android.support.v4.view.PagerAdapter} that will provide
+      fragments for each of the sections. We use a
+      {@link FragmentPagerAdapter} derivative, which will keep every
+      loaded fragment in memory. If this becomes too memory intensive, it
+      may be best to switch to a
+      {@link android.support.v13.app.FragmentStatePagerAdapter}.
+     */
+        SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
@@ -215,14 +213,14 @@ public class Sph extends AppCompatActivity implements ActionBar.TabListener {
 
         public void calc(EditText rTxt, TextView vTxt, int sectionNum){
 
-            String sRad = "";
+            String sRad;
 
-            double rad  = 0;
+            double rad;
 
 
             if(sectionNum == 0) {
 
-                double vol = 0;
+                double vol;
 
                 sRad = rTxt.getText().toString();
 
@@ -246,7 +244,7 @@ public class Sph extends AppCompatActivity implements ActionBar.TabListener {
 
                 sRad = rTxt.getText().toString();
 
-                double area = 0;
+                double area;
 
                 if(!sRad.equals("")){
 

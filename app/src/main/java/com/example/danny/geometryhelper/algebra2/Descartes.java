@@ -15,9 +15,6 @@ public class Descartes extends AppCompatActivity {
     private EditText editText;
     private TextView textView;
 
-    private int negRoot;
-    private int posRoot;
-
     private String posRoots = "";
     private String negRoots = "";
 
@@ -46,10 +43,10 @@ public class Descartes extends AppCompatActivity {
     private String findRoots(){
         DescartesSigns descartesSigns = new DescartesSigns(editText.getText().toString());
 
-        String temp = "";
+        String temp;
 
-        negRoot = descartesSigns.getRealNegFactors();
-        posRoot = descartesSigns.getPosRealFactors();
+        int negRoot = descartesSigns.getRealNegFactors();
+        int posRoot = descartesSigns.getPosRealFactors();
 
         for(int i = negRoot; i >=0; i-=2){
             if(i == 0 || i == 1)

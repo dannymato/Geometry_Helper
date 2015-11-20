@@ -5,9 +5,7 @@ import android.util.Log;
 
 public class DescartesSigns {
 
-    public AlgebraParser parser;
-
-    private String expression;
+    private final AlgebraParser parser;
 
     private int[] coeffs;
 
@@ -17,7 +15,7 @@ public class DescartesSigns {
 
     public DescartesSigns(String s){
 
-        expression = s;
+        String expression = s;
         parser = new AlgebraParser(expression);
         if(parser.getCoEfficients() != null)
             coeffs = parser.getCoEfficients();
@@ -29,17 +27,11 @@ public class DescartesSigns {
 
         setSimpleCoeffs();
 
-        for(int i = 1; i < simpleCoeffs.length; i++){
-
-            if(simpleCoeffs[i] == 0){}
-
-            else{
-                if(simpleCoeffs[i] == simpleCoeffs[i-1]);
-                else
+        for(int i = 1; i < simpleCoeffs.length; i++)
+            if(!(simpleCoeffs[i] == 0))
+                if(!(simpleCoeffs[i] == simpleCoeffs[i-1]))
                     numFactors++;
-            }
 
-        }
 
         Log.d("Descartes: ","Positive Factors: " + numFactors);
 
@@ -53,17 +45,10 @@ public class DescartesSigns {
 
         setSimpleNegCoeffs();
 
-        for(int i = 1; i < simpleNegCoeffs.length; i++){
-
-            if(simpleNegCoeffs[i] == 0){}
-
-            else{
-                if(simpleNegCoeffs[i] == simpleNegCoeffs[i-1]);
-                else
+        for(int i = 1; i < simpleNegCoeffs.length; i++)
+            if(!(simpleNegCoeffs[i] == 0))
+                if(!(simpleNegCoeffs[i] == simpleNegCoeffs[i-1]))
                     numFactors++;
-            }
-
-        }
 
         Log.d("Descartes: ","Negative Factors: " + numFactors);
 
@@ -71,7 +56,7 @@ public class DescartesSigns {
 
     }
 
-    public void setSimpleCoeffs(){
+    private void setSimpleCoeffs(){
 
         simpleCoeffs = new int[coeffs.length];
 
@@ -86,7 +71,7 @@ public class DescartesSigns {
 
     }
 
-    public void setSimpleNegCoeffs(){
+    private void setSimpleNegCoeffs(){
 
         setSimpleCoeffs();
         simpleNegCoeffs = new int[simpleCoeffs.length];

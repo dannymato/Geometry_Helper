@@ -55,12 +55,10 @@ public class HomeScreen extends Fragment {
 
    private int[] mCardImgs;
    private String[] mCardTexts;
-   private Class[][] mActivities = {
+   private final Class[][] mActivities = {
            {AreaTriangle.class, AreaCircle.class, QuadForm.class, Sph.class, Cyl.class, Trapezoid.class},
            {Descartes.class, DistanceForm.class, Pythagorean.class}
     };
-
-    private GridView gridView;
 
     private int getTabIndex(){
        return getArguments().getInt("tabSelected");
@@ -83,7 +81,7 @@ public class HomeScreen extends Fragment {
        View rootView = inflater.inflate(R.layout.activity_home_screen1, container, false);
 
 
-        gridView = (GridView) rootView.findViewById(R.id.home_screen_grid);
+        GridView gridView = (GridView) rootView.findViewById(R.id.home_screen_grid);
         gridView.setAdapter(new CardAdapter(getActivity(), mCardTexts, mCardImgs));
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

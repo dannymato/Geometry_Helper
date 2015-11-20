@@ -4,14 +4,14 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Point;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.Display;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
-/**
- * Created by Danny on 11/12/2015.
- */
-public class LoadImagesTask extends AsyncTask<Integer,Void,Void> {
+public class LoadImagesTask extends AsyncTask<Integer,Void,Bitmap> {
 
     public ImageView iView;
     public Context mContext;
@@ -26,18 +26,27 @@ public class LoadImagesTask extends AsyncTask<Integer,Void,Void> {
 
 
     @Override
-    protected Void doInBackground(Integer... params) {
+    protected Bitmap doInBackground(Integer... params) {
         iNumber = params[0];
+
+        WindowManager wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point res = new Point();
+        display.getSize(res);
+        int width = res.x/2;
+        int height = (int) (width*.90625);
+
+
 
         Log.d("Image Load", "Loaded an image");
 
 
-        return null;
+        return decodeSampledBitmapFromResource(mContext.getResources(),iNumber, width,height);
     }
 
     @Override
-    protected void onPostExecute(Void bit){
-        iView.setImageResource(iNumber);
+    protected void onPostExecute(Bitmap bit){
+        iView.setImageBitmap(bit);
 
     }
 

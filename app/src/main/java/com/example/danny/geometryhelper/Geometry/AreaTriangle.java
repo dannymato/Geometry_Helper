@@ -15,19 +15,19 @@ import com.example.danny.geometryhelper.R;
 
 public class AreaTriangle extends AppCompatActivity {
 
-    EditText base;
-    EditText height;
+    private EditText base;
+    private EditText height;
 
-    TextView area;
+    private TextView area;
 
-    double b;
-    double h;
-    double a;
+    private double b;
+    private double h;
+    private double a;
 
-    int check;
+    private int check;
 
-    String bb;
-    String hh;
+    private String bb;
+    private String hh;
 
 
 
@@ -87,7 +87,7 @@ public class AreaTriangle extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    protected void calculate(){
+    private void calculate(){
         bb = base.getText().toString();
         hh = height.getText().toString();
 

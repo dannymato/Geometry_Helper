@@ -28,7 +28,7 @@ public class AlgebraParser {
 
             for (int i = 1; i < coefficients.length; i++) {
 
-                int x = 0;
+                int x;
 
                 if (!mod.contains("x"))
                     coefficients[i] = Integer.parseInt(mod);
@@ -67,7 +67,7 @@ public class AlgebraParser {
         return coefficients;
     }
 
-    public String removeWhitespace(String s){
+    private String removeWhitespace(String s){
         String tmp = s;
 
         if(!(tmp.contains(" "))){

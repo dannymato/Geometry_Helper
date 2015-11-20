@@ -12,11 +12,11 @@ import android.widget.TextView;
 import com.example.danny.geometryhelper.R;
 
 
-public class CardAdapter extends BaseAdapter {
+class CardAdapter extends BaseAdapter {
 
-    Context mContext;
-    private String[] mCardTexts;
-    private int[] mCardImgs;
+    private final Context mContext;
+    private final String[] mCardTexts;
+    private final int[] mCardImgs;
 
     public CardAdapter(Context c, String[] s,int[] i){
         mContext = c;
@@ -69,6 +69,8 @@ public class CardAdapter extends BaseAdapter {
                         .findViewById(R.id.card_img);
 
                 new LoadImagesTask(imageView, mContext).execute(mCardImgs[position]);
+
+           //     imageView.setImageResource(mCardImgs[position]);
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 

@@ -3,6 +3,7 @@
     package="com.example.danny.geometryhelper" >
 
     <uses-permission-sdk-23 android:name="android.permission.INTERNET" />
+    <uses-permission-sdk-23 android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -76,7 +77,7 @@
         </activity>
         <activity
             android:name=".algebra2.Descartes"
-            android:label="Decartes"
+            android:label="Descartes"
             android:parentActivityName=".UI.NavDrawer">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

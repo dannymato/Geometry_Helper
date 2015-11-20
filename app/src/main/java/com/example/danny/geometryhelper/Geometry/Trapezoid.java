@@ -14,15 +14,6 @@ import com.example.danny.geometryhelper.R;
 
 public class Trapezoid extends AppCompatActivity {
 
-    private double b1;
-    private double b2;
-    private double h;
-    private double a;
-
-    private String sb1;
-    private String sb2;
-    private String sh;
-
     private EditText tb1;
     private EditText tb2;
     private EditText th;
@@ -67,21 +58,21 @@ public class Trapezoid extends AppCompatActivity {
 
     }
 
-    public void calculate(){
+    private void calculate(){
 
-        sb1 = tb1.getText().toString();
-        sb2 = tb2.getText().toString();
-        sh = th.getText().toString();
+        String sb1 = tb1.getText().toString();
+        String sb2 = tb2.getText().toString();
+        String sh = th.getText().toString();
 
         if(!(sb1.equals("") || sb2.equals("") || sh.equals("") || sb1.equals(".") || sb2.equals(".") || sh.equals("."))){
 
-            b1 = Double.parseDouble(sb1);
-            b2 = Double.parseDouble(sb2);
-            h = Double.parseDouble(sh);
+            double b1 = Double.parseDouble(sb1);
+            double b2 = Double.parseDouble(sb2);
+            double h = Double.parseDouble(sh);
 
-            a = ((b1 + b2)/2)*h;
+            double a = ((b1 + b2) / 2) * h;
 
-            int x = (int)a;
+            int x = (int) a;
 
             if(x == a){
                 ta.setText("Area = " + x);
@@ -93,7 +84,7 @@ public class Trapezoid extends AppCompatActivity {
 
                 Log.d("TrapArea", "Trap: " + a);
 
-                ta.setText(String.format("%." + numDec + "f",a));
+                ta.setText(String.format("%." + numDec + "f", a));
             }
 
         }
