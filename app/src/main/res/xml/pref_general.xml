@@ -7,6 +7,13 @@
         android:entries="@array/pref_example_list_titles"
         android:entryValues="@array/pref_example_list_values"
         android:negativeButtonText="@null"
-        android:positiveButtonText="@null" />
+        android:positiveButtonText="OK" />
+    <ListPreference
+        android:key="default_page"
+        android:title="Default Page on Startup"
+        android:defaultValue="0"
+        android:entries="@array/pane_titles"
+        android:entryValues="@array/pane_values"
+        android:positiveButtonText="OK"/>
 
 </PreferenceScreen>

@@ -5,7 +5,7 @@ import android.util.Log;
 
 public class DescartesSigns {
 
-    private final AlgebraParser parser;
+    private final AlgebraParse parser;
 
     private int[] coeffs;
 
@@ -16,9 +16,9 @@ public class DescartesSigns {
     public DescartesSigns(String s){
 
         String expression = s;
-        parser = new AlgebraParser(expression);
-        if(parser.getCoEfficients() != null)
-            coeffs = parser.getCoEfficients();
+        parser = new AlgebraParse(expression);
+        if(parser.getValues() != null)
+            coeffs = parser.getValues();
     }
 
     public int getPosRealFactors() {

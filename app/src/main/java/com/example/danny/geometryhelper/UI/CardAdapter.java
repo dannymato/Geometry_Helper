@@ -2,6 +2,7 @@ package com.example.danny.geometryhelper.UI;
 
 import android.content.Context;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,11 +54,6 @@ class CardAdapter extends BaseAdapter {
 
         View gridView;
 
-            if(convertView != null){
-                gridView = convertView;
-            }
-
-            else {
 
                 gridView = inflater.inflate(R.layout.card_template, null);
 
@@ -65,12 +61,13 @@ class CardAdapter extends BaseAdapter {
                         .findViewById(R.id.card_info);
                 textView.setText(mCardTexts[position]);
 
+                Log.d("Card Names", mCardTexts[position]);
+
                 ImageView imageView = (ImageView) gridView
                         .findViewById(R.id.card_img);
 
                 new LoadImagesTask(imageView, mContext).execute(mCardImgs[position]);
-
-           //     imageView.setImageResource(mCardImgs[position]);
+            //  imageView.setImageResource(mCardImgs[position]);
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
@@ -79,7 +76,7 @@ class CardAdapter extends BaseAdapter {
                     else if (mCardTexts[0].equals("Descartes"))
                         imageView.setTransitionName("algTransition" + position);
                 }
-            }
+
 
         return gridView;
     }

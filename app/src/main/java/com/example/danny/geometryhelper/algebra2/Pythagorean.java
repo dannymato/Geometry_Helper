@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.danny.geometryhelper.R;
@@ -22,6 +23,8 @@ public class Pythagorean extends AppCompatActivity {
     EditText editA;
     EditText editB;
     EditText editC;
+
+    Button clear;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,20 @@ public class Pythagorean extends AppCompatActivity {
                 return false;
             }
         });
+
+        clear = (Button)findViewById(R.id.clrBtn);
+
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editA.setText("");
+                editB.setText("");
+                editC.setText("");
+                editA.requestFocus();
+            }
+        });
+
+
 
 
     }

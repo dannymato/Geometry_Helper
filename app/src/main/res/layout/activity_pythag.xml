@@ -26,7 +26,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/quad_img"
-            android:transitionName="@string/quad_transition_name"/>
+            android:transitionName="algTransition2"/>
 
     </LinearLayout>
 
@@ -113,5 +113,17 @@
                 android:imeOptions="actionDone"/>
         </TableRow>
     </TableLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear"
+        android:id="@+id/clrBtn"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="36dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="110dp" />
 
 </RelativeLayout>

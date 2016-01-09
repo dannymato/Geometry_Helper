@@ -30,9 +30,11 @@ public class AlgebraParser {
 
                 int x;
 
-                if (!mod.contains("x"))
-                    coefficients[i] = Integer.parseInt(mod);
+                if (!mod.contains("x")){
+                    coefficients[i] = Integer.parseInt(mod);}
 
+                else if((Integer.parseInt(mod.substring(mod.indexOf("^") + 1, mod.indexOf("^") + 2))) != (coefficients.length - i - 1)){
+                    coefficients[i] = 0;}
 
                 else {
 
@@ -81,8 +83,5 @@ public class AlgebraParser {
 
     }
 
-    public void setExpression(String s){
-        expression = s;
-    }
 
 }

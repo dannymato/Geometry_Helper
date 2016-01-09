@@ -84,7 +84,7 @@ public class Trapezoid extends AppCompatActivity {
 
                 Log.d("TrapArea", "Trap: " + a);
 
-                ta.setText(String.format("%." + numDec + "f", a));
+                ta.setText("Area = " + String.format("%." + numDec + "f", a));
             }
 
         }

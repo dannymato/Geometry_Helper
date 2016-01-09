@@ -23,20 +23,20 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="5"
-        android:id="@+id/cyl_rad"
+        android:id="@+id/rect_length"
         android:maxLength="9"
         android:layout_alignBottom="@+id/cyl_rad_title"
-        android:layout_alignLeft="@+id/cyl_height"
-        android:layout_alignStart="@+id/cyl_height" />
+        android:layout_alignLeft="@+id/rect_height"
+        android:layout_alignStart="@+id/rect_height" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cyl_height_text"
-        android:layout_below="@+id/cyl_rad"
-        android:layout_alignStart="@+id/cyl_rad"
+        android:layout_below="@+id/rect_length"
+        android:layout_alignStart="@+id/rect_length"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_alignLeft="@id/textView"
+        android:layout_alignLeft="@id/rect_width_title"
         android:layout_marginTop="15dp"
         android:text="Height =" />
 
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="5"
-        android:id="@+id/cyl_height"
+        android:id="@+id/rect_height"
         android:maxLength="9"
         android:layout_above="@+id/cyl_vol_title"
         android:layout_centerHorizontal="true" />

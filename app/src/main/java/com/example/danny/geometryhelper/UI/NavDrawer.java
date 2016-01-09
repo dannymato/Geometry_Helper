@@ -2,8 +2,10 @@ package com.example.danny.geometryhelper.UI;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -21,6 +23,7 @@ import com.example.danny.geometryhelper.R;
 import com.example.danny.geometryhelper.SettingsActivity;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.analytics.Tracker;
 
 
 public class NavDrawer extends AppCompatActivity {
@@ -31,6 +34,7 @@ public class NavDrawer extends AppCompatActivity {
     private ActionBarDrawerToggle mDrawerToggle;
     private Toolbar toolbar;
     private Context mContext;
+    private Tracker mTracker;
 
     private CharSequence mDrawerTitle;
 
@@ -41,7 +45,8 @@ public class NavDrawer extends AppCompatActivity {
             R.drawable.quad_img,
             R.drawable.sphere_img,
             R.drawable.circle_img,//TODO: Draw cylinder
-            R.drawable.tri_img //TODO: Draw Trapezoid
+            R.drawable.tri_img,//TODO: Draw Trapezoid
+            R.drawable.tri_img
     };
 
     private final int[] mAlgCardImgs = {
@@ -61,7 +66,8 @@ public class NavDrawer extends AppCompatActivity {
             "Quadratic Formula",
             "Spheres",
             "Cylinders",
-            "Trapezoid"
+            "Trapezoid",
+            "Rectangular Prism"
     };
     private final String[] mAlgCardTexts = {
             "Descartes",
@@ -73,9 +79,6 @@ public class NavDrawer extends AppCompatActivity {
             mGeoCardTexts,
             mAlgCardTexts
     };
-
-
-
 
 
 
@@ -150,14 +153,38 @@ public class NavDrawer extends AppCompatActivity {
             }
         });
 
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        int pos = Integer.parseInt(sharedPreferences.getString("default_page","0"));
+
         FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction()
-                .add(R.id.content_frame, new BlankFragment())
-                .commit();
+
+        if(pos == 0){
+            manager.beginTransaction()
+                    .add(R.id.content_frame, new BlankFragment())
+                    .commit();
+        }
+
+        else{
+
+            HomeScreen homeScreen = new HomeScreen();
+
+            Bundle bundle = new Bundle();
+            bundle.putInt("tabSelected", pos-1);
+            bundle.putIntArray("imageArray", mCardImgs[pos-1]);
+            bundle.putStringArray("textArray", mCardTexts[pos-1]);
+            homeScreen.setArguments(bundle);
+            manager.beginTransaction()
+                    .add(R.id.content_frame, homeScreen)
+                    .commit();
+            setTitle(mMathTypes[pos-1]);
+
+        }
+
 
 
         AdView mAdView = (AdView) findViewById(R.id.adView);
         mAdView.loadAd(new AdRequest.Builder().build());
+
 
 
     }
@@ -190,4 +217,6 @@ public class NavDrawer extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
+
+
 }

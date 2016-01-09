@@ -88,6 +88,18 @@
         <item>Trapezoid</item>
     </string-array>
 
+    <string-array name="pane_titles">
+        <item>Welcome</item>
+        <item>Geometry</item>
+        <item>Algebra II</item>
+    </string-array>
+
+    <string-array name="pane_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
 
     <string name="tri_transition_name" translatable="false">geoTransition0</string>
     <string name="circle_transition_name" translatable="false">geoTransition1</string>

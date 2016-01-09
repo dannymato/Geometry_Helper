@@ -185,8 +185,8 @@ public class Cone extends AppCompatActivity implements ActionBar.TabListener {
             Bundle args = getArguments();
             final int x = args.getInt(ARG_SECTION_NUMBER) - 1;
 
-            final EditText rTxt = (EditText)rootView.findViewById(R.id.cyl_rad);
-            final EditText hTxt = (EditText)rootView.findViewById(R.id.cyl_height);
+            final EditText rTxt = (EditText)rootView.findViewById(R.id.rect_length);
+            final EditText hTxt = (EditText)rootView.findViewById(R.id.rect_height);
             final TextView vTxt = (TextView)rootView.findViewById(R.id.cyl_vol_num);
 
             TextView vTitle = (TextView)rootView.findViewById(R.id.cyl_vol_title);

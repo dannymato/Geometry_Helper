@@ -33,15 +33,14 @@ public class LoadImagesTask extends AsyncTask<Integer,Void,Bitmap> {
         Display display = wm.getDefaultDisplay();
         Point res = new Point();
         display.getSize(res);
-        int width = res.x/2;
-        int height = (int) (width*.90625);
+        int width = res.x/4;
+        Log.d("Screen Res", String.valueOf(width*4));
 
 
 
         Log.d("Image Load", "Loaded an image");
 
-
-        return decodeSampledBitmapFromResource(mContext.getResources(),iNumber, width,height);
+        return decodeSampledBitmapFromResource(mContext.getResources(),iNumber, 200,200);
     }
 
     @Override

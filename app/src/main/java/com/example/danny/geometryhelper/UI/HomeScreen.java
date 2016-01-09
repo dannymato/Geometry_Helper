@@ -17,6 +17,7 @@ import com.example.danny.geometryhelper.Geometry.AreaCircle;
 import com.example.danny.geometryhelper.Geometry.AreaTriangle;
 import com.example.danny.geometryhelper.Geometry.Cyl;
 import com.example.danny.geometryhelper.Geometry.QuadForm;
+import com.example.danny.geometryhelper.Geometry.RectPrism;
 import com.example.danny.geometryhelper.Geometry.Sph;
 import com.example.danny.geometryhelper.Geometry.Trapezoid;
 import com.example.danny.geometryhelper.R;
@@ -56,7 +57,7 @@ public class HomeScreen extends Fragment {
    private int[] mCardImgs;
    private String[] mCardTexts;
    private final Class[][] mActivities = {
-           {AreaTriangle.class, AreaCircle.class, QuadForm.class, Sph.class, Cyl.class, Trapezoid.class},
+           {AreaTriangle.class, AreaCircle.class, QuadForm.class, Sph.class, Cyl.class, Trapezoid.class, RectPrism.class},
            {Descartes.class, DistanceForm.class, Pythagorean.class}
     };
 
@@ -91,6 +92,7 @@ public class HomeScreen extends Fragment {
                 View i = v.findViewById(R.id.card_img);
 
                 String transition;
+
 
                 Intent intent = new Intent(getContext(), mActivities[getTabIndex()][position]);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

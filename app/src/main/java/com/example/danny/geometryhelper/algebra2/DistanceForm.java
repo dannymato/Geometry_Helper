@@ -84,16 +84,11 @@ public class DistanceForm extends AppCompatActivity {
             Log.d("Distance Form", String.valueOf(x2));
             Log.d("Distance Form", String.valueOf(y2));
 
-            double x = x2 - x1;
-            double y = y2 - y1;
-
-            double discrim = Math.pow(x, 2) + Math.pow(y, 2);
-
-            double distance = Math.sqrt(discrim);
+            double distance = Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
             String numDec = sharedPreferences.getString("example_list","4");
             Log.d("Dec Preference", numDec);
-            textView.setText(String.format("%." + numDec + "f", distance));
+            textView.setText("Distance = " + String.format("%." + numDec + "f", distance) + " units");
 
 
 

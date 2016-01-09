@@ -3,7 +3,6 @@ package com.example.danny.geometryhelper.Geometry;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -13,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.danny.geometryhelper.ImaginaryNumber;
 import com.example.danny.geometryhelper.R;
 
 public class QuadForm extends AppCompatActivity {
@@ -65,6 +65,14 @@ public class QuadForm extends AppCompatActivity {
                 return false;
             }
         });
+
+        txtC.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                calculate();
+                return false;
+            }
+        });
     }
 
     @Override
@@ -105,9 +113,10 @@ public class QuadForm extends AppCompatActivity {
               /*  Toast toast = Toast.makeText(this, "The Answer is not a Real Number", Toast.LENGTH_SHORT);
                 toast.show();*/
 
+                ImaginaryNumber pos = new ImaginaryNumber(-numB/2*numA, -dis/2*numA);
+                ImaginaryNumber neg = new ImaginaryNumber(-numB/2*numA, dis/2*numA);
 
-                Snackbar.make(this.getCurrentFocus(),"Not a Real Number", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                txtAns.setText("X = " + pos.toString()  + neg.toString());
             }
             else{
                 numAns = ((-numB) + Math.sqrt(dis))/(2*numA);

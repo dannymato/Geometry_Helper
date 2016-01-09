@@ -21,7 +21,7 @@ import android.widget.TextView;
 
 import com.example.danny.geometryhelper.R;
 
-public class Cyl extends AppCompatActivity implements ActionBar.TabListener {
+public class RectPrism extends AppCompatActivity implements ActionBar.TabListener {
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -50,30 +50,30 @@ public class Cyl extends AppCompatActivity implements ActionBar.TabListener {
 
 
         // Set up the action bar.
-        final ActionBar actionBar = getSupportActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+    //    final ActionBar actionBar = getSupportActionBar();
+    //    actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         // When swiping between different sections, select the corresponding
         // tab. We can also use ActionBar.Tab#select() to do this if we have
         // a reference to the Tab.
-        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-                actionBar.setSelectedNavigationItem(position);
-            }
-        });
+      //  mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+      //      @Override
+      //      public void onPageSelected(int position) {
+      //          actionBar.setSelectedNavigationItem(position);
+      //      }
+      //  });
 
         // For each of the sections in the app, add a tab to the action bar.
-        for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
+        //for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
             // Create a tab with text corresponding to the page title defined by
             // the adapter. Also specify this Activity object, which implements
             // the TabListener interface, as the callback (listener) for when
             // this tab is selected.
-            actionBar.addTab(
-                    actionBar.newTab()
-                            .setText(mSectionsPagerAdapter.getPageTitle(i))
-                            .setTabListener(this));
-        }
+          //  actionBar.addTab(
+            //        actionBar.newTab()
+              //              .setText(mSectionsPagerAdapter.getPageTitle(i))
+                //            .setTabListener(this));
+        //}
 
     }
 
@@ -103,7 +103,7 @@ public class Cyl extends AppCompatActivity implements ActionBar.TabListener {
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction ft) {
-        mViewPager.setCurrentItem(tab.getPosition());
+     //   mViewPager.setCurrentItem(tab.getPosition());
     }
 
     @Override
@@ -137,14 +137,14 @@ public class Cyl extends AppCompatActivity implements ActionBar.TabListener {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 2;
+            return 1;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "VOLUME";
+                    return "SURFACE AREA";
                 case 1:
                     return "SURFACE AREA";
             }
@@ -180,21 +180,22 @@ public class Cyl extends AppCompatActivity implements ActionBar.TabListener {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_cyl, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_rect_prism, container, false);
 
             Bundle args = getArguments();
             final int x = args.getInt(ARG_SECTION_NUMBER) - 1;
 
-            final EditText rTxt = (EditText)rootView.findViewById(R.id.rect_length);
+            final EditText wTxt = (EditText)rootView.findViewById(R.id.rect_width);
             final EditText hTxt = (EditText)rootView.findViewById(R.id.rect_height);
+            final EditText lTxt = (EditText)rootView.findViewById(R.id.rect_length);
             final TextView vTxt = (TextView)rootView.findViewById(R.id.cyl_vol_num);
 
             TextView vTitle = (TextView)rootView.findViewById(R.id.cyl_vol_title);
 
-            rTxt.setOnKeyListener(new View.OnKeyListener() {
+            wTxt.setOnKeyListener(new View.OnKeyListener() {
                 @Override
                 public boolean onKey(View v, int keyCode, KeyEvent event) {
-                    calc(rTxt,hTxt,vTxt,x);
+                    calc(wTxt,hTxt,lTxt,vTxt,x);
                     return false;
                 }
             });
@@ -202,13 +203,21 @@ public class Cyl extends AppCompatActivity implements ActionBar.TabListener {
             hTxt.setOnKeyListener(new View.OnKeyListener() {
                 @Override
                 public boolean onKey(View v, int keyCode, KeyEvent event) {
-                    calc(rTxt,hTxt,vTxt,x);
+                    calc(wTxt,hTxt,lTxt,vTxt,x);
+                    return false;
+                }
+            });
+
+            lTxt.setOnKeyListener(new View.OnKeyListener() {
+                @Override
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    calc(wTxt,hTxt,lTxt,vTxt,x);
                     return false;
                 }
             });
 
             if(x == 0){
-                vTitle.setText("Volume = ");
+                vTitle.setText("Surface Area = ");
 
             }
 
@@ -220,55 +229,37 @@ public class Cyl extends AppCompatActivity implements ActionBar.TabListener {
             return rootView;
         }
 
-        public void calc(EditText rTxt,EditText hTxt, TextView vTxt, int sectionNum){
+        public void calc(EditText wTxt,EditText hTxt, EditText lTxt, TextView vTxt, int sectionNum){
 
-            String sRad;
+            String sWidth;
+            String sLength;
             String sHeight;
-            double rad;
+
+            double length;
+            double width;
             double height;
 
             if(sectionNum == 0) {
 
-                double vol;
-
-                sRad = rTxt.getText().toString();
-                sHeight = hTxt.getText().toString();
-
-                if (!sRad.equals("") && !sHeight.equals("")) {
-
-                    rad = Double.valueOf(sRad);
-                    height = Double.valueOf(sHeight);
-
-                    vol = Math.pow(rad,2)*height* Math.PI;
-
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                    String numDec = sharedPreferences.getString("example_list", "4");
-                    System.out.println(numDec);
-
-                    vTxt.setText(String.format("%." + numDec + "f", vol));
-
-                }
-
-            }
-
-            else if(sectionNum == 1){
-
-                sRad = rTxt.getText().toString();
-                sHeight = hTxt.getText().toString();
-
                 double area;
 
-                if(!sRad.equals("") && !sHeight.equals("")){
+                sWidth = wTxt.getText().toString();
+                sLength = lTxt.getText().toString();
+                sHeight = hTxt.getText().toString();
 
-                    rad = Double.parseDouble(sRad);
+                if(!sWidth.isEmpty() && !sLength.isEmpty() && !sHeight.isEmpty()){
+
+                    length = Double.parseDouble(sLength);
                     height = Double.parseDouble(sHeight);
+                    width = Double.parseDouble(sWidth);
 
-                    area = (2*Math.PI*height*rad) + (2*Math.PI*Math.pow(rad,2));
+                    area = (2*length*width) + (2*length*height) + (2*width*height);
 
                     SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     String numDec = pref.getString("example_list","4");
 
                     vTxt.setText(String.format("%."+ numDec+"f", area));
+
 
                 }
 

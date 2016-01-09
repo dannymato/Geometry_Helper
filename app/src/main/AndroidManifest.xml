@@ -60,6 +60,14 @@
                 android:value=".UI.NavDrawer" />
         </activity>
         <activity
+            android:name=".Geometry.RectPrism"
+            android:label="Rectangular Prism"
+            android:parentActivityName=".UI.NavDrawer" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.NavDrawer" />
+        </activity>
+        <activity
             android:name=".Geometry.Cyl"
             android:label="@string/title_activity_cylinder"
             android:parentActivityName=".UI.NavDrawer" >

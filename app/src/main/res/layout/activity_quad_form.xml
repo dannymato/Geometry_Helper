@@ -124,8 +124,14 @@
         android:layout_marginTop="40dp"
         android:textSize="20sp" />
 
-
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear"
+        android:id="@+id/quadClear"
+        android:layout_marginTop="120dp"
+        android:layout_alignLeft="@+id/quadDescLayout"
+        android:layout_marginLeft="65dp" />
 
 
 </RelativeLayout>
