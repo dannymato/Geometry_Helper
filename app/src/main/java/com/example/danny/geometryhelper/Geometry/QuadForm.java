@@ -1,5 +1,6 @@
 package com.example.danny.geometryhelper.Geometry;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -8,6 +9,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -31,7 +33,7 @@ public class QuadForm extends AppCompatActivity {
 
     private TextView txtAns;
 
-    Button calc;
+    Button clear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,8 @@ public class QuadForm extends AppCompatActivity {
         txtC = (EditText)findViewById(R.id.quadCNum);
 
         txtAns = (TextView)findViewById(R.id.quadAns);
+
+        clear = (Button)findViewById(R.id.quadClear);
 
         txtA.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -73,6 +77,20 @@ public class QuadForm extends AppCompatActivity {
                 return false;
             }
         });
+
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtA.setText("");
+                txtB.setText("");
+                txtC.setText("");
+                txtAns.setText("X = 0");
+                txtA.requestFocus();
+                ((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+            }
+        });
+
+
     }
 
     @Override
@@ -116,7 +134,7 @@ public class QuadForm extends AppCompatActivity {
                 ImaginaryNumber pos = new ImaginaryNumber(-numB/2*numA, -dis/2*numA);
                 ImaginaryNumber neg = new ImaginaryNumber(-numB/2*numA, dis/2*numA);
 
-                txtAns.setText("X = " + pos.toString()  + neg.toString());
+                txtAns.setText("X = " + pos.toString()+ ", " + neg.toString());
             }
             else{
                 numAns = ((-numB) + Math.sqrt(dis))/(2*numA);

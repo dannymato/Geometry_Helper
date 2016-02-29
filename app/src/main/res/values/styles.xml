@@ -5,7 +5,13 @@
         <item name="colorPrimary">#1976D2</item>
         <item name="colorAccent">#FF5252</item>
         <item name="colorPrimaryDark">#FF0D47A1</item>
-        <item name="android:background">#E0E0E0</item>
+    </style>
+
+    <style name="AppTheme_NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#1976D2</item>
+        <item name="colorAccent">#FF5252</item>
+        <item name="colorPrimaryDark">#FF0D47A1</item>
+        <item name="windowActionBar">false</item>
     </style>
 
 </resources>

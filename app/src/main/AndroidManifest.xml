@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.danny.geometryhelper" >
+    package="com.example.danny.geometryhelper">
 
     <uses-permission-sdk-23 android:name="android.permission.INTERNET" />
-    <uses-permission-sdk-23 android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission-sdk-23 android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".UI.NavDrawer"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +24,7 @@
             android:name=".Geometry.AreaTriangle"
             android:label="@string/title_activity_area_triangle"
             android:parentActivityName=".UI.NavDrawer"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.NavDrawer" />
@@ -33,7 +33,7 @@
             android:name=".Geometry.AreaCircle"
             android:label="@string/title_activity_area_circle"
             android:parentActivityName=".UI.NavDrawer"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.NavDrawer" />
@@ -42,27 +42,33 @@
             android:name=".Geometry.QuadForm"
             android:label="@string/title_activity_quad_form"
             android:parentActivityName=".UI.NavDrawer"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.NavDrawer" />
         </activity>
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings" >
-        </activity>
-        <activity
-            android:name=".Geometry.Sph"
-            android:label="@string/title_activity_sph"
-            android:parentActivityName=".UI.NavDrawer" >
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".UI.NavDrawer">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.NavDrawer" />
         </activity>
         <activity
-            android:name=".Geometry.RectPrism"
+            android:name=".Geometry.Sphere_new"
+            android:label="@string/title_activity_sph"
+            android:parentActivityName=".UI.NavDrawer"
+            android:theme="@style/AppTheme_NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.NavDrawer" />
+        </activity>
+        <activity
+            android:name=".Geometry.RectPrism_new"
             android:label="Rectangular Prism"
-            android:parentActivityName=".UI.NavDrawer" >
+            android:parentActivityName=".UI.NavDrawer"
+            android:theme="@style/AppTheme_NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.NavDrawer" />
@@ -70,7 +76,7 @@
         <activity
             android:name=".Geometry.Cyl"
             android:label="@string/title_activity_cylinder"
-            android:parentActivityName=".UI.NavDrawer" >
+            android:parentActivityName=".UI.NavDrawer">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.NavDrawer" />
@@ -78,7 +84,7 @@
         <activity
             android:name=".Geometry.Trapezoid"
             android:label="Trapezoid"
-            android:parentActivityName=".UI.NavDrawer" >
+            android:parentActivityName=".UI.NavDrawer">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.NavDrawer" />
@@ -89,8 +95,7 @@
             android:parentActivityName=".UI.NavDrawer">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".UI.NavDrawer"/>
-
+                android:value=".UI.NavDrawer" />
         </activity>
         <activity
             android:name=".algebra2.DistanceForm"
@@ -98,8 +103,7 @@
             android:parentActivityName=".UI.NavDrawer">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".UI.NavDrawer"/>
-
+                android:value=".UI.NavDrawer" />
         </activity>
         <activity
             android:name=".algebra2.Pythagorean"
@@ -107,8 +111,26 @@
             android:parentActivityName=".UI.NavDrawer">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.NavDrawer" />
+        </activity>
+        <activity
+            android:name=".Geometry.Cyl_new"
+            android:label="Cylinder"
+            android:parentActivityName=".UI.NavDrawer"
+            android:theme="@style/AppTheme_NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.NavDrawer"/>
+        </activity>
 
+        <activity
+            android:name=".Geometry.Cone_new"
+            android:label="Cone"
+            android:parentActivityName=".UI.NavDrawer"
+            android:theme="@style/AppTheme_NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.NavDrawer"/>
         </activity>
     </application>
 

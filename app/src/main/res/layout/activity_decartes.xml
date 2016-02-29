@@ -28,7 +28,7 @@
         android:layout_alignLeft="@+id/decart_view"
         android:layout_alignStart="@+id/decart_view"
         android:layout_marginBottom="77dp"
-        android:inputType="number"
-        android:digits="0123456789,"/>
+        android:inputType="numberDecimal"
+        android:digits="0123456789,.-"/>
 
 </RelativeLayout>

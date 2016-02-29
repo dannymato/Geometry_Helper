@@ -24,9 +24,9 @@ public class Trapezoid extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trapezoid);
 
-        tb1 = (EditText)findViewById(R.id.editText4);
+        tb1 = (EditText)findViewById(R.id.editText6);
         tb2 = (EditText)findViewById(R.id.editText5);
-        th = (EditText)findViewById(R.id.editText6);
+        th = (EditText)findViewById(R.id.editText4);
 
         ta = (TextView)findViewById(R.id.trap_area);
 
@@ -70,11 +70,25 @@ public class Trapezoid extends AppCompatActivity {
             double b2 = Double.parseDouble(sb2);
             double h = Double.parseDouble(sh);
 
-            double a = ((b1 + b2) / 2) * h;
+            Log.d("Trap", sb1 + ", " + sb2 + ", " + sh);
 
-            int x = (int) a;
+            double a1 = (b1 + b2);
 
-            if(x == a){
+            Log.d("Trap", String.valueOf(a1));
+
+            a1 *= 0.5;
+
+            Log.d("Trap", String.valueOf(a1));
+
+            a1 *= h;
+
+            Log.d("Trap", String.valueOf(a1));
+
+            double a = (a1) * h;
+
+            int x = (int) a1;
+
+            if(x == a1){
                 ta.setText("Area = " + x);
             }
 
@@ -84,7 +98,7 @@ public class Trapezoid extends AppCompatActivity {
 
                 Log.d("TrapArea", "Trap: " + a);
 
-                ta.setText("Area = " + String.format("%." + numDec + "f", a));
+                ta.setText("Area = " + String.format("%." + numDec + "f", a1));
             }
 
         }

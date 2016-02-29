@@ -2,7 +2,6 @@ package com.example.danny.geometryhelper.UI;
 
 import android.content.Context;
 import android.os.Build;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,8 +59,6 @@ class CardAdapter extends BaseAdapter {
                 TextView textView = (TextView) gridView
                         .findViewById(R.id.card_info);
                 textView.setText(mCardTexts[position]);
-
-                Log.d("Card Names", mCardTexts[position]);
 
                 ImageView imageView = (ImageView) gridView
                         .findViewById(R.id.card_img);

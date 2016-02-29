@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -30,9 +31,17 @@ public class Descartes extends AppCompatActivity {
         editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-
+                Log.d("Descartes","Shit");
                 textView.setText(findRoots());
+                Log.d("Descartes","Shit");
 
+                return false;
+            }
+        });
+        editText.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                Log.d("descartes","shit");
                 return false;
             }
         });

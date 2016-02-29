@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.os.AsyncTask;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
@@ -33,14 +34,15 @@ public class LoadImagesTask extends AsyncTask<Integer,Void,Bitmap> {
         Display display = wm.getDefaultDisplay();
         Point res = new Point();
         display.getSize(res);
-        int width = res.x/4;
-        Log.d("Screen Res", String.valueOf(width*4));
+        DisplayMetrics dm = mContext.getResources().getDisplayMetrics();
+        int width = (int)((dm.widthPixels /dm.density) /2);
+        Log.d("Screen Res", String.valueOf(res.x) + "x" + String.valueOf(res.y));
 
 
 
         Log.d("Image Load", "Loaded an image");
 
-        return decodeSampledBitmapFromResource(mContext.getResources(),iNumber, 200,200);
+        return decodeSampledBitmapFromResource(mContext.getResources(),iNumber, width,width);
     }
 
     @Override

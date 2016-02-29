@@ -46,7 +46,8 @@ public class NavDrawer extends AppCompatActivity {
             R.drawable.sphere_img,
             R.drawable.circle_img,//TODO: Draw cylinder
             R.drawable.tri_img,//TODO: Draw Trapezoid
-            R.drawable.tri_img
+            R.drawable.quad_img,
+            R.drawable.circle_img
     };
 
     private final int[] mAlgCardImgs = {
@@ -67,7 +68,8 @@ public class NavDrawer extends AppCompatActivity {
             "Spheres",
             "Cylinders",
             "Trapezoid",
-            "Rectangular Prism"
+            "Rectangular Prism",
+            "Cone"
     };
     private final String[] mAlgCardTexts = {
             "Descartes",

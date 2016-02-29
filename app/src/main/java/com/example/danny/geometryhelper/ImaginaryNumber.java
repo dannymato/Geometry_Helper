@@ -21,12 +21,12 @@ public class ImaginaryNumber {
 
         if((real == realNum) && (image == imageNum))
             if(image < 0)
-                return real + " - " + image + "i";
+                return real + " - " + -image + "i";
             else
                 return real + " + " + image + "i";
 
         if(imageNum < 0)
-            return realNum + " - " + imageNum + "i";
+            return realNum + " - " + -imageNum + "i";
         else
             return realNum + " + " + imageNum + "i";
 

@@ -145,8 +145,6 @@ public class RectPrism extends AppCompatActivity implements ActionBar.TabListene
             switch (position) {
                 case 0:
                     return "SURFACE AREA";
-                case 1:
-                    return "SURFACE AREA";
             }
             return null;
         }

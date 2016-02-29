@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Volume ="
-        android:id="@+id/cyl_vol_title"
+        android:id="@+id/rect_vol_title"
         android:layout_marginTop="15dp"
         android:layout_below="@id/rect_width_title"/>
 
@@ -84,17 +84,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/cyl_vol_num"
+        android:id="@+id/rect_vol_num"
         android:text="0"
         android:nestedScrollingEnabled="false"
-        android:layout_alignTop="@+id/cyl_vol_title"
-        android:layout_toRightOf="@+id/cyl_vol_title"/>
+        android:layout_alignTop="@+id/rect_vol_title"
+        android:layout_toRightOf="@+id/rect_vol_title"/>
 
     <ImageView
-        android:id="@+id/tri_img"
+        android:id="@+id/rect_img"
         android:layout_width="100dp"
         android:layout_height="150dp"
-        android:src="@drawable/tri_img"
+        android:src="@drawable/quad_img"
         android:transitionName="geoTransition6"
         android:layout_above="@+id/cyl_vol_title"
         android:layout_alignParentRight="true"

@@ -15,10 +15,11 @@ import android.widget.GridView;
 
 import com.example.danny.geometryhelper.Geometry.AreaCircle;
 import com.example.danny.geometryhelper.Geometry.AreaTriangle;
-import com.example.danny.geometryhelper.Geometry.Cyl;
+import com.example.danny.geometryhelper.Geometry.Cone_new;
+import com.example.danny.geometryhelper.Geometry.Cyl_new;
 import com.example.danny.geometryhelper.Geometry.QuadForm;
-import com.example.danny.geometryhelper.Geometry.RectPrism;
-import com.example.danny.geometryhelper.Geometry.Sph;
+import com.example.danny.geometryhelper.Geometry.RectPrism_new;
+import com.example.danny.geometryhelper.Geometry.Sphere_new;
 import com.example.danny.geometryhelper.Geometry.Trapezoid;
 import com.example.danny.geometryhelper.R;
 import com.example.danny.geometryhelper.algebra2.Descartes;
@@ -57,7 +58,7 @@ public class HomeScreen extends Fragment {
    private int[] mCardImgs;
    private String[] mCardTexts;
    private final Class[][] mActivities = {
-           {AreaTriangle.class, AreaCircle.class, QuadForm.class, Sph.class, Cyl.class, Trapezoid.class, RectPrism.class},
+           {AreaTriangle.class, AreaCircle.class, QuadForm.class, Sphere_new.class, Cyl_new.class, Trapezoid.class, RectPrism_new.class, Cone_new.class},
            {Descartes.class, DistanceForm.class, Pythagorean.class}
     };
 
@@ -93,8 +94,12 @@ public class HomeScreen extends Fragment {
 
                 String transition;
 
+                Bundle bundle = new Bundle();
+                bundle.putInt("gridIndex",position);
+                bundle.putInt("tabIndex",getTabIndex());
 
                 Intent intent = new Intent(getContext(), mActivities[getTabIndex()][position]);
+                intent.putExtras(bundle);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     transition = i.getTransitionName();
 
