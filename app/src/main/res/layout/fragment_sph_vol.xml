@@ -57,7 +57,7 @@
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:id="@+id/img_sph"
+        android:id="@+id/img_sph_vol"
         android:src="@drawable/sphere_img"
         android:transitionName="@string/sphere_transition_name"
         android:layout_above="@+id/circ_area_num"

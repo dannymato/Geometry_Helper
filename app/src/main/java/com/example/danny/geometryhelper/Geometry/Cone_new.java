@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -41,10 +42,33 @@ public class Cone_new extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager){
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(((new PlaceholderFragment()).newInstance(0)),"Volume");
         adapter.addFrag(((new PlaceholderFragment()).newInstance(1)),"Surface Area");
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                Fragment current = adapter.getItem(position);
+                Fragment previous = adapter.getItem(position==0?1:0);
+
+                previous.setSharedElementReturnTransition(null);
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         viewPager.setAdapter(adapter);
+
     }
 
     public static class PlaceholderFragment extends ViewPagerFragment {
@@ -141,7 +165,9 @@ public class Cone_new extends AppCompatActivity {
                     String numDec = sharedPreferences.getString("example_list", "4");
                     System.out.println(numDec);
 
-                    vTxt.setText(String.format("%." + numDec + "f", vol));
+                    int temp = (int) vol;
+
+                    vTxt.setText(String.format("%." + numDec + "f", temp == vol ? temp:vol));
 
                 }
 
@@ -162,7 +188,9 @@ public class Cone_new extends AppCompatActivity {
                     SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     String numDec = pref.getString("example_list", "4");
 
-                    vTxt.setText(String.format("%." + numDec + "f", area));
+                    int temp = (int) area;
+
+                    vTxt.setText(String.format("%." + numDec + "f", temp == area ? temp:area));
 
                 }
 

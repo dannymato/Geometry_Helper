@@ -25,7 +25,7 @@
             android:id="@+id/pyth_img"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/quad_img"
+            android:src="@drawable/pythag_img"
             android:transitionName="algTransition2"/>
 
     </LinearLayout>

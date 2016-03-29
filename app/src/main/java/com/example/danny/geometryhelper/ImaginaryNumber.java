@@ -19,16 +19,9 @@ public class ImaginaryNumber {
         int real = (int) realNum;
         int image = (int) imageNum;
 
-        if((real == realNum) && (image == imageNum))
-            if(image < 0)
-                return real + " - " + -image + "i";
-            else
-                return real + " + " + image + "i";
-
-        if(imageNum < 0)
-            return realNum + " - " + -imageNum + "i";
-        else
-            return realNum + " + " + imageNum + "i";
+        return ((real==realNum) && (image == imageNum)) ?
+                ((image < 0) ? real + " - " + -image + "i":real + " + " + image + "i")
+                :((imageNum < 0) ? realNum + " - " + -imageNum + "i":realNum + " + " + imageNum + "i");
 
     }
 

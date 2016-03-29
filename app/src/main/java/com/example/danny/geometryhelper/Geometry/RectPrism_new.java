@@ -8,6 +8,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,9 +41,35 @@ public class RectPrism_new extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager){
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(((new PlaceholderFragment()).newInstance(0)),"Volume");
         adapter.addFrag(((new PlaceholderFragment()).newInstance(1)),"Surface Area");
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                adapter.getItem(position).setTransitionNameLollipop();
+                if(position>0)
+                    adapter.getItem(position-1).setTransitionNull();
+                else
+                    adapter.getItem(position+1).setTransitionNull();
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                adapter.getItem(position).setTransitionNameLollipop();
+                if(position>0)
+                    adapter.getItem(position-1).setTransitionNull();
+                else
+                    adapter.getItem(position+1).setTransitionNull();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         viewPager.setAdapter(adapter);
     }
 
@@ -71,16 +98,25 @@ public class RectPrism_new extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_rect_prism, container, false);
 
             Bundle args = getArguments();
             final int x = args.getInt(ARG_SECTION_NUMBER);
+
+            View rootView;
+
+            if(x == 0){
+                rootView = inflater.inflate(R.layout.fragment_rect_prism_vol, container, false);
+                assignImageView(rootView,R.id.rect_img_vol);
+            }
+            else {
+                rootView = inflater.inflate(R.layout.fragment_rect_prism,container,false);
+                assignImageView(rootView,R.id.rect_img,true);
+            }
 
             final EditText wTxt = (EditText)rootView.findViewById(R.id.rect_width);
             final EditText hTxt = (EditText)rootView.findViewById(R.id.rect_height);
             final EditText lTxt = (EditText)rootView.findViewById(R.id.rect_length);
             final TextView vTxt = (TextView)rootView.findViewById(R.id.rect_vol_num);
-            assignImageView(rootView,R.id.rect_img);
 
             TextView vTitle = (TextView)rootView.findViewById(R.id.rect_vol_title);
 
@@ -141,7 +177,11 @@ public class RectPrism_new extends AppCompatActivity {
                     SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     String numDec = pref.getString("example_list","4");
 
-                    String temp = String.format("%."+ numDec+"f", area) + " un³";
+                    int tmp = (int) area;
+
+                    Log.d("shit", String.valueOf(tmp==area));
+
+                    String temp = tmp==area?String.valueOf(tmp)+" un³":String.format("%."+ numDec+"f",area) + " un³";
 
                     vTxt.setText(temp);
 
@@ -168,7 +208,10 @@ public class RectPrism_new extends AppCompatActivity {
 
                     SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     String numDec = pref.getString("example_list","4");
-                    String temp = String.format("%."+ numDec+"f", area) + " un²";
+
+                    int tmp = (int) area;
+
+                    String temp = String.format("%."+ numDec+"f",tmp==area?tmp:area) + " un²";
 
                     vTxt.setText(temp);
 

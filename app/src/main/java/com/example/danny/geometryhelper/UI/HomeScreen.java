@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,6 +63,8 @@ public class HomeScreen extends Fragment {
            {Descartes.class, DistanceForm.class, Pythagorean.class}
     };
 
+    public static int numGrid = 0;
+
     private int getTabIndex(){
        return getArguments().getInt("tabSelected");
     }
@@ -85,6 +88,7 @@ public class HomeScreen extends Fragment {
 
         GridView gridView = (GridView) rootView.findViewById(R.id.home_screen_grid);
         gridView.setAdapter(new CardAdapter(getActivity(), mCardTexts, mCardImgs));
+        Log.d("Grid Load", String.valueOf(++numGrid));
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

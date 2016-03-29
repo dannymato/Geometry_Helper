@@ -40,9 +40,35 @@ public class Sphere_new extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager){
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(((new PlaceholderFragment()).newInstance(0)),"Volume");
         adapter.addFrag(((new PlaceholderFragment()).newInstance(1)),"Surface Area");
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                adapter.getItem(position).setTransitionNameLollipop();
+                if(position>0)
+                    adapter.getItem(position-1).setTransitionNull();
+                else
+                    adapter.getItem(position+1).setTransitionNull();
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                adapter.getItem(position).setTransitionNameLollipop();
+                if(position>0)
+                    adapter.getItem(position-1).setTransitionNull();
+                else
+                    adapter.getItem(position+1).setTransitionNull();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         viewPager.setAdapter(adapter);
     }
 
@@ -76,13 +102,23 @@ public class Sphere_new extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
 
-            View rootView = inflater.inflate(R.layout.fragment_sph, container, false);
+
             Bundle args = getArguments();
-            final int x = args.getInt(ARG_SECTION_NUMBER) - 1;
+            final int x = args.getInt(ARG_SECTION_NUMBER);
+
+            View rootView;
+
+            if(x == 0){
+                rootView = inflater.inflate(R.layout.fragment_sph_vol, container, false);
+                assignImageView(rootView,R.id.img_sph_vol);
+            }
+            else {
+                rootView = inflater.inflate(R.layout.fragment_sph,container,false);
+                assignImageView(rootView,R.id.img_sph,true);
+            }
 
             final EditText rTxt = (EditText)rootView.findViewById(R.id.vol_editText);
             final TextView vTxt = (TextView)rootView.findViewById(R.id.sph_vol_num);
-            assignImageView(rootView,R.id.imageView);
 
             TextView vTitle = (TextView)rootView.findViewById(R.id.sph_vol);
 
@@ -107,23 +143,6 @@ public class Sphere_new extends AppCompatActivity {
             return rootView;
         }
 
-     /*   public void onViewCreated(View view, Bundle savedInstanceState){
-
-            super.onViewCreated(view, savedInstanceState);
-
-            if(_transitionName != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                setTransitionNameLollipop();
-                ActivityCompat.startPostponedEnterTransition(getActivity());
-            }
-
-
-
-        }
-
-        @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-        private void setTransitionNameLollipop(){
-            img.setTransitionName(_transitionName);
-        }*/
 
         public void calc(EditText rTxt, TextView vTxt, int sectionNum){
 

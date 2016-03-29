@@ -8,6 +8,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,12 +38,39 @@ public class Cyl_new extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.cyl_tablayout);
         tabLayout.setupWithViewPager(viewPager);
+
     }
 
     private void setupViewPager(ViewPager viewPager){
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        final ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(((new PlaceholderFragment()).newInstance(0)),"Volume");
         adapter.addFrag(((new PlaceholderFragment()).newInstance(1)),"Surface Area");
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                adapter.getItem(position).setTransitionNameLollipop();
+                if(position>0)
+                    adapter.getItem(position-1).setTransitionNull();
+                else
+                    adapter.getItem(position+1).setTransitionNull();
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                adapter.getItem(position).setTransitionNameLollipop();
+                if(position>0)
+                    adapter.getItem(position-1).setTransitionNull();
+                else
+                    adapter.getItem(position+1).setTransitionNull();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         viewPager.setAdapter(adapter);
     }
 
@@ -71,15 +99,25 @@ public class Cyl_new extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_cyl, container, false);
 
             Bundle args = getArguments();
-            final int x = args.getInt(ARG_SECTION_NUMBER) - 1;
+            final int x = args.getInt(ARG_SECTION_NUMBER);
+
+            View rootView;
+
+            if(x == 0){
+                rootView = inflater.inflate(R.layout.fragment_cyl_vol, container, false);
+                assignImageView(rootView,R.id.cyl_img_vol);
+            }
+            else {
+                rootView = inflater.inflate(R.layout.fragment_cyl,container,false);
+                assignImageView(rootView,R.id.cyl_img,true);
+            }
 
             final EditText rTxt = (EditText)rootView.findViewById(R.id.cyl_length);
             final EditText hTxt = (EditText)rootView.findViewById(R.id.cyl_height);
             final TextView vTxt = (TextView)rootView.findViewById(R.id.cyl_vol_num);
-            assignImageView(rootView,R.id.cyl_img);
+
 
             TextView vTitle = (TextView)rootView.findViewById(R.id.cyl_vol_title);
 
@@ -98,6 +136,9 @@ public class Cyl_new extends AppCompatActivity {
                     return false;
                 }
             });
+
+
+            Log.d("shit", String.valueOf(x));
 
             if(x == 0){
                 vTitle.setText("Volume = ");
@@ -137,7 +178,9 @@ public class Cyl_new extends AppCompatActivity {
                     String numDec = sharedPreferences.getString("example_list", "4");
                     System.out.println(numDec);
 
-                    vTxt.setText(String.format("%." + numDec + "f", vol));
+                    int temp = (int) vol;
+
+                    vTxt.setText(String.format("%." + numDec + "f", temp==vol?temp:vol));
 
                 }
 
@@ -160,7 +203,9 @@ public class Cyl_new extends AppCompatActivity {
                     SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     String numDec = pref.getString("example_list","4");
 
-                    vTxt.setText(String.format("%."+ numDec+"f", area));
+                    int temp = (int) area;
+
+                    vTxt.setText(String.format("%."+ numDec+"f", temp==area?temp:area));
 
                 }
 

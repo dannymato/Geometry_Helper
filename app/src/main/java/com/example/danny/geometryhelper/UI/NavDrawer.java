@@ -23,6 +23,7 @@ import com.example.danny.geometryhelper.R;
 import com.example.danny.geometryhelper.SettingsActivity;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
 
@@ -34,7 +35,6 @@ public class NavDrawer extends AppCompatActivity {
     private ActionBarDrawerToggle mDrawerToggle;
     private Toolbar toolbar;
     private Context mContext;
-    private Tracker mTracker;
 
     private CharSequence mDrawerTitle;
 
@@ -53,7 +53,7 @@ public class NavDrawer extends AppCompatActivity {
     private final int[] mAlgCardImgs = {
             R.drawable.tri_img,//TODO: Draw a symbol for Descartes
             R.drawable.circle_img, //TODO: Draw a symbol for distance formula
-            R.drawable.quad_img
+            R.drawable.pythag_img
     };
 
     private final int[][] mCardImgs = {
@@ -82,9 +82,12 @@ public class NavDrawer extends AppCompatActivity {
             mAlgCardTexts
     };
 
-
+    public static int numImgs = 0;
+    public static int numCards = 0;
 
     private CharSequence mTitle;
+
+
 
 
     @Override
@@ -187,6 +190,8 @@ public class NavDrawer extends AppCompatActivity {
         AdView mAdView = (AdView) findViewById(R.id.adView);
         mAdView.loadAd(new AdRequest.Builder().build());
 
+        Tracker t = ((AnalyticsApplication) this.getApplication()).getDefaultTracker();
+        t.send(new HitBuilders.ScreenViewBuilder().build());
 
 
     }

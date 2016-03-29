@@ -2,6 +2,7 @@ package com.example.danny.geometryhelper.UI;
 
 import android.content.Context;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +64,9 @@ class CardAdapter extends BaseAdapter {
                 ImageView imageView = (ImageView) gridView
                         .findViewById(R.id.card_img);
 
+
+                Log.d("Card Load", String.valueOf(++NavDrawer.numCards));
+                Log.d("Card Count", String.valueOf(getCount()));
                 new LoadImagesTask(imageView, mContext).execute(mCardImgs[position]);
             //  imageView.setImageResource(mCardImgs[position]);
 
