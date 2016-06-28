@@ -127,9 +127,6 @@ public class QuadForm extends AppCompatActivity {
             dis = (Math.pow(numB, 2)) + (- 4*numA*numC);
 
             if(dis < 0){
-                //txtAns.setText("Not a Real Number");
-              /*  Toast toast = Toast.makeText(this, "The Answer is not a Real Number", Toast.LENGTH_SHORT);
-                toast.show();*/
 
                 ImaginaryNumber pos = new ImaginaryNumber(-numB/2*numA, -dis/2*numA);
                 ImaginaryNumber neg = new ImaginaryNumber(-numB/2*numA, dis/2*numA);

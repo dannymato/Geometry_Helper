@@ -132,6 +132,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.NavDrawer"/>
         </activity>
+        <activity
+            android:name="com.mopub.mobileads.MoPubActivity"
+            android:configChanges="keyboardHidden|orientation">
+        </activity>
+        <activity
+            android:name="com.mopub.mobileads.MraidActivity"
+            android:configChanges="keyboardHidden|orientation">
+        </activity>
+        <activity
+            android:name="com.mopub.common.MoPubBrowser"
+            android:configChanges="keyboardHidden|orientation">
+        </activity>
+        <activity
+            android:name="com.mopub.mobileads.MraidVideoPlayerActivity"
+            android:configChanges="keyboardHidden|orientation">
+        </activity>
     </application>
 
 </manifest>

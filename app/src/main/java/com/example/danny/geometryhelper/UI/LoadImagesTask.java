@@ -42,12 +42,14 @@ public class LoadImagesTask extends AsyncTask<Integer,Void,Bitmap> {
         Log.d("Image Load", "Loaded an image");
 
         return decodeSampledBitmapFromResource(mContext.getResources(),iNumber, (int)(width*1.034),width);
+
     }
 
     @Override
     protected void onPostExecute(Bitmap bit){
         iView.setImageBitmap(bit);
-
+        NavDrawer navDrawer = new NavDrawer();
+        navDrawer.addBitmaptoCache(String.valueOf(iNumber),bit);
     }
 
     public static int calculateInSampleSize(

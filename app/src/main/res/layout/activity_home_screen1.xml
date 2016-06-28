@@ -14,7 +14,7 @@
         android:layout_margin="5dp"
         android:layout_alignParentTop="true"
         android:drawSelectorOnTop="true">
-    </GridView>
+    </GridView>w
 
     <!--<com.google.android.gms.ads.AdView
         android:id="@+id/adView"

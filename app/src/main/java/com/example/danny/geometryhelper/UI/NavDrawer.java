@@ -4,13 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.util.LruCache;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,10 +24,7 @@ import android.widget.ListView;
 
 import com.example.danny.geometryhelper.R;
 import com.example.danny.geometryhelper.SettingsActivity;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
+import com.mopub.mobileads.MoPubView;
 
 
 public class NavDrawer extends AppCompatActivity {
@@ -87,8 +87,10 @@ public class NavDrawer extends AppCompatActivity {
 
     private CharSequence mTitle;
 
+    private MoPubView moPubView;
 
 
+    private static LruCache<String,Bitmap> bitmapCache;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -100,7 +102,6 @@ public class NavDrawer extends AppCompatActivity {
 
         setContentView(R.layout.activity_nav_drawer);
         mTitle = mDrawerTitle = getTitle();
-
         mMathTypes = getResources().getStringArray(R.array.math_types);
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close){
@@ -118,22 +119,26 @@ public class NavDrawer extends AppCompatActivity {
             }
 
         };
-
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
         mDrawerList = (ListView)findViewById(R.id.left_drawer);
-
-
-
         mDrawerList.setAdapter(new ArrayAdapter<>(this, R.layout.listview_layout, mMathTypes));
+
+        final int maxMemory = (int) (Runtime.getRuntime().maxMemory()/1024);
+        final int cacheSize = maxMemory/8;
+
+        bitmapCache = new LruCache<String, Bitmap>(cacheSize) {
+            @Override
+            protected int sizeOf(String key, Bitmap value) {
+                return value.getByteCount() / 1024;
+            }
+        };
+        Log.d("Cache",bitmapCache.toString());
 
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
 
                 if (position == 2) {
                     Intent intent = new Intent(mContext, SettingsActivity.class);
@@ -158,21 +163,23 @@ public class NavDrawer extends AppCompatActivity {
             }
         });
 
+
+
+
+       Log.d("Cache Before Fragment",cacheCheck());
+
+
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         int pos = Integer.parseInt(sharedPreferences.getString("default_page","0"));
-
         FragmentManager manager = getSupportFragmentManager();
-
         if(pos == 0){
             manager.beginTransaction()
                     .add(R.id.content_frame, new BlankFragment())
                     .commit();
         }
-
         else{
-
             HomeScreen homeScreen = new HomeScreen();
-
+            Log.d("Cache After Homescreen",cacheCheck());
             Bundle bundle = new Bundle();
             bundle.putInt("tabSelected", pos-1);
             bundle.putIntArray("imageArray", mCardImgs[pos-1]);
@@ -182,17 +189,17 @@ public class NavDrawer extends AppCompatActivity {
                     .add(R.id.content_frame, homeScreen)
                     .commit();
             setTitle(mMathTypes[pos-1]);
-
         }
 
+        Log.d("Cache After Fragment",cacheCheck());
+        moPubView = (MoPubView) findViewById(R.id.adView);
+        moPubView.setAdUnitId("99d5e065e0274e66a2406194a47f74f2");
+        moPubView.loadAd();
 
 
-        AdView mAdView = (AdView) findViewById(R.id.adView);
+      /*  AdView mAdView = (AdView) findViewById(R.id.adView);
         mAdView.loadAd(new AdRequest.Builder().build());
-
-        Tracker t = ((AnalyticsApplication) this.getApplication()).getDefaultTracker();
-        t.send(new HitBuilders.ScreenViewBuilder().build());
-
+    */
 
     }
 
@@ -223,6 +230,24 @@ public class NavDrawer extends AppCompatActivity {
     public void onConfigurationChanged(Configuration newConfig){
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    public Bitmap getBitmapfromCache(String key){
+        return bitmapCache.get(key);
+    }
+
+    public void addBitmaptoCache(String key, Bitmap bitmap) {
+        if (getBitmapfromCache(key) == null)
+            bitmapCache.put(key, bitmap);
+    }
+
+    public String cacheCheck(){
+        return bitmapCache.toString();
+    }
+
+    protected void onDestroy(){
+        moPubView.destroy();
+        super.onDestroy();
     }
 
 

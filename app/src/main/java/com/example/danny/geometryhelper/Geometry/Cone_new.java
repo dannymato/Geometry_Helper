@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -50,16 +49,21 @@ public class Cone_new extends AppCompatActivity {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-                Fragment current = adapter.getItem(position);
-                Fragment previous = adapter.getItem(position==0?1:0);
-
-                previous.setSharedElementReturnTransition(null);
+                adapter.getItem(position).setTransitionNameLollipop();
+                if(position>0)
+                    adapter.getItem(position-1).setTransitionNull();
+                else
+                    adapter.getItem(position+1).setTransitionNull();
 
             }
 
             @Override
             public void onPageSelected(int position) {
-
+                adapter.getItem(position).setTransitionNameLollipop();
+                if(position>0)
+                    adapter.getItem(position-1).setTransitionNull();
+                else
+                    adapter.getItem(position+1).setTransitionNull();
             }
 
             @Override
@@ -96,16 +100,20 @@ public class Cone_new extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_cyl, container, false);
 
             Bundle args = getArguments();
             final int x = args.getInt(ARG_SECTION_NUMBER);
 
+            View rootView = inflater.inflate(x==0 ? R.layout.fragment_cyl_vol : R.layout.fragment_cyl, container, false);
+
+            if(x==0)
+                assignImageView(rootView,R.id.cyl_img_vol);
+            else
+                assignImageView(rootView,R.id.cyl_img,false);
+
             final EditText rTxt = (EditText)rootView.findViewById(R.id.cyl_length);
             final EditText hTxt = (EditText)rootView.findViewById(R.id.cyl_height);
             final TextView vTxt = (TextView)rootView.findViewById(R.id.cyl_vol_num);
-
-            assignImageView(rootView,R.id.cyl_img);
 
             TextView vTitle = (TextView)rootView.findViewById(R.id.cyl_vol_title);
 

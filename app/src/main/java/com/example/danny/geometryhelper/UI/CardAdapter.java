@@ -1,6 +1,7 @@
 package com.example.danny.geometryhelper.UI;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -55,28 +56,31 @@ class CardAdapter extends BaseAdapter {
         View gridView;
 
 
-                gridView = inflater.inflate(R.layout.card_template, null);
+        gridView = inflater.inflate(R.layout.card_template, null);
 
-                TextView textView = (TextView) gridView
-                        .findViewById(R.id.card_info);
-                textView.setText(mCardTexts[position]);
+        TextView textView = (TextView) gridView.findViewById(R.id.card_info);
+        textView.setText(mCardTexts[position]);
+        ImageView imageView = (ImageView) gridView.findViewById(R.id.card_img);
+        Log.d("Card Load", String.valueOf(++NavDrawer.numCards));
+        Log.d("Card Count", String.valueOf(getCount()));
 
-                ImageView imageView = (ImageView) gridView
-                        .findViewById(R.id.card_img);
+        NavDrawer navDrawer = new NavDrawer();
+        //Checking cache for bitmap
+        final String resid = String.valueOf(mCardImgs[position]);
+        final Bitmap bitmap = navDrawer.getBitmapfromCache(resid);
+        if(bitmap != null)
+            imageView.setImageBitmap(bitmap);
+        else
+            new LoadImagesTask(imageView, mContext).execute(mCardImgs[position]);
+        //imageView.setImageResource(mCardImgs[position]);
 
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
-                Log.d("Card Load", String.valueOf(++NavDrawer.numCards));
-                Log.d("Card Count", String.valueOf(getCount()));
-                new LoadImagesTask(imageView, mContext).execute(mCardImgs[position]);
-            //  imageView.setImageResource(mCardImgs[position]);
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-
-                    if (mCardTexts[0].equals("Triangles"))
-                        imageView.setTransitionName("geoTransition" + position);
-                    else if (mCardTexts[0].equals("Descartes"))
-                        imageView.setTransitionName("algTransition" + position);
-                }
+                if (mCardTexts[0].equals("Triangles"))
+                    imageView.setTransitionName("geoTransition" + position);
+                else if (mCardTexts[0].equals("Descartes"))
+                    imageView.setTransitionName("algTransition" + position);
+            }
 
 
         return gridView;

@@ -14,18 +14,6 @@ public class ViewPagerFragment extends Fragment {
     private String _transitionName;
     private boolean isNull = false;
 
-   /* public void onViewCreated(View view, Bundle savedInstanceState){
-
-        _transitionName = ((getActivity().getIntent().getIntExtra("tabIndex",0) == 0) ? "geoTransition":"algTransition")
-                + String.valueOf(getActivity().getIntent().getIntExtra("gridIndex",0));
-
-        super.onViewCreated(view, savedInstanceState);
-        if(_transitionName != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            setTransitionNameLollipop();
-            ActivityCompat.startPostponedEnterTransition(getActivity());
-        }
-    }*/
-
     public void onResume(){
         super.onResume();
         _transitionName = ((getActivity().getIntent().getIntExtra("tabIndex",0) == 0) ? "geoTransition":"algTransition")

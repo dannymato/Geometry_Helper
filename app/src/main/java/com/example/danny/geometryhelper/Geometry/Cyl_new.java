@@ -103,16 +103,13 @@ public class Cyl_new extends AppCompatActivity {
             Bundle args = getArguments();
             final int x = args.getInt(ARG_SECTION_NUMBER);
 
-            View rootView;
+            View rootView = inflater.inflate(x==0 ? R.layout.fragment_cyl_vol : R.layout.fragment_cyl, container, false);
 
-            if(x == 0){
-                rootView = inflater.inflate(R.layout.fragment_cyl_vol, container, false);
+            if(x==0)
                 assignImageView(rootView,R.id.cyl_img_vol);
-            }
-            else {
-                rootView = inflater.inflate(R.layout.fragment_cyl,container,false);
-                assignImageView(rootView,R.id.cyl_img,true);
-            }
+            else
+                assignImageView(rootView,R.id.cyl_img,false);
+
 
             final EditText rTxt = (EditText)rootView.findViewById(R.id.cyl_length);
             final EditText hTxt = (EditText)rootView.findViewById(R.id.cyl_height);
