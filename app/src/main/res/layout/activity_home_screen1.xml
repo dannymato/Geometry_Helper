@@ -11,10 +11,10 @@
         android:layout_height="wrap_content"
         android:horizontalSpacing="4dp"
         android:verticalSpacing="4dp"
-        android:layout_margin="5dp"
+        android:layout_margin="0dp"
         android:layout_alignParentTop="true"
         android:drawSelectorOnTop="true">
-    </GridView>w
+    </GridView>
 
     <!--<com.google.android.gms.ads.AdView
         android:id="@+id/adView"

@@ -72,7 +72,6 @@ class CardAdapter extends BaseAdapter {
             imageView.setImageBitmap(bitmap);
         else
             new LoadImagesTask(imageView, mContext).execute(mCardImgs[position]);
-        //imageView.setImageResource(mCardImgs[position]);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 

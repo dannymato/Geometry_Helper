@@ -131,7 +131,9 @@ public class QuadForm extends AppCompatActivity {
                 ImaginaryNumber pos = new ImaginaryNumber(-numB/2*numA, -dis/2*numA);
                 ImaginaryNumber neg = new ImaginaryNumber(-numB/2*numA, dis/2*numA);
 
-                txtAns.setText("X = " + pos.toString()+ ", " + neg.toString());
+                String ans = "X = " + pos.toString()+ ", " + neg.toString();
+
+                txtAns.setText(ans);
             }
             else{
                 numAns = ((-numB) + Math.sqrt(dis))/(2*numA);
@@ -141,7 +143,9 @@ public class QuadForm extends AppCompatActivity {
                 String numDec = sharedPreferences.getString("example_list","4");
                 System.out.println(numDec);
 
-                txtAns.setText("X = " + String.format("%."+numDec+"f",numAns) + ", " + String.format("%."+numDec+"f",numAns1));
+                String ans = "X = " + String.format("%."+numDec+"f",numAns) + ", " + String.format("%."+numDec+"f",numAns1);
+
+                txtAns.setText(ans);
             }
         }
     }

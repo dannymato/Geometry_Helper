@@ -23,7 +23,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.danny.geometryhelper.R;
-import com.example.danny.geometryhelper.SettingsActivity;
 import com.mopub.mobileads.MoPubView;
 
 

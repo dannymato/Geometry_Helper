@@ -1,4 +1,4 @@
-package com.example.danny.geometryhelper;
+package com.example.danny.geometryhelper.UI;
 
 
 import android.annotation.TargetApi;
@@ -14,6 +14,8 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
+
+import com.example.danny.geometryhelper.R;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On

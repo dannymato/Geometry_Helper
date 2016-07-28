@@ -48,7 +48,7 @@
                 android:value=".UI.NavDrawer" />
         </activity>
         <activity
-            android:name=".SettingsActivity"
+            android:name=".UI.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:parentActivityName=".UI.NavDrawer">
             <meta-data
