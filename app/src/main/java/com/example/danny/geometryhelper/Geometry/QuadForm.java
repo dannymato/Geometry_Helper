@@ -128,8 +128,8 @@ public class QuadForm extends AppCompatActivity {
 
             if(dis < 0){
 
-                ImaginaryNumber pos = new ImaginaryNumber(-numB/2*numA, -dis/2*numA);
-                ImaginaryNumber neg = new ImaginaryNumber(-numB/2*numA, dis/2*numA);
+                ImaginaryNumber pos = new ImaginaryNumber(-numB/2*numA, Math.sqrt(-dis)/2*numA);
+                ImaginaryNumber neg = new ImaginaryNumber(-numB/2*numA, Math.sqrt(dis)/2*numA);
 
                 String ans = "X = " + pos.toString()+ ", " + neg.toString();
 

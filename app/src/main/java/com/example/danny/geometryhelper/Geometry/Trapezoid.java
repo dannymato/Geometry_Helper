@@ -70,19 +70,11 @@ public class Trapezoid extends AppCompatActivity {
             double b2 = Double.parseDouble(sb2);
             double h = Double.parseDouble(sh);
 
-            Log.d("Trap", sb1 + ", " + sb2 + ", " + sh);
-
             double a1 = (b1 + b2);
-
-            Log.d("Trap", String.valueOf(a1));
 
             a1 *= 0.5;
 
-            Log.d("Trap", String.valueOf(a1));
-
             a1 *= h;
-
-            Log.d("Trap", String.valueOf(a1));
 
             double a = (a1) * h;
 

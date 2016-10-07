@@ -78,8 +78,7 @@ public class Pythagorean extends AppCompatActivity {
     }
 
     private void calculate(){
-        boolean isEmpty  = false;
-        String var = "";
+
 
         sA = editA.getText().toString();
         sB = editB.getText().toString();
@@ -90,19 +89,17 @@ public class Pythagorean extends AppCompatActivity {
 
         if(sA.equals("") && !sB.equals("") && !sC.equals("")){
 
-            var ="A";
-
             B = Double.parseDouble(sB);
             C = Double.parseDouble(sC);
 
            // double disc = Math.pow(C,2) - Math.pow(B,2);
             A = Math.sqrt(Math.pow(C,2) - Math.pow(B,2));
 
+            editA.setText(String.valueOf(A));
+
         }
 
         else if(!sA.equals("") && sB.equals("") && !sC.equals("")){
-
-            var = "B";
 
             A = Double.parseDouble(sA);
             C = Double.parseDouble(sC);
@@ -110,12 +107,10 @@ public class Pythagorean extends AppCompatActivity {
             double disc = Math.pow(C,2) - Math.pow(A,2);
             B = Math.sqrt(disc);
 
+            editB.setText(String.valueOf(B));
+
         }
         else if(!sA.equals("") && !sB.equals("") && sC.equals("")){
-
-            isEmpty = false;
-
-            var = "C";
 
             B = Double.parseDouble(sB);
             A = Double.parseDouble(sA);
@@ -126,36 +121,12 @@ public class Pythagorean extends AppCompatActivity {
 
             C = Math.sqrt(disc);
 
+            editC.setText(String.valueOf(C));
+
             Log.d("Pyth", String.valueOf(C));
 
         }
 
-        else{
-            isEmpty = true;
-        }
-
-        Log.d("Pyth", isEmpty + "");
-
-        if(!isEmpty){
-
-            switch (var){
-
-                case "A":
-                    editA.setText(String.valueOf(A));
-                    break;
-                case "B":
-                    editB.setText(String.valueOf(B));
-                    break;
-                case "C":
-                    editC.setText(String.valueOf(C));
-                    break;
-
-                default:
-                    break;
-
-            }
-
-        }
 
     }
 
