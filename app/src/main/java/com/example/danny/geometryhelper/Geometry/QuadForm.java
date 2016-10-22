@@ -23,14 +23,6 @@ public class QuadForm extends AppCompatActivity {
     private EditText txtB;
     private EditText txtC;
 
-    private double numA;
-    private double numB;
-    private double numC;
-    private double numAns;
-    private double numAns1;
-
-    private double dis;
-
     private TextView txtAns;
 
     Button clear;
@@ -121,26 +113,25 @@ public class QuadForm extends AppCompatActivity {
            || txtB.getText().toString().equals("-") || txtA.getText().toString().equals("-") || txtC.getText().toString().equals("-"))){
 
 
-            numA = Double.parseDouble(txtA.getText().toString());
-            numB = Double.parseDouble(txtB.getText().toString());
-            numC = Double.parseDouble(txtC.getText().toString());
-            dis = (Math.pow(numB, 2)) + (- 4*numA*numC);
+            double numA = Double.parseDouble(txtA.getText().toString());
+            double numB = Double.parseDouble(txtB.getText().toString());
+            double numC = Double.parseDouble(txtC.getText().toString());
+            double dis = (Math.pow(numB, 2)) + (- 4*numA*numC);
+
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            String numDec = sharedPreferences.getString("example_list","4");
 
             if(dis < 0){
 
                 ImaginaryNumber pos = new ImaginaryNumber(-numB/2*numA, Math.sqrt(-dis)/2*numA);
                 ImaginaryNumber neg = new ImaginaryNumber(-numB/2*numA, Math.sqrt(dis)/2*numA);
 
-                String ans = "X = " + pos.toString()+ ", " + neg.toString();
-
+                String ans = "X = " + String.format("&."+numDec+"f",pos.toString())+ ", " + String.format("&."+numDec+"f",neg.toString());
                 txtAns.setText(ans);
             }
             else{
-                numAns = ((-numB) + Math.sqrt(dis))/(2*numA);
-                numAns1 = ((-numB) - Math.sqrt(dis))/(2*numA);
-
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-                String numDec = sharedPreferences.getString("example_list","4");
+                double numAns = ((-numB) + Math.sqrt(dis))/(2*numA);
+                double numAns1 = ((-numB) - Math.sqrt(dis))/(2*numA);
                 System.out.println(numDec);
 
                 String ans = "X = " + String.format("%."+numDec+"f",numAns) + ", " + String.format("%."+numDec+"f",numAns1);

@@ -12,25 +12,25 @@ public class AlgebraParse {
         this.exp = exp;
     }
 
-    public int[] getValues(){
+    public double[] getValues(){
         String tmp = removeWhitespace(exp);
-        ArrayList<Integer> values = new ArrayList<>();
+        ArrayList<Double> values = new ArrayList<>();
 
         while(tmp.contains(",")){
-            values.add(Integer.parseInt(tmp.substring(0,tmp.indexOf(","))));
+            values.add(Double.parseDouble(tmp.substring(0,tmp.indexOf(","))));
             tmp = tmp.substring(tmp.indexOf(",") + 1);
         }
-        values.add(Integer.parseInt(tmp));
+        values.add(Double.parseDouble(tmp));
 
         return toArray(values);
     }
 
-    public int[] toArray(ArrayList<Integer> swag){
+    public double[] toArray(ArrayList<Double> values){
 
-        int[] x = new int[swag.size()];
+        double[] x = new double[values.size()];
 
         for(int i = 0; i < x.length;i++) {
-            x[i] = swag.get(i);
+            x[i] = values.get(i);
             Log.d("Parse", x[i] + "");
         }
 

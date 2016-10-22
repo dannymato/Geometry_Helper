@@ -7,7 +7,7 @@ public class DescartesSigns {
 
     private final AlgebraParse parser;
 
-    private int[] coeffs;
+    private double[] coeffs;
 
     private int[] simpleCoeffs;
 

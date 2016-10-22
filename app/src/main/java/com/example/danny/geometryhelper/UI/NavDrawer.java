@@ -247,6 +247,7 @@ public class NavDrawer extends AppCompatActivity {
     protected void onDestroy(){
         moPubView.destroy();
         super.onDestroy();
+        bitmapCache.evictAll();
     }
 
 
