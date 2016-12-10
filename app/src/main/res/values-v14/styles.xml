@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#1976D2</item>
+        <item name="colorAccent">#FF5252</item>
+        <item name="colorPrimaryDark">#FF0D47A1</item>
+        <item name="windowActionBar">false</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+    </style>
+
+    <style name="PreferenceThemeOverlay.v14.Material">
+        <item name="android:textAppearanceListItem">@android:style/TextAppearance.Medium</item>
+    </style>
+
+</resources>

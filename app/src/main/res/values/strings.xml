@@ -77,6 +77,10 @@
         <item>Settings</item>
     </string-array>
 
+    <string name="geo">Geometry</string>
+    <string name="alg">Algebra II</string>
+    <string name="set">Settings</string>
+
     <string name="hello_blank_fragment">Welcome \'n\' Stuff</string>
 
     <string-array name="geo_card_titles">

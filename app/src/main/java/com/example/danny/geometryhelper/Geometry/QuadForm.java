@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.danny.geometryhelper.ImaginaryNumber;
 import com.example.danny.geometryhelper.R;
+import com.example.danny.geometryhelper.Tools;
 
 public class QuadForm extends AppCompatActivity {
 
@@ -77,7 +78,9 @@ public class QuadForm extends AppCompatActivity {
                 txtB.setText("");
                 txtC.setText("");
                 txtAns.setText("X = 0");
+                //Puts focus on txtA
                 txtA.requestFocus();
+                //Asks system for the keyboard
                 ((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
             }
         });
@@ -109,9 +112,11 @@ public class QuadForm extends AppCompatActivity {
 
     private void calculate(){
 
-        if(!(txtB.getText().toString().equals("") || txtA.getText().toString().equals("") || txtC.getText().toString().equals("")
-           || txtB.getText().toString().equals("-") || txtA.getText().toString().equals("-") || txtC.getText().toString().equals("-"))){
+        String g = "";
+        String h = "-";
+        String j = ".";
 
+        if(Tools.stringCheck(txtA.getText().toString()) && Tools.stringCheck(txtB.getText().toString()) && Tools.stringCheck(txtC.getText().toString())){
 
             double numA = Double.parseDouble(txtA.getText().toString());
             double numB = Double.parseDouble(txtB.getText().toString());

@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.danny.geometryhelper.R;
+import com.example.danny.geometryhelper.Tools;
 import com.example.danny.geometryhelper.UI.ViewPagerAdapter;
 import com.example.danny.geometryhelper.UI.ViewPagerFragment;
 
@@ -166,7 +167,7 @@ public class RectPrism_new extends AppCompatActivity {
                 sLength = lTxt.getText().toString();
                 sHeight = hTxt.getText().toString();
 
-                if(!sWidth.isEmpty() && !sLength.isEmpty() && !sHeight.isEmpty()){
+                if(Tools.stringCheck(sHeight) && Tools.stringCheck(sLength) && Tools.stringCheck(sWidth)){
 
                     length = Double.parseDouble(sLength);
                     height = Double.parseDouble(sHeight);
@@ -198,7 +199,7 @@ public class RectPrism_new extends AppCompatActivity {
                 sLength = lTxt.getText().toString();
                 sHeight = hTxt.getText().toString();
 
-                if(!sWidth.isEmpty() && !sLength.isEmpty() && !sHeight.isEmpty()){
+                if(Tools.stringCheck(sWidth) && Tools.stringCheck(sLength) && Tools.stringCheck(sHeight)){
 
                     length = Double.parseDouble(sLength);
                     height = Double.parseDouble(sHeight);

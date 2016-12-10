@@ -29,33 +29,6 @@ import com.example.danny.geometryhelper.algebra2.Pythagorean;
 
 public class HomeScreen extends Fragment {
 
-   /*     private String[] mCardTexts ={
-                "Triangles",
-                "Circles",
-                "Quadratic Formula",
-                "Spheres",
-                "Cylinders",
-                "Trapezoid"
-    };
-
-    private Class[] mActivities = {
-            AreaTriangle.class,
-            AreaCircle.class,
-            QuadForm.class,
-            Sph.class,
-            Cyl.class,
-            Trapezoid.class
-    };
-
-    private int[] mCardImgs ={
-            R.drawable.tri_img,
-            R.drawable.circle_img.png,
-            R.drawable.quad_img,
-            R.drawable.sphere_img,
-            R.drawable.circle_img.png,//TODO: Draw cylinder
-            R.drawable.tri_img //TODO: Draw Trapezoid
-    }; */
-
    private int[] mCardImgs;
    private String[] mCardTexts;
    private final Class[][] mActivities = {

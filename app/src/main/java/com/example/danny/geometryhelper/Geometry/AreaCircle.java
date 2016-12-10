@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.danny.geometryhelper.R;
+import com.example.danny.geometryhelper.Tools;
 
 public class AreaCircle extends AppCompatActivity {
 
@@ -70,7 +71,7 @@ public class AreaCircle extends AppCompatActivity {
     }
 
     private void calculate(){
-        if(!rad.getText().toString().equals("")){
+        if(Tools.stringCheck(rad.getText().toString())){
             r = Double.valueOf(rad.getText().toString());
             a = Math.PI*r*r;
 

@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.danny.geometryhelper.R;
+import com.example.danny.geometryhelper.Tools;
 
 public class AreaTriangle extends AppCompatActivity {
 
@@ -35,6 +37,11 @@ public class AreaTriangle extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_area_triangle);
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.triAreaToolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         base = (EditText)findViewById(R.id.editText);
         height = (EditText)findViewById(R.id.editText2);
@@ -92,7 +99,7 @@ public class AreaTriangle extends AppCompatActivity {
         hh = height.getText().toString();
 
 
-        if(bb.equals("") || hh.equals("")){
+        if(!Tools.stringCheck(bb) || !Tools.stringCheck(hh)){
             area.setText("0");
         }
 

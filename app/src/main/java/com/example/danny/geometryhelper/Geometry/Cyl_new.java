@@ -1,6 +1,7 @@
 package com.example.danny.geometryhelper.Geometry;
 
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
@@ -17,6 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.danny.geometryhelper.R;
+import com.example.danny.geometryhelper.Tools;
 import com.example.danny.geometryhelper.UI.ViewPagerAdapter;
 import com.example.danny.geometryhelper.UI.ViewPagerFragment;
 
@@ -27,7 +29,7 @@ public class Cyl_new extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         ActivityCompat.postponeEnterTransition(this);
-        setContentView(R.layout.cyl_new);
+        setContentView(R.layout.activity_cyl_new);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.cyl_toolbar);
         setSupportActionBar(toolbar);
@@ -49,21 +51,26 @@ public class Cyl_new extends AppCompatActivity {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-                adapter.getItem(position).setTransitionNameLollipop();
-                if(position>0)
-                    adapter.getItem(position-1).setTransitionNull();
-                else
-                    adapter.getItem(position+1).setTransitionNull();
+
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    adapter.getItem(position).setTransitionNameLollipop();
+                    if (position > 0)
+                        adapter.getItem(position - 1).setTransitionNull();
+                    else
+                        adapter.getItem(position + 1).setTransitionNull();
+                }
 
             }
 
             @Override
             public void onPageSelected(int position) {
-                adapter.getItem(position).setTransitionNameLollipop();
-                if(position>0)
-                    adapter.getItem(position-1).setTransitionNull();
-                else
-                    adapter.getItem(position+1).setTransitionNull();
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    adapter.getItem(position).setTransitionNameLollipop();
+                    if (position > 0)
+                        adapter.getItem(position - 1).setTransitionNull();
+                    else
+                        adapter.getItem(position + 1).setTransitionNull();
+                }
             }
 
             @Override
@@ -164,7 +171,7 @@ public class Cyl_new extends AppCompatActivity {
                 sRad = rTxt.getText().toString();
                 sHeight = hTxt.getText().toString();
 
-                if (!sRad.equals("") && !sHeight.equals("")) {
+                if (Tools.stringCheck(sRad) && Tools.stringCheck(sHeight)) {
 
                     rad = Double.valueOf(sRad);
                     height = Double.valueOf(sHeight);
@@ -190,7 +197,7 @@ public class Cyl_new extends AppCompatActivity {
 
                 double area;
 
-                if(!sRad.equals("") && !sHeight.equals("")){
+                if(Tools.stringCheck(sRad) && Tools.stringCheck(sHeight)){
 
                     rad = Double.parseDouble(sRad);
                     height = Double.parseDouble(sHeight);

@@ -1,25 +1,24 @@
 package com.example.danny.geometryhelper.UI;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.util.LruCache;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.danny.geometryhelper.R;
@@ -32,11 +31,14 @@ public class NavDrawer extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
-    private Toolbar toolbar;
     private Context mContext;
+    private Toolbar toolbar;
 
     private CharSequence mDrawerTitle;
 
+    private Handler mDrawerActionHandler = new Handler();
+
+    private static final long DRAWER_CLOSE_DELAY_MS = 250;
 
     private final int[] mGeoCardImgs ={
             R.drawable.tri_img,
@@ -81,6 +83,11 @@ public class NavDrawer extends AppCompatActivity {
             mAlgCardTexts
     };
 
+    private final int[] navMenuItems = {
+        R.id.geo_menu,
+        R.id.alg_menu
+    };
+
     public static int numImgs = 0;
     public static int numCards = 0;
 
@@ -99,30 +106,58 @@ public class NavDrawer extends AppCompatActivity {
 
         mContext = this;
 
+
         setContentView(R.layout.activity_nav_drawer);
+
+        toolbar = (Toolbar)findViewById(R.id.navDrawerToolbar);
+        Log.d("Toolbar",toolbar.toString());
+
+        setSupportActionBar(toolbar);
         mTitle = mDrawerTitle = getTitle();
+        setTitle(mTitle);
         mMathTypes = getResources().getStringArray(R.array.math_types);
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close){
+        mDrawerLayout.setStatusBarBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close){
 
             public void onDrawerClosed(View view){
                 super.onDrawerClosed(view);
-                getSupportActionBar().setTitle(mTitle);
+                setTitle(mTitle);
                 invalidateOptionsMenu();
             }
 
             public void onDrawerOpened(View view){
                 super.onDrawerOpened(view);
-                getSupportActionBar().setTitle(mDrawerTitle);
+                setTitle(mDrawerTitle);
                 invalidateOptionsMenu();
             }
 
         };
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+        NavigationView mNavigationMenu = (NavigationView) findViewById(R.id.navigation);
+        Log.d("NavMenu", mNavigationMenu.toString());
+
+        mNavigationMenu.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(final MenuItem item) {
+                Log.d("NavMenu", "Selected");
+
+                mDrawerLayout.closeDrawer(GravityCompat.START);
+                mDrawerActionHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        navigate(item);
+                    }
+                },DRAWER_CLOSE_DELAY_MS);
+
+
+                return true;
+            }
+        });
+
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        mDrawerList = (ListView)findViewById(R.id.left_drawer);
-        mDrawerList.setAdapter(new ArrayAdapter<>(this, R.layout.listview_layout, mMathTypes));
 
         final int maxMemory = (int) (Runtime.getRuntime().maxMemory()/1024);
         final int cacheSize = maxMemory/8;
@@ -135,38 +170,7 @@ public class NavDrawer extends AppCompatActivity {
         };
         Log.d("Cache",bitmapCache.toString());
 
-        mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                if (position == 2) {
-                    Intent intent = new Intent(mContext, SettingsActivity.class);
-                    mContext.startActivity(intent);
-                } else {
-                    HomeScreen homeScreen = new HomeScreen();
-                    FragmentManager manager = getSupportFragmentManager();
-
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("tabSelected", position);
-                    bundle.putIntArray("imageArray", mCardImgs[position]);
-                    bundle.putStringArray("textArray", mCardTexts[position]);
-                    homeScreen.setArguments(bundle);
-                    manager.beginTransaction()
-                            .replace(R.id.content_frame, homeScreen).addToBackStack(null)
-                            .commit();
-
-                    mDrawerList.setItemChecked(position, true);
-                    setTitle(mMathTypes[position]);
-                    mDrawerLayout.closeDrawer(mDrawerList);
-                }
-            }
-        });
-
-
-
-
        Log.d("Cache Before Fragment",cacheCheck());
-
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         int pos = Integer.parseInt(sharedPreferences.getString("default_page","0"));
@@ -187,32 +191,79 @@ public class NavDrawer extends AppCompatActivity {
             manager.beginTransaction()
                     .add(R.id.content_frame, homeScreen)
                     .commit();
-            setTitle(mMathTypes[pos-1]);
+            //setTitle(mMathTypes[pos-1]);
+            mNavigationMenu.setCheckedItem(navMenuItems[pos-1]);
         }
 
+
+
         Log.d("Cache After Fragment",cacheCheck());
-        moPubView = (MoPubView) findViewById(R.id.adView);
-        moPubView.setAdUnitId("99d5e065e0274e66a2406194a47f74f2");
-        moPubView.loadAd();
+        //Load Ad
+            moPubView = (MoPubView) findViewById(R.id.adView);
+            moPubView.setAdUnitId("99d5e065e0274e66a2406194a47f74f2");
+            moPubView.loadAd();
 
+    }
 
-      /*  AdView mAdView = (AdView) findViewById(R.id.adView);
-        mAdView.loadAd(new AdRequest.Builder().build());
-    */
+    private void navigate(MenuItem item){
+        HomeScreen homeScreen;
+        FragmentManager manager;
+        Bundle bundle;
+        switch (item.getItemId()){
+            //Switch to Geometry Grid
+            case R.id.geo_menu:
+                homeScreen = new HomeScreen();
+                manager = getSupportFragmentManager();
 
+                bundle = new Bundle();
+                bundle.putInt("tabSelected", 0);
+                bundle.putIntArray("imageArray", mCardImgs[0]);
+                bundle.putStringArray("textArray", mCardTexts[0]);
+                homeScreen.setArguments(bundle);
+                manager.beginTransaction()
+                        .replace(R.id.content_frame, homeScreen).addToBackStack(null)
+                        .commit();
+                setTitle(mMathTypes[0]);
+                //        mDrawerLayout.closeDrawer(mDrawerList);
+                break;
+            //Switch to Algebra II grid
+            case R.id.alg_menu:
+                homeScreen = new HomeScreen();
+                manager = getSupportFragmentManager();
+
+                bundle = new Bundle();
+                bundle.putInt("tabSelected", 1);
+                bundle.putIntArray("imageArray", mCardImgs[1]);
+                bundle.putStringArray("textArray", mCardTexts[1]);
+                homeScreen.setArguments(bundle);
+                manager.beginTransaction()
+                        .replace(R.id.content_frame, homeScreen).addToBackStack(null)
+                        .commit();
+
+                //  mDrawerList.setItemChecked(1, true);
+                setTitle(mMathTypes[1]);
+//                        mDrawerLayout.closeDrawer(mDrawerList);
+                break;
+            //Open Settings
+            case R.id.setting_menu:
+                setTitle("Settings");
+                manager = getSupportFragmentManager();
+                manager.beginTransaction()
+                        .replace(R.id.content_frame, new SettingsActivity.GeneralPreferenceFragment())
+                        .addToBackStack(null)
+                        .commit();
+
+                break;
+            default:
+                break;
+        }
     }
 
 
     @Override
     public void setTitle(CharSequence title) {
         mTitle = title;
-        getSupportActionBar().setTitle(mTitle);
-    }
-
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        // If the nav drawer is open, hide action items related to the content view
-        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-        return super.onPrepareOptionsMenu(menu);
+        toolbar.setTitle(mTitle);
     }
 
     @Override

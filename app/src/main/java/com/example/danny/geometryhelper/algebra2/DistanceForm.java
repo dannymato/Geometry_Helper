@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.danny.geometryhelper.R;
+import com.example.danny.geometryhelper.Tools;
 
 public class DistanceForm extends AppCompatActivity {
 
@@ -72,7 +73,7 @@ public class DistanceForm extends AppCompatActivity {
         String sx1 = editx1.getText().toString();
         String sx2 = editx2.getText().toString();
 
-        if(!(sy1.equals("") || sx2.equals("") || sx1.equals("") || sy2.equals(""))){
+        if(Tools.stringCheck(sy1) && Tools.stringCheck(sy2) && Tools.stringCheck(sx1) && Tools.stringCheck(sx2)){
 
             double x1 = Double.parseDouble(sx1);
             double x2 = Double.parseDouble(sx2);
@@ -89,8 +90,6 @@ public class DistanceForm extends AppCompatActivity {
             String numDec = sharedPreferences.getString("example_list","4");
             Log.d("Dec Preference", numDec);
             textView.setText("Distance = " + String.format("%." + numDec + "f", distance) + " units");
-
-
 
         }
 

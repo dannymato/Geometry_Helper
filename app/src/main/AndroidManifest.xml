@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.danny.geometryhelper">
 
     <uses-permission-sdk-23 android:name="android.permission.INTERNET" />
     <uses-permission-sdk-23 android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-sdk tools:overrideLibrary="android.support.v14.preference" />
 
     <application
         android:allowBackup="true"
@@ -69,14 +71,6 @@
             android:label="Rectangular Prism"
             android:parentActivityName=".UI.NavDrawer"
             android:theme="@style/AppTheme_NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".UI.NavDrawer" />
-        </activity>
-        <activity
-            android:name=".Geometry.Cyl"
-            android:label="@string/title_activity_cylinder"
-            android:parentActivityName=".UI.NavDrawer">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.NavDrawer" />

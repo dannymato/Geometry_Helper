@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.danny.geometryhelper.R;
+import com.example.danny.geometryhelper.Tools;
 
 public class Pythagorean extends AppCompatActivity {
 
@@ -87,7 +88,7 @@ public class Pythagorean extends AppCompatActivity {
 
         Log.d("Pyth", sA + sB + sC);
 
-        if(sA.equals("") && !sB.equals("") && !sC.equals("")){
+        if(Tools.stringCheck(sA) && Tools.stringCheck(sB) && Tools.stringCheck(sC)){
 
             B = Double.parseDouble(sB);
             C = Double.parseDouble(sC);

@@ -2,17 +2,20 @@ package com.example.danny.geometryhelper.UI;
 
 
 import android.annotation.TargetApi;
-import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.ListPreference;
-import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatDelegate;
+import android.support.v7.preference.ListPreference;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceFragmentCompat;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.danny.geometryhelper.R;
@@ -31,28 +34,58 @@ import com.example.danny.geometryhelper.R;
 public class SettingsActivity extends PreferenceActivity {
 
 
+    private AppCompatDelegate mDelegate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setupActionBar();
-        addPreferencesFromResource(R.xml.pref_general);
+        getDelegate().installViewFactory();
+        getDelegate().onCreate(savedInstanceState);
 
+        setContentView(R.layout.settings_activity);
 
-        bindPreferenceSummaryToValue(findPreference("example_list"));
-        bindPreferenceSummaryToValue(findPreference("default_page"));
+        setSupportActionBar((Toolbar)findViewById(R.id.settings_toolbar));
+
+        getDelegate().getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getDelegate().getSupportActionBar().setHomeButtonEnabled(true);
+       // getFragmentManager().beginTransaction()
+         //       .add(R.id.settings_content, new GeneralPreferenceFragment())
+           //     .commit();
     }
 
-    /**
-     * Set up the {@link android.app.ActionBar}, if the API is available.
-     */
-    private void setupActionBar() {
-        ActionBar actionBar = getActionBar();
-        if (actionBar != null) {
-            // Show the Up button in the action bar.
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+    private void setSupportActionBar(@Nullable Toolbar toolbar){
+        getDelegate().setSupportActionBar(toolbar);
     }
 
+    protected void onStop(){
+        super.onStop();
+        getDelegate().onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        getDelegate().onDestroy();
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        getDelegate().onPostResume();
+    }
+
+    @Override
+    public void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
+        getDelegate().setContentView(layoutResID);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        getDelegate().onPostCreate(savedInstanceState);
+        super.onPostCreate(savedInstanceState);
+
+    }
 
     /**
      * {@inheritDoc}
@@ -134,24 +167,17 @@ public class SettingsActivity extends PreferenceActivity {
                 || GeneralPreferenceFragment.class.getName().equals(fragmentName);
     }
 
-    /**
-     * This fragment shows general preferences only. It is used when the
-     * activity is showing a two-pane settings UI.
-     */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static class GeneralPreferenceFragment extends PreferenceFragment {
+    public static class GeneralPreferenceFragment extends PreferenceFragmentCompat {
         @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
+        public void onCreatePreferences(Bundle savedInstanceState, String string) {
             addPreferencesFromResource(R.xml.pref_general);
             setHasOptionsMenu(true);
 
-            // Bind the summaries of EditText/List/Dialog/Ringtone preferences
-            // to their values. When their values change, their summaries are
-            // updated to reflect the new value, per the Android Design
-            // guidelines.
-            bindPreferenceSummaryToValue(findPreference("example_text"));
+            bindPreferenceSummaryToValue(findPreference("example_list"));
             bindPreferenceSummaryToValue(findPreference("default_page"));
+
+
         }
 
         @Override
@@ -163,8 +189,15 @@ public class SettingsActivity extends PreferenceActivity {
             }
             return super.onOptionsItemSelected(item);
         }
+
     }
 
+    private AppCompatDelegate getDelegate(){
+        if(mDelegate == null){
+            mDelegate = AppCompatDelegate.create(this, null);
+        }
+        return mDelegate;
+    }
     /**
      * This fragment shows notification preferences only. It is used when the
      * activity is showing a two-pane settings UI.

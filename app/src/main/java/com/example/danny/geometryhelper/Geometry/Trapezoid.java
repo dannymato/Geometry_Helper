@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.danny.geometryhelper.R;
+import com.example.danny.geometryhelper.Tools;
 
 public class Trapezoid extends AppCompatActivity {
 
@@ -64,7 +65,7 @@ public class Trapezoid extends AppCompatActivity {
         String sb2 = tb2.getText().toString();
         String sh = th.getText().toString();
 
-        if(!(sb1.equals("") || sb2.equals("") || sh.equals("") || sb1.equals(".") || sb2.equals(".") || sh.equals("."))){
+        if(Tools.stringCheck(sb1) && Tools.stringCheck(sb2) && Tools.stringCheck(sh)){
 
             double b1 = Double.parseDouble(sb1);
             double b2 = Double.parseDouble(sb2);
