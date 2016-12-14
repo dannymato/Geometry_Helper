@@ -110,4 +110,9 @@
     <string name="quad_transition_name" translatable="false">geoTransition2</string>
     <string name="sphere_transition_name" translatable="false">geoTransition3</string>
 
+    <string name="leftParen" translatable="false">(</string>
+    <string name="rightParen" translatable="false">)</string>
+    <string name="comma" translatable="false">,</string>
+    <string name="distFin" translatable="true">Distance =</string>
+
 </resources>

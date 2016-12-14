@@ -2,6 +2,7 @@ package com.example.danny.geometryhelper.algebra2;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -32,6 +33,10 @@ public class Pythagorean extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pythag);
 
+        Toolbar toolbar = (Toolbar)findViewById(R.id.pythagToolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         editA = (EditText)findViewById(R.id.pythANum);
         editB = (EditText)findViewById(R.id.pythBNum);

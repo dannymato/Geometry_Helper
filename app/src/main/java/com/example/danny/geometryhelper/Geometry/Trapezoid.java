@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -24,6 +25,11 @@ public class Trapezoid extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trapezoid);
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.trapToolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         tb1 = (EditText)findViewById(R.id.editText6);
         tb2 = (EditText)findViewById(R.id.editText5);

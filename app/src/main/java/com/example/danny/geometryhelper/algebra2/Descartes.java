@@ -2,6 +2,7 @@ package com.example.danny.geometryhelper.algebra2;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -23,6 +24,11 @@ public class Descartes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decartes);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.decartToolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         editText = (EditText)findViewById(R.id.decart_edit);
         textView = (TextView)findViewById(R.id.decart_view);

@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,13 +24,17 @@ public class AreaCircle extends AppCompatActivity {
     private double r;
     private double a;
 
-    private int check;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_area_circle);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.circAreaToolbar);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         area = (TextView)findViewById(R.id.circ_area_num);
         rad = (EditText)findViewById(R.id.editText3);
@@ -75,7 +80,7 @@ public class AreaCircle extends AppCompatActivity {
             r = Double.valueOf(rad.getText().toString());
             a = Math.PI*r*r;
 
-            check = (int) a;
+            int check = (int) a;
 
             if(check == a){
                 area.setText(String.valueOf(check));
