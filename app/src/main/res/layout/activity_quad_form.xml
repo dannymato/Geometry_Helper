@@ -17,9 +17,11 @@
         local:theme="@style/AppThemeToolbar"
         app:titleTextColor="@android:color/white">
     </android.support.v7.widget.Toolbar>
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" android:paddingBottom="@dimen/activity_vertical_margin"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin">
@@ -28,23 +30,24 @@
             android:id="@+id/quadDescLayout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="94dp"
             android:gravity="center"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/quadDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:textAppearanceLarge"
                 android:text="@string/quadDesc"
+                android:textAppearance="?android:textAppearanceLarge"
                 android:textSize="20sp" />
+
             <ImageView
                 android:id="@+id/quad_img"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/quad_img"
-                android:transitionName="@string/quad_transition_name"/>
+                android:transitionName="@string/quad_transition_name" />
 
         </LinearLayout>
 
@@ -54,43 +57,42 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/quadDescLayout"
+            android:layout_marginTop="50dp"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_marginTop="30dp" >
+            android:orientation="horizontal">
 
             <TableRow
                 android:id="@+id/quadTableRow1"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center" >
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/quadATxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/quadA"
-                    android:textSize="15sp"
                     android:layout_marginRight="10dp"
+                    android:text="@string/quadA"
                     android:textAppearance="?android:textAppearanceMedium"
-                    />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/quadBTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/quadB"
-                    android:textSize="15sp"
-                    android:textAppearance="?android:textAppearanceMedium"/>
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/quadCTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/quadC"
-                    android:textSize="15sp"
                     android:layout_marginLeft="10dp"
-                    android:textAppearance="?android:textAppearanceMedium"/>
+                    android:text="@string/quadC"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textSize="15sp" />
             </TableRow>
 
             <TableRow
@@ -98,16 +100,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center" >
+                android:gravity="center">
 
                 <EditText
                     android:id="@+id/quadANum"
                     android:layout_width="75dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="numberDecimal|numberSigned"
                     android:layout_marginRight="10dp"
-                    android:imeOptions="actionNext" >
+                    android:ems="10"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal|numberSigned">
 
                     <requestFocus />
                 </EditText>
@@ -117,18 +119,17 @@
                     android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="numberDecimal|numberSigned"
                     android:imeOptions="actionNext"
-                    />
+                    android:inputType="numberDecimal|numberSigned" />
 
                 <EditText
                     android:id="@+id/quadCNum"
                     android:layout_width="75dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="numberDecimal|numberSigned"
                     android:layout_marginLeft="10dp"
-                    android:imeOptions="actionDone"/>
+                    android:ems="10"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberDecimal|numberSigned" />
             </TableRow>
         </TableLayout>
 
@@ -138,18 +139,20 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tableLayout1"
             android:layout_centerHorizontal="true"
-            android:textAppearance="?android:textAppearanceLarge"
             android:layout_marginTop="40dp"
+            android:textAppearance="?android:textAppearanceLarge"
             android:textSize="20sp" />
 
         <Button
+            android:id="@+id/quadClear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Clear"
-            android:id="@+id/quadClear"
-            android:layout_marginTop="120dp"
-            android:layout_alignLeft="@+id/quadDescLayout"
-            android:layout_marginLeft="65dp" />
+            android:layout_below="@+id/quadDescLayout"
+            android:layout_toLeftOf="@+id/quadAns"
+            android:layout_toStartOf="@+id/quadAns"
+            android:layout_marginRight="23dp"
+            android:layout_marginEnd="23dp" />
 
 
     </RelativeLayout>

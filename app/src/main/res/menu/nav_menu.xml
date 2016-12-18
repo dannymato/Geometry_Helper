@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group
-        android:checkableBehavior="single">
-        <item android:id="@+id/geo_menu"
-            android:title="@string/geo">
-        </item>
-        <item android:title="@string/alg"
-            android:id="@+id/alg_menu">
+    <group android:checkableBehavior="single">
+        <group
+            android:checkableBehavior="single">
+            <item android:id="@+id/geo_menu"
+                android:title="@string/geo">
+            </item>
+            <item android:title="@string/alg"
+                android:id="@+id/alg_menu">
+            </item>
+        </group>
+        <item android:title="@string/set"
+            android:id="@+id/setting_menu">
         </item>
     </group>
-    <item android:title="">
-        <menu>
-            <item android:title="@string/set"
-                android:id="@+id/setting_menu">
-            </item>
-        </menu>
-    </item>
-
-
 </menu>

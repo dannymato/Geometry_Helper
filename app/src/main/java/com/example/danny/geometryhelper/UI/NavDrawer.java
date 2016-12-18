@@ -128,7 +128,7 @@ public class NavDrawer extends AppCompatActivity {
 
             public void onDrawerOpened(View view){
                 super.onDrawerOpened(view);
-                setTitle(mDrawerTitle);
+                getActionBar().setTitle(mDrawerTitle);
                 invalidateOptionsMenu();
             }
 
@@ -190,6 +190,7 @@ public class NavDrawer extends AppCompatActivity {
             homeScreen.setArguments(bundle);
             manager.beginTransaction()
                     .add(R.id.content_frame, homeScreen)
+                    .addToBackStack(mMathTypes[pos-1])
                     .commit();
             //setTitle(mMathTypes[pos-1]);
             mNavigationMenu.setCheckedItem(navMenuItems[pos-1]);
@@ -202,6 +203,24 @@ public class NavDrawer extends AppCompatActivity {
             moPubView = (MoPubView) findViewById(R.id.adView);
             moPubView.setAdUnitId("99d5e065e0274e66a2406194a47f74f2");
             moPubView.loadAd();
+
+        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                int numStack = getSupportFragmentManager().getBackStackEntryCount();
+                if(numStack < 2) {
+                    setTitle(getSupportFragmentManager().getBackStackEntryAt(
+                            getSupportFragmentManager().getBackStackEntryCount() - 1).getName()
+                    );
+                }
+                else{
+                    setTitle(getSupportFragmentManager().getBackStackEntryAt(
+                            getSupportFragmentManager().getBackStackEntryCount() - 1).getName()
+                    );
+                }
+
+            }
+        });
 
     }
 
@@ -221,10 +240,9 @@ public class NavDrawer extends AppCompatActivity {
                 bundle.putStringArray("textArray", mCardTexts[0]);
                 homeScreen.setArguments(bundle);
                 manager.beginTransaction()
-                        .replace(R.id.content_frame, homeScreen).addToBackStack(null)
+                        .replace(R.id.content_frame, homeScreen).addToBackStack(mMathTypes[0])
                         .commit();
                 setTitle(mMathTypes[0]);
-                //        mDrawerLayout.closeDrawer(mDrawerList);
                 break;
             //Switch to Algebra II grid
             case R.id.alg_menu:
@@ -237,12 +255,9 @@ public class NavDrawer extends AppCompatActivity {
                 bundle.putStringArray("textArray", mCardTexts[1]);
                 homeScreen.setArguments(bundle);
                 manager.beginTransaction()
-                        .replace(R.id.content_frame, homeScreen).addToBackStack(null)
+                        .replace(R.id.content_frame, homeScreen).addToBackStack(mMathTypes[1])
                         .commit();
-
-                //  mDrawerList.setItemChecked(1, true);
                 setTitle(mMathTypes[1]);
-//                        mDrawerLayout.closeDrawer(mDrawerList);
                 break;
             //Open Settings
             case R.id.setting_menu:
@@ -250,7 +265,7 @@ public class NavDrawer extends AppCompatActivity {
                 manager = getSupportFragmentManager();
                 manager.beginTransaction()
                         .replace(R.id.content_frame, new SettingsActivity.GeneralPreferenceFragment())
-                        .addToBackStack(null)
+                        .addToBackStack(mMathTypes[2])
                         .commit();
 
                 break;

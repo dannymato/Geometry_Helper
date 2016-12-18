@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -135,9 +136,12 @@ public class QuadForm extends AppCompatActivity {
             if(dis < 0){
 
                 ImaginaryNumber pos = new ImaginaryNumber(-numB/2*numA, Math.sqrt(-dis)/2*numA);
-                ImaginaryNumber neg = new ImaginaryNumber(-numB/2*numA, Math.sqrt(dis)/2*numA);
+                ImaginaryNumber neg = new ImaginaryNumber(-numB/2*numA, -Math.sqrt(-dis)/2*numA);
 
-                String ans = "X = " + String.format("&."+numDec+"f",pos.toString())+ ", " + String.format("&."+numDec+"f",neg.toString());
+                Log.d("ImaginaryPos", pos.toString());
+                Log.d("ImaginaryNeg", neg.toString());
+
+                String ans = "X = " + pos.toString(this) + "," + neg.toString(this);
                 txtAns.setText(ans);
             }
             else{

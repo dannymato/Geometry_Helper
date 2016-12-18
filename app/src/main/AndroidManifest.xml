@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.danny.geometryhelper">
+    xmlns:tools="http://schemas.android.com/tools" package="com.example.danny.geometryhelper">
+
+    <uses-sdk tools:overrideLibrary="android.support.v14.preference" />
 
     <uses-permission-sdk-23 android:name="android.permission.INTERNET" />
     <uses-permission-sdk-23 android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-sdk tools:overrideLibrary="android.support.v14.preference" />
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".UI.NavDrawer"
-            android:label="@string/app_name"
+    <application android:allowBackup="true" android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name" android:theme="@style/AppTheme">
+        <activity android:name=".UI.NavDrawer" android:label="@string/app_name"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,126 +17,77 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Geometry.AreaTriangle"
+        <activity android:name=".Geometry.AreaTriangle"
             android:label="@string/title_activity_area_triangle"
-            android:parentActivityName=".UI.NavDrawer"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+            android:parentActivityName=".UI.NavDrawer" android:screenOrientation="portrait">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.NavDrawer" />
         </activity>
-        <activity
-            android:name=".Geometry.AreaCircle"
+        <activity android:name=".Geometry.AreaCircle"
             android:label="@string/title_activity_area_circle"
-            android:parentActivityName=".UI.NavDrawer"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+            android:parentActivityName=".UI.NavDrawer" android:screenOrientation="portrait">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.NavDrawer" />
         </activity>
-        <activity
-            android:name=".Geometry.QuadForm"
-            android:label="@string/title_activity_quad_form"
-            android:parentActivityName=".UI.NavDrawer"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+        <activity android:name=".Geometry.QuadForm" android:label="@string/title_activity_quad_form"
+            android:parentActivityName=".UI.NavDrawer" android:screenOrientation="portrait">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.NavDrawer" />
         </activity>
-        <activity
-            android:name=".UI.SettingsActivity"
+        <activity android:name=".UI.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:parentActivityName=".UI.NavDrawer">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.NavDrawer" />
         </activity>
-        <activity
-            android:name=".Geometry.Sphere_new"
-            android:label="@string/title_activity_sph"
-            android:parentActivityName=".UI.NavDrawer"
-            android:theme="@style/AppTheme_NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+        <activity android:name=".Geometry.Sphere_new" android:label="@string/title_activity_sph"
+            android:parentActivityName=".UI.NavDrawer" android:theme="@style/AppTheme_NoActionBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.NavDrawer" />
         </activity>
-        <activity
-            android:name=".Geometry.RectPrism_new"
-            android:label="Rectangular Prism"
-            android:parentActivityName=".UI.NavDrawer"
-            android:theme="@style/AppTheme_NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+        <activity android:name=".Geometry.RectPrism_new" android:label="Rectangular Prism"
+            android:parentActivityName=".UI.NavDrawer" android:theme="@style/AppTheme_NoActionBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.NavDrawer" />
         </activity>
-        <activity
-            android:name=".Geometry.Trapezoid"
-            android:label="Trapezoid"
+        <activity android:name=".Geometry.Trapezoid" android:label="Trapezoid"
             android:parentActivityName=".UI.NavDrawer">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.NavDrawer" />
         </activity>
-        <activity
-            android:name=".algebra2.Descartes"
-            android:label="Descartes"
+        <activity android:name=".algebra2.Descartes" android:label="Descartes"
             android:parentActivityName=".UI.NavDrawer">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.NavDrawer" />
         </activity>
-        <activity
-            android:name=".algebra2.DistanceForm"
-            android:label="Distance Formula"
+        <activity android:name=".algebra2.DistanceForm" android:label="Distance Formula"
             android:parentActivityName=".UI.NavDrawer">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.NavDrawer" />
         </activity>
-        <activity
-            android:name=".algebra2.Pythagorean"
-            android:label="Pythagorean Thᵐ"
+        <activity android:name=".algebra2.Pythagorean" android:label="Pythagorean Thᵐ"
             android:parentActivityName=".UI.NavDrawer">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.NavDrawer" />
         </activity>
-        <activity
-            android:name=".Geometry.Cyl_new"
-            android:label="Cylinder"
-            android:parentActivityName=".UI.NavDrawer"
-            android:theme="@style/AppTheme_NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".UI.NavDrawer"/>
+        <activity android:name=".Geometry.Cyl_new" android:label="Cylinder"
+            android:parentActivityName=".UI.NavDrawer" android:theme="@style/AppTheme_NoActionBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.NavDrawer" />
         </activity>
-
-        <activity
-            android:name=".Geometry.Cone_new"
-            android:label="Cone"
-            android:parentActivityName=".UI.NavDrawer"
-            android:theme="@style/AppTheme_NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".UI.NavDrawer"/>
+        <activity android:name=".Geometry.Cone_new" android:label="Cone"
+            android:parentActivityName=".UI.NavDrawer" android:theme="@style/AppTheme_NoActionBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.NavDrawer" />
         </activity>
-        <activity
-            android:name="com.mopub.mobileads.MoPubActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize">
-        </activity>
-        <activity
-            android:name="com.mopub.mobileads.MraidActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize">
-        </activity>
-        <activity
-            android:name="com.mopub.common.MoPubBrowser"
-            android:configChanges="keyboardHidden|orientation|screenSize">
-        </activity>
-        <activity
-            android:name="com.mopub.mobileads.MraidVideoPlayerActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize">
-        </activity>
+        <activity android:name="com.mopub.mobileads.MoPubActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"></activity>
+        <activity android:name="com.mopub.mobileads.MraidActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"></activity>
+        <activity android:name="com.mopub.common.MoPubBrowser"
+            android:configChanges="keyboardHidden|orientation|screenSize"></activity>
+        <activity android:name="com.mopub.mobileads.MraidVideoPlayerActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"></activity>
     </application>
 
 </manifest>
