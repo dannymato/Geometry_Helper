@@ -1,6 +1,8 @@
 package com.example.danny.geometryhelper.algebra2;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -21,6 +23,10 @@ public class Pythagorean extends AppCompatActivity {
     private double A = 0;
     private double B = 0;
     private double C = 0;
+
+    private boolean isAEdited = false;
+    private boolean isBEdited = false;
+    private boolean isCEdited = false;
 
     EditText editA;
     EditText editB;
@@ -75,6 +81,9 @@ public class Pythagorean extends AppCompatActivity {
                 editB.setText("");
                 editC.setText("");
                 editA.requestFocus();
+                isAEdited = false;
+                isCEdited = false;
+                isBEdited = false;
             }
         });
 
@@ -85,38 +94,54 @@ public class Pythagorean extends AppCompatActivity {
 
     private void calculate(){
 
-
         sA = editA.getText().toString();
         sB = editB.getText().toString();
         sC = editC.getText().toString();
 
+        isAEdited = editA.isFocused() || isAEdited;
+        isBEdited = editB.isFocused() || isBEdited;
+        isCEdited = editC.isFocused() || isCEdited;
 
         Log.d("Pyth", sA + sB + sC);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String numDec = sharedPreferences.getString("example_list","4");
 
-        if(Tools.stringCheck(sA) && Tools.stringCheck(sB) && Tools.stringCheck(sC)){
+        //A is the only empty
+        if(!editA.isFocused() && Tools.stringCheck(sB) && Tools.stringCheck(sC) && !isAEdited){
 
             B = Double.parseDouble(sB);
             C = Double.parseDouble(sC);
 
-           // double disc = Math.pow(C,2) - Math.pow(B,2);
-            A = Math.sqrt(Math.pow(C,2) - Math.pow(B,2));
+           double disc = Math.pow(C,2) - Math.pow(B,2);
+            if(disc > 0) {
+                A = Math.sqrt(disc);
 
-            editA.setText(String.valueOf(A));
+                String temp = String.format("%." + numDec + "f", A);
+                temp = Tools.removeZeros(temp);
+
+                editA.setText(temp);
+            }
 
         }
-
-        else if(!sA.equals("") && sB.equals("") && !sC.equals("")){
+        //B is the only empty
+        else if(Tools.stringCheck(sA) && !editB.isFocused() && Tools.stringCheck(sC)){
 
             A = Double.parseDouble(sA);
             C = Double.parseDouble(sC);
 
             double disc = Math.pow(C,2) - Math.pow(A,2);
-            B = Math.sqrt(disc);
+            if(disc > 0) {
+                B = Math.sqrt(disc);
 
-            editB.setText(String.valueOf(B));
+                String temp = String.format("%." + numDec + "f", B);
+                temp = Tools.removeZeros(temp);
+
+                editB.setText(temp);
+            }
 
         }
-        else if(!sA.equals("") && !sB.equals("") && sC.equals("")){
+        //C is the only empty
+        else if(Tools.stringCheck(sA) && Tools.stringCheck(sB) && !editC.isFocused()){
 
             B = Double.parseDouble(sB);
             A = Double.parseDouble(sA);
@@ -127,12 +152,12 @@ public class Pythagorean extends AppCompatActivity {
 
             C = Math.sqrt(disc);
 
-            editC.setText(String.valueOf(C));
+            String temp = String.format("%." + numDec + "f", C);
+            temp = Tools.removeZeros(temp);
 
-            Log.d("Pyth", String.valueOf(C));
+            editC.setText(temp);
 
         }
-
 
     }
 

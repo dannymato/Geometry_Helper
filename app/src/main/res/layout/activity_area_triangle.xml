@@ -90,7 +90,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/area_num"
-            android:text="0"
+            android:text="@string/empty_sq"
             android:layout_alignBottom="@id/area_title"
             android:layout_toEndOf="@id/area_title"
             android:layout_toRightOf="@id/area_title"

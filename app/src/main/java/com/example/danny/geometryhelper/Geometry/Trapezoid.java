@@ -85,20 +85,16 @@ public class Trapezoid extends AppCompatActivity {
 
             double a = (a1) * h;
 
-            int x = (int) a1;
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+            String numDec = preferences.getString("example_list","4");
 
-            if(x == a1){
-                ta.setText("Area = " + x);
-            }
+            Log.d("TrapArea", "Trap: " + a);
 
-            else{
-                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-                String numDec = preferences.getString("example_list","4");
+            String temp = String.format("%." + numDec + "f", a1);
+            temp = Tools.removeZeros(temp) + R.string.sq_unit;
+            temp = "Area = " + temp;
 
-                Log.d("TrapArea", "Trap: " + a);
-
-                ta.setText("Area = " + String.format("%." + numDec + "f", a1));
-            }
+            ta.setText(temp);
 
         }
 

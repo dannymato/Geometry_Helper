@@ -50,8 +50,9 @@ public class ImaginaryNumber {
                 isNeg = true;
                 imageNum = -imageNum;
             }
-            sImage = String.valueOf(imageNum);
-            sImage = String.format(".%" + numDec + "f", sImage);
+
+            sImage = String.format(".%" + numDec + "f", imageNum);
+            sImage = Tools.removeZeros(sImage);
         }
 
 

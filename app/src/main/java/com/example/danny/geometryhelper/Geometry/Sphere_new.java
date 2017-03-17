@@ -174,7 +174,10 @@ public class Sphere_new extends AppCompatActivity {
                     String numDec = sharedPreferences.getString("example_list", "4");
                     System.out.println(numDec);
 
-                    vTxt.setText(String.format("%." + numDec + "f", vol));
+                    String temp = String.format("%." + numDec + "f", vol);
+                    temp = Tools.removeZeros(temp) + " un³";
+
+                    vTxt.setText(temp);
 
                 }
 
@@ -195,7 +198,10 @@ public class Sphere_new extends AppCompatActivity {
                     SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     String numDec = pref.getString("example_list","4");
 
-                    vTxt.setText(String.format("%."+ numDec+"f", area));
+                    String temp = String.format("%."+ numDec+"f", area);
+                    temp = Tools.removeZeros(temp) + R.string.sq_unit;
+
+                    vTxt.setText(temp);
 
                 }
 

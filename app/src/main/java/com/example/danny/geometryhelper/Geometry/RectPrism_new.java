@@ -8,7 +8,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -161,7 +160,7 @@ public class RectPrism_new extends AppCompatActivity {
             double height;
             if(sectionNum == 0) {
 
-                double area;
+                double vol;
 
                 sWidth = wTxt.getText().toString();
                 sLength = lTxt.getText().toString();
@@ -173,16 +172,14 @@ public class RectPrism_new extends AppCompatActivity {
                     height = Double.parseDouble(sHeight);
                     width = Double.parseDouble(sWidth);
 
-                    area = (length*width*height);
+                    vol = (length*width*height);
 
                     SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     String numDec = pref.getString("example_list","4");
 
-                    int tmp = (int) area;
-
-                    Log.d("shit", String.valueOf(tmp==area));
-
-                    String temp = tmp==area?String.valueOf(tmp)+" un³":String.format("%."+ numDec+"f",area) + " un³";
+                    String temp = String.format("%."+ numDec+"f",vol);
+                    temp = Tools.removeZeros(temp);
+                    temp += R.string.cu_unit;
 
                     vTxt.setText(temp);
 
@@ -210,9 +207,9 @@ public class RectPrism_new extends AppCompatActivity {
                     SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     String numDec = pref.getString("example_list","4");
 
-                    int tmp = (int) area;
-
-                    String temp = String.format("%."+ numDec+"f",tmp==area?tmp:area) + " un²";
+                    String temp = String.format("%."+ numDec+"f",area);
+                    temp = Tools.removeZeros(temp);
+                    temp += R.string.sq_unit;
 
                     vTxt.setText(temp);
 

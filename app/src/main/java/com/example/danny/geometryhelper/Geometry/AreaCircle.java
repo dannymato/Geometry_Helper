@@ -91,7 +91,10 @@ public class AreaCircle extends AppCompatActivity {
                 String numDec = sharedPreferences.getString("example_list","4");
                 System.out.println(numDec);
 
-                area.setText(String.format("%."+numDec+"f",a));
+                String temp = String.format("%."+numDec+"f",a);
+                temp = Tools.removeZeros(temp) + R.string.sq_unit;
+
+                area.setText(temp);
             }
 
 

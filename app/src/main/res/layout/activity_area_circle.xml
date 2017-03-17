@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="0"
+            android:text="@string/empty_sq"
             android:id="@+id/circ_area_num"
             android:layout_alignBottom="@+id/circ_area_title"
             android:layout_toRightOf="@+id/circ_area_title"

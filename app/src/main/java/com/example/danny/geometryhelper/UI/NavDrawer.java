@@ -19,7 +19,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.widget.ListView;
 
 import com.example.danny.geometryhelper.R;
 import com.mopub.mobileads.MoPubView;
@@ -29,7 +28,6 @@ public class NavDrawer extends AppCompatActivity {
 
     private String[] mMathTypes;
     private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
     private Context mContext;
     private Toolbar toolbar;
@@ -128,7 +126,7 @@ public class NavDrawer extends AppCompatActivity {
 
             public void onDrawerOpened(View view){
                 super.onDrawerOpened(view);
-                getActionBar().setTitle(mDrawerTitle);
+                setTitle(mDrawerTitle);
                 invalidateOptionsMenu();
             }
 
@@ -192,7 +190,6 @@ public class NavDrawer extends AppCompatActivity {
                     .add(R.id.content_frame, homeScreen)
                     .addToBackStack(mMathTypes[pos-1])
                     .commit();
-            //setTitle(mMathTypes[pos-1]);
             mNavigationMenu.setCheckedItem(navMenuItems[pos-1]);
         }
 
@@ -208,7 +205,8 @@ public class NavDrawer extends AppCompatActivity {
             @Override
             public void onBackStackChanged() {
                 int numStack = getSupportFragmentManager().getBackStackEntryCount();
-                if(numStack < 2) {
+                if (numStack == 0){}
+                else if(numStack < 2) {
                     setTitle(getSupportFragmentManager().getBackStackEntryAt(
                             getSupportFragmentManager().getBackStackEntryCount() - 1).getName()
                     );

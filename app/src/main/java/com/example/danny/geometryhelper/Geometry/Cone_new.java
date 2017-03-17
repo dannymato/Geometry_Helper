@@ -180,9 +180,11 @@ public class Cone_new extends AppCompatActivity {
                     String numDec = sharedPreferences.getString("example_list", "4");
                     System.out.println(numDec);
 
-                    int temp = (int) vol;
+                    String temp = String.format("%." + numDec + "f", vol);
 
-                    vTxt.setText(String.format("%." + numDec + "f", temp == vol ? temp:vol));
+                    temp = Tools.removeZeros(temp) + R.string.cu_unit;
+
+                    vTxt.setText(temp);
 
                 }
 
@@ -203,9 +205,10 @@ public class Cone_new extends AppCompatActivity {
                     SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     String numDec = pref.getString("example_list", "4");
 
-                    int temp = (int) area;
+                    String temp = String.format("%." + numDec + "f", area);
+                    temp = Tools.removeZeros(temp) + R.string.sq_unit;
 
-                    vTxt.setText(String.format("%." + numDec + "f", temp == area ? temp:area));
+                    vTxt.setText(temp);
 
                 }
 

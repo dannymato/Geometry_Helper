@@ -95,7 +95,12 @@ public class DistanceForm extends AppCompatActivity {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
             String numDec = sharedPreferences.getString("example_list","4");
             Log.d("Dec Preference", numDec);
-            textView.setText("Distance = " + String.format("%." + numDec + "f", distance) + " units");
+
+            String temp = String.format("%." + numDec + "f", distance);
+            temp = Tools.removeZeros(temp);
+            temp = "Distance = " + temp + R.string.unit;
+
+            textView.setText(temp);
 
         }
 
