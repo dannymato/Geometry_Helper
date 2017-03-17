@@ -93,7 +93,7 @@ public class Pythagorean extends AppCompatActivity {
 
         Log.d("Pyth", sA + sB + sC);
 
-        if(Tools.stringCheck(sA) && Tools.stringCheck(sB) && Tools.stringCheck(sC)){
+        if(Tools.stringCheck(sA) && !Tools.stringCheck(sB) && !Tools.stringCheck(sC)){
 
             B = Double.parseDouble(sB);
             C = Double.parseDouble(sC);
@@ -105,7 +105,7 @@ public class Pythagorean extends AppCompatActivity {
 
         }
 
-        else if(!sA.equals("") && sB.equals("") && !sC.equals("")){
+        else if(!Tools.stringCheck(sA) && Tools.stringCheck(sB) && !Tools.stringCheck(sC)){
 
             A = Double.parseDouble(sA);
             C = Double.parseDouble(sC);
@@ -116,7 +116,7 @@ public class Pythagorean extends AppCompatActivity {
             editB.setText(String.valueOf(B));
 
         }
-        else if(!sA.equals("") && !sB.equals("") && sC.equals("")){
+        else if(!Tools.stringCheck(sA) && !Tools.stringCheck(sB) && Tools.stringCheck(sC)){
 
             B = Double.parseDouble(sB);
             A = Double.parseDouble(sA);

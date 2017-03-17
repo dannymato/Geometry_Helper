@@ -141,7 +141,7 @@ public class QuadForm extends AppCompatActivity {
                 Log.d("ImaginaryPos", pos.toString());
                 Log.d("ImaginaryNeg", neg.toString());
 
-                String ans = "X = " + pos.toString(this) + "," + neg.toString(this);
+                String ans = "X = " + pos.toString(this) + ", " + neg.toString(this);
                 txtAns.setText(ans);
             }
             else{
