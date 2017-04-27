@@ -28,15 +28,11 @@ public class ImaginaryNumber {
 
         boolean isNeg = false;
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        String numDec = sharedPreferences.getString("example_list","4");
-
         if(real == realNum){
             sReal = String.valueOf(real);
         }
         else{
-            sReal = String.valueOf(realNum);
-            sReal = String.format(".%" + numDec + "f", sReal);
+            sReal = Tools.truncString(realNum,context);
         }
         if(image == imageNum) {
             if(image < 0){
@@ -50,8 +46,7 @@ public class ImaginaryNumber {
                 isNeg = true;
                 imageNum = -imageNum;
             }
-            sImage = String.valueOf(imageNum);
-            sImage = String.format(".%" + numDec + "f", imageNum);
+            sImage = Tools.truncString(imageNum,context);
         }
 
 

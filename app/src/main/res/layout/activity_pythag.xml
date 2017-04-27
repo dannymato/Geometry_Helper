@@ -17,12 +17,14 @@
         local:theme="@style/AppThemeToolbar"
         app:titleTextColor="@android:color/white">
     </android.support.v7.widget.Toolbar>
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" android:paddingBottom="@dimen/activity_vertical_margin"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin">
+        android:paddingTop="64dp">
 
         <LinearLayout
             android:id="@+id/pythDescLayout"
@@ -30,21 +32,22 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:gravity="center"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/pythDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:textAppearanceLarge"
                 android:text="@string/pythDesc"
+                android:textAppearance="?android:textAppearanceLarge"
                 android:textSize="20sp" />
+
             <ImageView
                 android:id="@+id/pyth_img"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/pythag_img"
-                android:transitionName="algTransition2"/>
+                android:transitionName="algTransition2" />
 
         </LinearLayout>
 
@@ -54,43 +57,42 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/pythDescLayout"
+            android:layout_marginTop="30dp"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_marginTop="30dp" >
+            android:orientation="horizontal">
 
             <TableRow
                 android:id="@+id/pythTableRow1"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center" >
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/pythATxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/quadA"
-                    android:textSize="15sp"
                     android:layout_marginRight="10dp"
+                    android:text="@string/quadA"
                     android:textAppearance="?android:textAppearanceMedium"
-                    />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/pythBTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/quadB"
-                    android:textSize="15sp"
-                    android:textAppearance="?android:textAppearanceMedium"/>
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/pythCTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/quadC"
-                    android:textSize="15sp"
                     android:layout_marginLeft="10dp"
-                    android:textAppearance="?android:textAppearanceMedium"/>
+                    android:text="@string/quadC"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textSize="15sp" />
             </TableRow>
 
             <TableRow
@@ -98,16 +100,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center" >
+                android:gravity="center">
 
                 <EditText
                     android:id="@+id/pythANum"
                     android:layout_width="75dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="numberDecimal|numberSigned"
                     android:layout_marginRight="10dp"
-                    android:imeOptions="actionNext" >
+                    android:ems="10"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal|numberSigned">
 
                     <requestFocus />
                 </EditText>
@@ -117,32 +119,32 @@
                     android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="numberDecimal|numberSigned"
                     android:imeOptions="actionNext"
-                    />
+                    android:inputType="numberDecimal|numberSigned" />
 
                 <EditText
                     android:id="@+id/pythCNum"
                     android:layout_width="75dp"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="numberDecimal|numberSigned"
                     android:layout_marginLeft="10dp"
-                    android:imeOptions="actionDone"/>
+                    android:ems="10"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberDecimal|numberSigned" />
             </TableRow>
         </TableLayout>
 
         <Button
+            android:id="@+id/clrBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Clear"
-            android:id="@+id/clrBtn"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginLeft="36dp"
-            android:layout_marginStart="36dp"
+            android:layout_below="@id/tableLayout1"
             android:layout_marginBottom="0dp"
-            android:layout_marginTop="110dp" />
+            android:layout_marginLeft="50dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:text="Clear" />
 
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

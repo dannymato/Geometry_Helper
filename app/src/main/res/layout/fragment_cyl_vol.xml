@@ -75,7 +75,7 @@
         android:id="@+id/cyl_img_vol"
         android:layout_width="100dp"
         android:layout_height="150dp"
-        android:src="@drawable/circle_img"
+        android:src="@drawable/cylinder"
         android:layout_above="@+id/cyl_vol_title"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true">

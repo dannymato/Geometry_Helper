@@ -115,10 +115,7 @@ public class AreaTriangle extends AppCompatActivity {
                 area.setText(String.valueOf(check));
             }
             else {
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-                String numDec = sharedPreferences.getString("example_list","4");
-                System.out.println(numDec);
-                area.setText(String.format("%."+numDec+"f",a));
+                area.setText(Tools.truncString(a,getApplicationContext()));
             }
         }
     }

@@ -43,16 +43,16 @@ public class NavDrawer extends AppCompatActivity {
             R.drawable.circle_img,
             R.drawable.quad_img,
             R.drawable.sphere_img,
-            R.drawable.circle_img,//TODO: Draw cylinder
-            R.drawable.tri_img,//TODO: Draw Trapezoid
-            R.drawable.quad_img,
-            R.drawable.circle_img
+            R.drawable.cylinder,
+            R.drawable.trapezoid,
+            R.drawable.quad_img,//TODO: Draw a rectangular prism
+            R.drawable.circle_img //TODO: Draw a cone
     };
 
     private final int[] mAlgCardImgs = {
             R.drawable.tri_img,//TODO: Draw a symbol for Descartes
             R.drawable.circle_img, //TODO: Draw a symbol for distance formula
-            R.drawable.pythag_img
+            R.drawable.pythag
     };
 
     private final int[][] mCardImgs = {
@@ -216,7 +216,6 @@ public class NavDrawer extends AppCompatActivity {
                             getSupportFragmentManager().getBackStackEntryCount() - 1).getName()
                     );
                 }
-
             }
         });
 

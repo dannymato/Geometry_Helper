@@ -93,7 +93,7 @@ public class Pythagorean extends AppCompatActivity {
 
         Log.d("Pyth", sA + sB + sC);
 
-        if(Tools.stringCheck(sA) && !Tools.stringCheck(sB) && !Tools.stringCheck(sC)){
+        if(!Tools.stringCheck(sA) && Tools.stringCheck(sB) && Tools.stringCheck(sC)){
 
             B = Double.parseDouble(sB);
             C = Double.parseDouble(sC);
@@ -101,11 +101,11 @@ public class Pythagorean extends AppCompatActivity {
            // double disc = Math.pow(C,2) - Math.pow(B,2);
             A = Math.sqrt(Math.pow(C,2) - Math.pow(B,2));
 
-            editA.setText(String.valueOf(A));
+            editA.setText(Tools.truncString(A,getApplicationContext()));
 
         }
 
-        else if(!Tools.stringCheck(sA) && Tools.stringCheck(sB) && !Tools.stringCheck(sC)){
+        else if(Tools.stringCheck(sA) && !Tools.stringCheck(sB) && Tools.stringCheck(sC)){
 
             A = Double.parseDouble(sA);
             C = Double.parseDouble(sC);
@@ -113,10 +113,10 @@ public class Pythagorean extends AppCompatActivity {
             double disc = Math.pow(C,2) - Math.pow(A,2);
             B = Math.sqrt(disc);
 
-            editB.setText(String.valueOf(B));
+            editB.setText(Tools.truncString(B,getApplicationContext()));
 
         }
-        else if(!Tools.stringCheck(sA) && !Tools.stringCheck(sB) && Tools.stringCheck(sC)){
+        else if(Tools.stringCheck(sA) && Tools.stringCheck(sB) && !Tools.stringCheck(sC)){
 
             B = Double.parseDouble(sB);
             A = Double.parseDouble(sA);
@@ -127,7 +127,7 @@ public class Pythagorean extends AppCompatActivity {
 
             C = Math.sqrt(disc);
 
-            editC.setText(String.valueOf(C));
+            editC.setText(Tools.truncString(C,this.getBaseContext()));
 
             Log.d("Pyth", String.valueOf(C));
 
