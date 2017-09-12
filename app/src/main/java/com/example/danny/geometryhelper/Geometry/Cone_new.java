@@ -1,9 +1,11 @@
 package com.example.danny.geometryhelper.Geometry;
 
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.ContactsContract;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
@@ -15,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.danny.geometryhelper.R;
@@ -113,14 +116,22 @@ public class Cone_new extends AppCompatActivity {
 
             View rootView = inflater.inflate(x==0 ? R.layout.fragment_cyl_vol : R.layout.fragment_cyl, container, false);
 
-            if(x==0)
-                assignImageView(rootView,R.id.cyl_img_vol);
-            else
-                assignImageView(rootView,R.id.cyl_img,false);
+            ImageView imageView;
+
+            if(x==0) {
+                assignImageView(rootView, R.id.cyl_img_vol);
+                imageView = (ImageView)rootView.findViewById(R.id.cyl_img_vol);
+            }
+            else {
+                assignImageView(rootView, R.id.cyl_img, false);
+                imageView = (ImageView)rootView.findViewById(R.id.cyl_img);
+            }
 
             final EditText rTxt = (EditText)rootView.findViewById(R.id.cyl_length);
             final EditText hTxt = (EditText)rootView.findViewById(R.id.cyl_height);
             final TextView vTxt = (TextView)rootView.findViewById(R.id.cyl_vol_num);
+
+            imageView.setImageDrawable(getResources().getDrawable(R.drawable.circle_img));
 
             TextView vTitle = (TextView)rootView.findViewById(R.id.cyl_vol_title);
 
