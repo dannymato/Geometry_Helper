@@ -4,7 +4,6 @@ package com.example.danny.geometryhelper;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-
 import android.util.Log;
 
 public class Tools {
@@ -13,9 +12,6 @@ public class Tools {
     private static String string;
     private static Context context;
 
-    //If the string can be parsed to double returns true
-    //Else returns false
-    public static boolean stringCheck(String s){
     //Returns true if the string can be parsed to a double (assumes the string cannot contain any alphabetic characters)
     public static boolean stringCheck(String s){return !s.equals("-") && !s.equals(".") && !s.equals("") && containsNumber(s);}
 
