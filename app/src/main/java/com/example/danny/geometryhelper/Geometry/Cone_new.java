@@ -1,11 +1,9 @@
 package com.example.danny.geometryhelper.Geometry;
 
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.provider.ContactsContract;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
@@ -154,12 +152,14 @@ public class Cone_new extends AppCompatActivity {
             Log.d("Page#" , String.valueOf(x));
 
             if(x == 0){
-                vTitle.setText("Volume = ");
+                vTitle.setText(R.string.volume);
+                vTxt.setText(R.string.empty_cu);
 
             }
 
             else if(x == 1){
-                vTitle.setText("Surface Area = ");
+                vTitle.setText(R.string.surf_area);
+                vTxt.setText(R.string.empty_sq);
             }
 
 
@@ -193,7 +193,7 @@ public class Cone_new extends AppCompatActivity {
 
                     String temp = String.format("%." + numDec + "f", vol);
 
-                    temp = Tools.removeZeros(temp) + R.string.cu_unit;
+                    temp = Tools.removeZeros(temp) + " " + getString(R.string.cu_unit);
 
                     vTxt.setText(temp);
 
@@ -217,7 +217,7 @@ public class Cone_new extends AppCompatActivity {
                     String numDec = pref.getString("example_list", "4");
 
                     String temp = String.format("%." + numDec + "f", area);
-                    temp = Tools.removeZeros(temp) + R.string.sq_unit;
+                    temp = Tools.removeZeros(temp) + " " + getString(R.string.sq_unit);
 
                     vTxt.setText(temp);
 

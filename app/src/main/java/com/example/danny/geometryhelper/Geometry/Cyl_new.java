@@ -183,7 +183,7 @@ public class Cyl_new extends AppCompatActivity {
                     System.out.println(numDec);
 
                     String temp = String.format("%." + numDec + "f",vol);
-                    temp = Tools.removeZeros(temp) + R.string.cu_unit;
+                    temp = Tools.removeZeros(temp) + " " + getString(R.string.cu_unit);
 
                     vTxt.setText(temp);
 
@@ -209,7 +209,7 @@ public class Cyl_new extends AppCompatActivity {
                     String numDec = pref.getString("example_list","4");
 
                     String temp = String.format("%."+ numDec+"f",area);
-                    temp = Tools.removeZeros(temp) + R.string.sq_unit;
+                    temp = Tools.removeZeros(temp) + " " + getString(R.string.sq_unit);
 
                     vTxt.setText(temp);
 

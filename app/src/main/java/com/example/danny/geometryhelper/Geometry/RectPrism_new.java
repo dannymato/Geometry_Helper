@@ -8,6 +8,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -178,8 +179,10 @@ public class RectPrism_new extends AppCompatActivity {
                     String numDec = pref.getString("example_list","4");
 
                     String temp = String.format("%."+ numDec+"f",vol);
+                    Log.d("Test remove zeros", temp);
                     temp = Tools.removeZeros(temp);
-                    temp += R.string.cu_unit;
+                    temp += " ";
+                    temp += getString(R.string.cu_unit);
 
                     vTxt.setText(temp);
 
@@ -209,7 +212,8 @@ public class RectPrism_new extends AppCompatActivity {
 
                     String temp = String.format("%."+ numDec+"f",area);
                     temp = Tools.removeZeros(temp);
-                    temp += R.string.sq_unit;
+                    temp += " ";
+                    temp += getString(R.string.sq_unit);
 
                     vTxt.setText(temp);
 
