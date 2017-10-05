@@ -81,13 +81,16 @@
     <string name="alg">Algebra II</string>
     <string name="set">Settings</string>
 
-    <string name="empty_sq">0 un²</string>
-    <string name="empty_cu">0 un³</string>
-    <string name="empty">0 un</string>
+    <string name="empty_sq" translatable="false">0 un²</string>
+    <string name="empty_cu" translatable="false">0 un³</string>
+    <string name="empty" translatable="false">0 un</string>
 
-    <string name="sq_unit"> un²</string>
-    <string name="cu_unit"> un³</string>
-    <string name="unit"> un</string>
+    <string name="sq_unit" translatable="false"> un²</string>
+    <string name="cu_unit" translatable="false"> un³</string>
+    <string name="unit" translatable="false"> un</string>
+
+    <string name="surf_area">Surface Area =</string>
+    <string name="volume">Volume =</string>
 
     <string name="hello_blank_fragment">Welcome \'n\' Stuff</string>
 

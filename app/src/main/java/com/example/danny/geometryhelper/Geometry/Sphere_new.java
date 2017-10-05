@@ -138,12 +138,14 @@ public class Sphere_new extends AppCompatActivity {
             });
 
             if(x == 0){
-                vTitle.setText("Volume = ");
+                vTitle.setText(R.string.volume);
+                vTxt.setText(R.string.empty_cu);
 
             }
 
             else if(x == 1){
-                vTitle.setText("Surface Area = ");
+                vTitle.setText(R.string.surf_area);
+                vTxt.setText(R.string.empty_sq);
             }
 
 

@@ -1,11 +1,9 @@
 package com.example.danny.geometryhelper.Geometry;
 
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.provider.ContactsContract;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
@@ -154,12 +152,14 @@ public class Cone_new extends AppCompatActivity {
             Log.d("Page#" , String.valueOf(x));
 
             if(x == 0){
-                vTitle.setText("Volume = ");
+                vTitle.setText(R.string.volume);
+                vTxt.setText(R.string.empty_cu);
 
             }
 
             else if(x == 1){
-                vTitle.setText("Surface Area = ");
+                vTitle.setText(R.string.surf_area);
+                vTxt.setText(R.string.empty_sq);
             }
 
 

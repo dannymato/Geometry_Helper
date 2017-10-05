@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Geometry Helper</string>
+    <string name="Calc">Calcula</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="alg">Álgebra II</string>
+    <string name="area_title">Área =</string>
+    <string name="area_tri">de un triángulo</string>
+</resources>
